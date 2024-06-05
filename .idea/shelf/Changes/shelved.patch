@@ -1,0 +1,74 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"13d4f1e7-3b47-4587-adb1-8f4e14df5a14\" name=\"Changes\" comment=\"lector de datos\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/TG_Jefferson_Vasquez.iml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/modules.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/vcs.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/dataframe2.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/main.py\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/organizador.py\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/validarLista.py\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Python Script\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2h6Lad5OmNAhZa1U52FsCcXaCWK\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Python.lector_excel.executor\": \"Run\",\r\n    \"Python.main.executor\": \"Run\",\r\n    \"Python.organizador.executor\": \"Run\",\r\n    \"Python.validarLista.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"last_opened_file_path\": \"C:/Users/Jefferson/PycharmProjects/TG_Jefferson_Vasquez\",\r\n    \"run.code.analysis.last.selected.profile\": \"pProject Default\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Jefferson\\PycharmProjects\\TG_Jefferson_Vasquez\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Jefferson\\PycharmProjects\\TG_Jefferson_Vasquez\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-python-sdk-0509580d9d50-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.14494.241\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"13d4f1e7-3b47-4587-adb1-8f4e14df5a14\" name=\"Changes\" comment=\"\" />\r\n      <created>1716909644345</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1716909644345</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"lector de datos\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"lector de datos\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 6ddc7ec84a46690ab6343a1c234e8a41283db0f3)
++++ b/.idea/workspace.xml	(date 1717184239541)
+@@ -5,16 +5,7 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="13d4f1e7-3b47-4587-adb1-8f4e14df5a14" name="Changes" comment="lector de datos">
+-      <change afterPath="$PROJECT_DIR$/.idea/TG_Jefferson_Vasquez.iml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/dataframe2.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/organizador.py" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/validarLista.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -40,18 +31,18 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Python.lector_excel.executor": "Run",
+-    "Python.main.executor": "Run",
+-    "Python.organizador.executor": "Run",
+-    "Python.validarLista.executor": "Run",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "git-widget-placeholder": "master",
+-    "last_opened_file_path": "C:/Users/Jefferson/PycharmProjects/TG_Jefferson_Vasquez",
+-    "run.code.analysis.last.selected.profile": "pProject Default"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Python.lector_excel.executor&quot;: &quot;Run&quot;,
++    &quot;Python.main.executor&quot;: &quot;Run&quot;,
++    &quot;Python.organizador.executor&quot;: &quot;Run&quot;,
++    &quot;Python.validarLista.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jefferson/PycharmProjects/TG_Jefferson_Vasquez&quot;,
++    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="C:\Users\Jefferson\PycharmProjects\TG_Jefferson_Vasquez" />
+@@ -76,6 +67,15 @@
+       <option name="presentableId" value="Default" />
+       <updated>1716909644345</updated>
+     </task>
++    <task id="LOCAL-00001" summary="lector de datos">
++      <option name="closed" value="true" />
++      <created>1717183131864</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1717183131864</updated>
++    </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
+   <component name="VcsManagerConfiguration">
