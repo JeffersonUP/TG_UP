@@ -1,8 +1,9 @@
 import pandas as pd
 import tkinter as tk
 from tkinter import messagebox
-editables_puertos = ['ED-0933', 'ED-0934', 'ED-0935', 'ED-0936', 'ED-0937', 'ED-0938', 'ED-0939', 'ED-0940', 'ED-0941',
-                     'ED-0942', 'ED-0943', 'ED-0944', 'ED-0945', 'ED-0946', 'ED-0947']
+editables_puertos = ['ED-0903', 'ED-0534', 'ED-0456', 'ED-0920', 'ED-0908', 'ED-0482', 'ED-0473', 'ED-0513', 'ED-0749',
+                     'ED-0770', 'ED-0790', 'ED-0835', 'ED-0802', 'ED-0761']
+
 
 editables_puertos_op = []
 no_encontrada = []
