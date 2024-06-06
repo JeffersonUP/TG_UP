@@ -29,8 +29,7 @@ boton_buscar = tk.Button(frame_texto, text="Buscar", command=buscar)
 boton_buscar.grid(row=1, column=0, sticky="ew")
 
 
-# Crear las otras dos columnas vacías
-frame_opciones = tk.Frame(root,)
+frame_opciones = tk.Frame(root, bg="gray", pady=5, padx=5)
 frame_opciones.grid(row=0, column=1, sticky="nsew")
 # Crear el label
 label = tk.Label(frame_opciones, text="\nEquipos consultados: \n\nEquipos no encontrados: \n\nSwitches involucrados:\n")
