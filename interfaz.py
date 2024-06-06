@@ -29,10 +29,10 @@ boton_buscar = tk.Button(frame_texto, text="Buscar", command=buscar)
 boton_buscar.grid(row=1, column=0, sticky="ew")
 
 
-frame_opciones = tk.Frame(root, bg="gray", pady=5, padx=5)
+frame_opciones = tk.Frame(root, bg="gray", pady=2, padx=2,borderwidth=1)
 frame_opciones.grid(row=0, column=1, sticky="nsew")
 # Crear el label
-label = tk.Label(frame_opciones, text="\nEquipos consultados: \n\nEquipos no encontrados: \n\nSwitches involucrados:\n")
+label = tk.Label(frame_opciones, text="\nEquipos consultados: \n\nEquipos no encontrados: \n\nSwitches involucrados:\n", relief="raised")
 label.grid(row=0, column=1, pady=5, sticky="nsew")
 
 # Crear un frame para contener los botones
@@ -73,11 +73,10 @@ frame_contenido.bind("<Configure>", configurar_scrollregion)
 # Datos de ejemplo
 datos = [f"Dato {i}\nunificador de anchor, esta primera linea tendrá artificialmente el anchor maximo disponible" for i
          in range(1, 51)]
-max_width = max([tk.Label(root, text=d).winfo_reqwidth() for d in datos])
 # Crear la tabla de datos con botones
 for i, dato in enumerate(datos):
 
-    celda_frame = tk.Frame(frame_contenido, width=max_width + 30, height=30, borderwidth=1, relief="solid")
+    celda_frame = tk.Frame(frame_contenido, height=30, borderwidth=1, relief="solid")
     celda_frame.grid(row=i, column=0, padx=5, pady=5)
     if i == 1:
         etiqueta = tk.Label(celda_frame, text="miau")
