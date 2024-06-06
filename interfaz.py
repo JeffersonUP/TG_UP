@@ -1,5 +1,8 @@
 import tkinter as tk
 
+def boton_funcion(dato):
+    print(f"Botón presionado para: {dato}")
+
 
 def buscar():
     # Acción a realizar cuando se presione el botón Buscar
@@ -7,7 +10,7 @@ def buscar():
 
 root = tk.Tk()
 root.title("Switch manager")
-root.geometry("900x400")
+root.geometry("760x400")
 # Crear un frame para contener la caja de texto y el scrollbar
 frame_texto = tk.Frame(root)
 frame_texto.grid(row=0, column=0, sticky="nsew")
@@ -30,7 +33,7 @@ boton_buscar.grid(row=1, column=0, sticky="ew")
 frame_opciones = tk.Frame(root,)
 frame_opciones.grid(row=0, column=1, sticky="nsew")
 # Crear el label
-label = tk.Label(frame_opciones, text="Equipos consultados: \nEquipos no encontrados: \nSwitches involucrados:\n")
+label = tk.Label(frame_opciones, text="\nEquipos consultados: \n\nEquipos no encontrados: \n\nSwitches involucrados:\n")
 label.grid(row=0, column=1, pady=5, sticky="nsew")
 
 # Crear un frame para contener los botones
@@ -38,13 +41,55 @@ boton_frame = tk.Frame(frame_opciones, borderwidth=1, relief="solid")
 boton_frame.grid(row=1, column=1, pady=5, sticky="nsew")
 
 # Crear los 7 botones
-for i in range(1, 8):
-    boton = tk.Button(boton_frame, text=f"Funcionalidad {i}")
+for i in range(1, 7):
+    boton = tk.Button(boton_frame, text=f"Funcionalidadkkkk {i}")
     boton.grid(row=i-1, column=0, padx=5, pady=2, sticky="ew")
+boton = tk.Button(boton_frame, text=f"Fukk {i}")
+boton.grid(row=7, column=0, padx=5, pady=2, sticky="ew")
 
 
+# Crear un canvas
+canvas = tk.Canvas(root, bg="cyan")
+canvas.grid(row=0, column=2, sticky="nsew")
 
-tk.Label(root, text="Columna 3").grid(row=0, column=2, sticky="nsew")
+# Crear un scrollbar vertical y asociarlo con el canvas
+scrollbar = tk.Scrollbar(orient="vertical", command=canvas.yview)
+scrollbar.grid(row=0, column=3, sticky="nsew")
+canvas.configure(yscrollcommand=scrollbar.set)
+
+# Crear un frame dentro del canvas
+frame_contenido = tk.Frame(canvas)
+
+# Crear un window dentro del canvas para contener el frame
+canvas.create_window((0, 0), window=frame_contenido, anchor="nw")
+
+
+# Función para configurar el scrollregion del canvas
+def configurar_scrollregion(event):
+    canvas.configure(scrollregion=canvas.bbox("all"))
+
+
+frame_contenido.bind("<Configure>", configurar_scrollregion)
+
+# Datos de ejemplo
+datos = [f"Dato {i}\nunificador de anchor, esta primera linea tendrá artificialmente el anchor maximo disponible" for i
+         in range(1, 51)]
+max_width = max([tk.Label(root, text=d).winfo_reqwidth() for d in datos])
+# Crear la tabla de datos con botones
+for i, dato in enumerate(datos):
+
+    celda_frame = tk.Frame(frame_contenido, width=max_width + 30, height=30, borderwidth=1, relief="solid")
+    celda_frame.grid(row=i, column=0, padx=5, pady=5)
+    if i == 1:
+        etiqueta = tk.Label(celda_frame, text="miau")
+    else:
+        etiqueta = tk.Label(celda_frame, text=dato)
+    etiqueta.pack(expand=True, fill='both')
+
+    boton = tk.Button(celda_frame, text="Botón", command=lambda d=dato: boton_funcion(d))
+    boton.pack(expand=True, fill='both')
+#11
+
 
 # Configurar la columna 0 para que mantenga su ancho fijo y ajustable en alto
 root.columnconfigure(0, weight=0)
