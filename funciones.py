@@ -12,7 +12,8 @@ def validar_listado(listado):
             no_validos.append(puerto)
     return validos, no_validos
 
-def generar_rangos(listado):
+def generar_rangos(listado, accion=1):
+    comandos=["","\nswitchport access vlan XXX\n", ""]
     lista_switches = []
     lista_rangos = []
     df = pd.read_excel("dataframe2.xlsx")
@@ -69,5 +70,8 @@ def generar_rangos(listado):
                         interface_range = "int range "
                         cont = 0
                 if cont != 0:
-                    lista_rangos.append(interface_range)
+                    if accion!=0:
+                        lista_rangos.append(f"conf t\n{interface_range}"+comandos[accion])
+
+
     return lista_switches, lista_rangos

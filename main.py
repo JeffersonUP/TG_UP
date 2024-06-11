@@ -202,9 +202,12 @@ class App(tk.Tk):
             entry.configure(state='disabled')
             entry.grid(row=1, column=0, sticky="ew")
 
-            button = tk.Button(row_frame, text="Copiar")
+            button = tk.Button(row_frame, text="Copiar", command=lambda e=entry: self.copiar_contenido(e))
             button.grid(row=1, column=1, padx=5, sticky="nsew")
-
+    def copiar_contenido(self,texto):
+        self.clipboard_clear()
+        self.clipboard_append(texto.get("1.0", tk.END))
+        self.update()
 if __name__ == "__main__":
     app = App()
     app.mainloop()
