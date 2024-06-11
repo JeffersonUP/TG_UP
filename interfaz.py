@@ -75,8 +75,7 @@ datos = [f"Dato {i}\nunificador de anchor, esta primera linea tendrá artificial
          in range(1, 51)]
 # Crear la tabla de datos con botones
 for i, dato in enumerate(datos):
-
-    celda_frame = tk.Frame(frame_contenido, height=30, borderwidth=1, relief="solid")
+    celda_frame = tk.Text(frame_contenido, height=30, borderwidth=1, relief="solid")
     celda_frame.grid(row=i, column=0, padx=5, pady=5)
     if i == 1:
         etiqueta = tk.Label(celda_frame, text="miau")

@@ -40,7 +40,7 @@ class App(tk.Tk):
         scroll_buscar.grid(row=0, column=1, sticky="ns")
         texto_buscar.config(yscrollcommand=scroll_buscar.set)
 
-        boton_buscar = tkinter.Button(frame_columna1, text="Buscar", command=self.frame1_buscar)
+        boton_buscar = tkinter.Button(frame_columna1, text="Buscar", command=self.accion_btn_buscar())
         boton_buscar.grid(row=1, column=0, sticky="ew")
 
         frame1.grid_rowconfigure(0, weight=1)
@@ -56,12 +56,22 @@ class App(tk.Tk):
         frame_botones = tk.Frame(frame_columna2, borderwidth=1, relief="solid")
         frame_botones.grid(row=1, column=0, pady=7, sticky="ew")
 
-        boton_op1 = tk.Button(frame_botones, text="Cambiar VLAN", command=self.frame1_boton1())
-        boton_op1.grid(row=0, column=0, padx=1, pady=1, sticky="ew")
+        boton_op1 = tk.Button(frame_botones, text="Cambiar VLAN", command=self.accion_btn_1())
+        boton_op1.grid(row=0, column=0, padx=1, pady=3, sticky="ew")
 
-        boton_op2 = tk.Button(frame_botones, text="Actualizar PortSecurity ", command=self.frame1_boton2())
-        boton_op2.grid(row=1, column=0, padx=1, pady=1, sticky="ew")
+        boton_op2 = tk.Button(frame_botones, text="Actualizar PortSecurity ", command=self.accion_btn_2())
+        boton_op2.grid(row=1, column=0, padx=1, pady=3, sticky="ew")
+
+        boton_op3 = tk.Button(frame_botones, text="Aplicar Cisco ISE", command=self.accion_btn_2())
+        boton_op3.grid(row=2, column=0, padx=1, pady=3, sticky="ew")
+
         frame_botones.grid_columnconfigure(0, weight=1)
+
+        #Columna 3
+        frame_columna3=tk.Frame(frame1)
+
+
+
     def create_tab2(self):
         frame2 = ttk.Frame(self.notebook)
         self.notebook.add(frame2, text='Pestaña 2')
@@ -94,12 +104,12 @@ class App(tk.Tk):
         self.result_label3 = tk.Label(frame3, text="", font=("Arial", 20))
         self.result_label3.pack(pady=10)
 
-    def frame1_buscar(self):
+    def accion_btn_buscar(self):
         print("Buscar presionado")
-    def frame1_boton1(self):
+    def accion_btn_1(self):
         print("test")
 
-    def frame1_boton2(self):
+    def accion_btn_2(self):
         print("test")
 
     def frame1_boton3(self):
