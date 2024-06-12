@@ -9,9 +9,33 @@ class App(tk.Tk):
 
         self.title("Sistema de Pestañas")
         # Crear un Notebook (pestañas)
+        self.style = ttk.Style(self)
+        self.style.theme_create('custom_theme', parent='alt', settings={
+            'TNotebook': {
+                'configure': {
+                    'tabmargins': [2, 5, 2, 0],  # margenes del notebook
+                }
+            },
+            'TNotebook.Tab': {
+                'configure': {
+                    'padding': [10, 5],  # padding de cada pestaña
+                    'background': '#F0F0F0',  # color de fondo
+                    'foreground': '#000000',  # color del texto
+                    'font': ('Arial', 10, 'bold'),  # fuente del texto
+                    'borderwidth': 1,  # ancho del borde
+                    'relief': 'raised'  # estilo del borde
+                },
+                'map': {
+                    'background': [('selected', '#D0D0D0'), ('active', '#E0E0E0')],
+                    'foreground': [('selected', '#FF0000'), ('active', '#0000FF')],
+                    'expand': [('selected', [1, 1, 1, 0])]  # expansión de la pestaña seleccionada
+                }
+            }
+        })
+        self.style.theme_use('custom_theme')
         self.notebook = ttk.Notebook(self)
         self.notebook.pack(fill='both', expand=True)
-        self.geometry("980x600")
+        self.geometry("1000x500")
         self.resizable(False, False)
         # Variables para almacenar datos
         self.var1 = tk.StringVar()
@@ -38,7 +62,7 @@ class App(tk.Tk):
 
         #Columna 1
         frame_columna1 = tk.Frame(frame1)
-        frame_columna1.grid(row=0, column=0, sticky="nsew")
+        frame_columna1.grid(row=0, column=0, sticky="nsew", padx=3, pady=6)
 
         self.texto_buscar = tk.Text(frame_columna1, width=10, wrap="word")
         self.texto_buscar.grid(row=0, column=0, sticky="nsew")
@@ -55,7 +79,7 @@ class App(tk.Tk):
 
         #Columna 2
         frame_columna2 = tk.Frame(frame1, width=60)
-        frame_columna2.grid(row=0, column=1, sticky="nsew")
+        frame_columna2.grid(row=0, column=1, sticky="nsew", padx=3, pady=6)
 
         self.label_informacion = tk.Label(frame_columna2, text="\nEquipos:\t__ \n\n"
                                                             "no encontrados:\t__\n\n"
@@ -67,7 +91,7 @@ class App(tk.Tk):
 
         boton_op1 = tk.Button(frame_botones, text="Cambiar VLAN", command=self.accion_btn_1)
         boton_op1.grid(row=0, column=0, padx=3, pady=3, sticky="ew")
-        self.combobox = ttk.Combobox(frame_botones, values=fn.listar_vlans(), width=3, state='readonly')
+        self.combobox = ttk.Combobox(frame_botones, values=fn.listar_vlans(), width=4   , state='readonly')
         self.combobox.grid(row=0, column=1, padx=3, pady=3)
         boton_op2 = tk.Button(frame_botones, text="Actualizar PortSecurity ", command=self.accion_btn_2)
         boton_op2.grid(row=1, column=0, padx=3, pady=3, sticky="ew", columnspan=2)
@@ -79,7 +103,7 @@ class App(tk.Tk):
 
         #Columna 3
         frame_columna3 = tk.Frame(frame1)
-        frame_columna3.grid(row=0, column=2, sticky="nsew")
+        frame_columna3.grid(row=0, column=2, sticky="nsew", padx=3, pady=6)
 
         # Frame para las cajas de texto generadas y el scrollbar
         self.textbox_frame = tk.Frame(frame_columna3)
@@ -106,23 +130,24 @@ class App(tk.Tk):
         frame_columna3.grid_columnconfigure(0, weight=1)
     def create_tab2(self):
         frame2 = ttk.Frame(self.notebook)
-        self.notebook.add(frame2, text='Pestaña 2')
+        self.notebook.add(frame2, text='ver VLANs')
 
-        label2 = tk.Label(frame2, text="Contenido de la Pestaña 2", font=("Arial", 20))
-        label2.pack(padx=5,pady=20)
+        frame_columna1 = tk.Frame(frame2,width=300)
+        frame_columna1.grid(row=0, column=0, sticky="nsew", padx=3, pady=6)
 
-        entry2 = tk.Entry(frame2, textvariable=self.var2)
-        entry2.pack(padx=5,pady=10)
+        self.label_informacion = tk.Label(frame_columna1, text="\nEquipos:\t__ \n\n"
+                                                               "no encontrados:\t__\n\n"
+                                                               "total switches:\t__ \n", relief="raised",font=("Helvetica", 20))
+        self.label_informacion.grid(row=0, column=0, padx=3, pady=1, sticky="nsew")
 
-        button2 = tk.Button(frame2, text="Guardar", command=self.save_var2)
-        button2.pack(padx=5,pady=10)
+        frame_columna2 = tk.Frame(frame2)
+        frame_columna2.grid(row=0, column=1, sticky="nsew", padx=3, pady=6)
 
-        self.result_label2 = tk.Label(frame2, text="", font=("Arial", 20))
-        self.result_label2.pack(padx=5, pady=10)
+
 
     def create_tab3(self):
         frame3 = ttk.Frame(self.notebook)
-        self.notebook.add(frame3, text='Pestaña 3')
+        self.notebook.add(frame3, text='ver Equipos')
 
         label3 = tk.Label(frame3, text="Contenido de la Pestaña 3", font=("Arial", 20))
         label3.pack(pady=20)
@@ -141,6 +166,7 @@ class App(tk.Tk):
         texto = self.texto_buscar.get("1.0", tk.END).strip()
         if texto:
             lineas_texto = texto.split('\n')
+            lineas_texto = list(set(lineas_texto))
             self.var1, self.var2 = fn.validar_listado(lineas_texto)
             print(self.var1)
             self.actualizar_texto_buscar()

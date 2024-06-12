@@ -84,7 +84,6 @@ def escribir_script(rango, cambios, vlan):
     script += f"{rango}\n"
     if cambios == 1:
         script += f"vlan-config remove all\nswitchport access vlan {vlan}\n"
-
     elif cambios == 2:
         script += f"no switchport portsecurity sticky\nshutdown\nswitchport portsecurity sticky\nno shutdown\n"
     elif cambios == 3:
