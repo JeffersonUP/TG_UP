@@ -58,7 +58,7 @@ class App(tk.Tk):
         #self.generate_textboxes()
     def create_tab1(self):
         frame1 = tk.Frame(self.notebook)
-        self.notebook.add(frame1, text='Configuración')
+        self.notebook.add(frame1, text='Configurar')
 
         #Columna 1
         frame_columna1 = tk.Frame(frame1)
@@ -83,20 +83,20 @@ class App(tk.Tk):
 
         self.label_informacion = tk.Label(frame_columna2, text="\nEquipos:\t__ \n\n"
                                                             "no encontrados:\t__\n\n"
-                                                            "total switches:\t__ \n", relief="raised")
+                                                            "total switches:\t__ \n", relief="raised",font=("Arial", 16))
         self.label_informacion.grid(row=0, column=0, padx=3, pady=1, sticky="nsew")
 
         frame_botones = tk.Frame(frame_columna2, borderwidth=1, relief="solid")
         frame_botones.grid(row=1, column=0, padx=3, pady=7, sticky="ew")
 
-        boton_op1 = tk.Button(frame_botones, text="Cambiar VLAN", command=self.accion_btn_1)
+        boton_op1 = tk.Button(frame_botones, text="Cambiar VLAN", command=self.accion_btn_1,font=("Arial", 14))
         boton_op1.grid(row=0, column=0, padx=3, pady=3, sticky="ew")
-        self.combobox = ttk.Combobox(frame_botones, values=fn.listar_vlans(), width=4   , state='readonly')
+        self.combobox = ttk.Combobox(frame_botones, values=fn.listar_vlans(), width=4, state='readonly',font=("Arial", 16))
         self.combobox.grid(row=0, column=1, padx=3, pady=3)
-        boton_op2 = tk.Button(frame_botones, text="Actualizar PortSecurity ", command=self.accion_btn_2)
+        boton_op2 = tk.Button(frame_botones, text="Actualizar PortSecurity ", command=self.accion_btn_2,font=("Arial", 14))
         boton_op2.grid(row=1, column=0, padx=3, pady=3, sticky="ew", columnspan=2)
 
-        boton_op3 = tk.Button(frame_botones, text="Aplicar Cisco ISE", command=self.accion_btn_3)
+        boton_op3 = tk.Button(frame_botones, text="Aplicar Cisco ISE", command=self.accion_btn_3, font=("Arial", 14))
         boton_op3.grid(row=2, column=0, padx=3, pady=3, sticky="ew", columnspan=2)
 
         frame_botones.grid_columnconfigure(0, weight=1)
@@ -130,14 +130,12 @@ class App(tk.Tk):
         frame_columna3.grid_columnconfigure(0, weight=1)
     def create_tab2(self):
         frame2 = ttk.Frame(self.notebook)
-        self.notebook.add(frame2, text='ver VLANs')
+        self.notebook.add(frame2, text='VLANs')
 
         frame_columna1 = tk.Frame(frame2,width=300)
         frame_columna1.grid(row=0, column=0, sticky="nsew", padx=3, pady=6)
 
-        self.label_informacion = tk.Label(frame_columna1, text="\nEquipos:\t__ \n\n"
-                                                               "no encontrados:\t__\n\n"
-                                                               "total switches:\t__ \n", relief="raised",font=("Helvetica", 20))
+        self.label_informacion = tk.Label(frame_columna1, text="vlan:\n",font=("Helvetica", 20))
         self.label_informacion.grid(row=0, column=0, padx=3, pady=1, sticky="nsew")
 
         frame_columna2 = tk.Frame(frame2)
@@ -147,7 +145,7 @@ class App(tk.Tk):
 
     def create_tab3(self):
         frame3 = ttk.Frame(self.notebook)
-        self.notebook.add(frame3, text='ver Equipos')
+        self.notebook.add(frame3, text='Equipos')
 
         label3 = tk.Label(frame3, text="Contenido de la Pestaña 3", font=("Arial", 20))
         label3.pack(pady=20)
@@ -236,7 +234,7 @@ class App(tk.Tk):
             row_frame.grid(row=i, column=0, sticky="ew", padx=5, pady=5)
             titulo = tk.Label(row_frame, text=self.lista_switches[i])
             titulo.grid(row=0, column=0, columnspan=2, padx=3, pady=1, sticky="w")
-            entry = tk.Text(row_frame, wrap=tk.WORD, height=num_lineas+1)
+            entry = tk.Text(row_frame, wrap=tk.WORD, height=num_lineas+1, width=30)
             entry.insert(tk.END, texto)
             entry.configure(state='disabled')
             entry.grid(row=1, column=0, rowspan=2, sticky="ew")
