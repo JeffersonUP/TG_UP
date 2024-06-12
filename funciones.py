@@ -13,9 +13,9 @@ def validar_listado(listado):
     return validos, no_validos
 
 def generar_rangos(listado, accion=1):
-    comandos=["","\nswitchport access vlan XXX\n", ""]
     lista_switches = []
     lista_rangos = []
+    lista_codigos = []
     df = pd.read_excel("dataframe2.xlsx")
     df_busqueda = df[df['Equipo'].isin(listado)]
     editables_pisos = df_busqueda["Piso"].unique()
@@ -32,8 +32,10 @@ def generar_rangos(listado, accion=1):
             # print("cuarto", cuarto, end=" ")
             for switch in editables_Switches:
                 df_switch = df_cuarto[df_cuarto["Switch"] == switch].sort_values(by="Puerto")
+                lista_codigos.append(list(df_switch["Equipo"].unique()))
                 editables_puertos = df_switch["Puerto"].unique()
                 editables_puertos.sort()
+                print(editables_puertos)
                 lista_switches.append(f"Piso {piso}, Cuarto {cuarto}, switch {switch}")
                 intervalos = []
                 inicio = editables_puertos[0]
@@ -60,8 +62,11 @@ def generar_rangos(listado, accion=1):
                     interface_range = "int range "
                 cont = 0
                 for i in range(0, len(intervalos)):
-                    interface_range += f"g1/0/{intervalos[
-                        i]}"
+                    if piso == 2:
+                        interface = switch
+                    else:
+                        interface = 1
+                    interface_range += f"g{interface}/0/{intervalos[i]}"
                     if i + 1 < len(intervalos):
                         interface_range += " , "
                     cont += 1
@@ -70,8 +75,32 @@ def generar_rangos(listado, accion=1):
                         interface_range = "int range "
                         cont = 0
                 if cont != 0:
-                    if accion!=0:
-                        lista_rangos.append(f"conf t\n{interface_range}"+comandos[accion])
+                    if accion != 0:
+                        lista_rangos.append(interface_range)
+    return lista_switches, lista_rangos, lista_codigos
+
+def escribir_script(rango, cambios, vlan):
+    script = "conf t\n"
+    script += f"{rango}\n"
+    if cambios == 1:
+        script += f"vlan-config remove all\nswitchport access vlan {vlan}\n"
+
+    elif cambios == 2:
+        script += f"no switchport portsecurity sticky\nshutdown\nswitchport portsecurity sticky\nno shutdown\n"
+    elif cambios == 3:
+        script += ("switchport mode access\nno authentication open\nauthentication event fail action next-method\n"
+                    f"authentication event server dead action authorize\nauthentication event server alive action reinitialize\n"
+                    f"authentication host-mode multi-domain\nauthentication order dot1x mab\nauthentication priority dot1x mab\n"
+                    f"authentication port-control auto\nauthentication violation restrict\nmab\ndot1x pae authenticator\n"
+                    f"dot1x timeout tx-period 10\ndot1x timeout supp-timeout 5\nspanning-tree portfast\nspanning-tree bpduguard enable\n")
+
+    script += "end\n"
+    return script
+
+def guardar_cambios(equipos, cambios,vlan):
+    print("cambios realizados")
 
 
-    return lista_switches, lista_rangos
+def listar_vlans():
+    vlans = ["","104", "998", "906", "904", "938"]
+    return vlans

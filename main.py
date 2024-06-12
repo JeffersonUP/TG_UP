@@ -18,12 +18,15 @@ class App(tk.Tk):
         self.var2 = tk.StringVar()
         self.var3 = tk.StringVar()
         self.lista_equipos = []
+        self.codigo_cambio = 0
+        self.lista_switches = []
+        self.vlan = 0
+
         # Crear las pestañas
         self.create_tab1()
         self.create_tab2()
         self.create_tab3()
-        self.lista_equipos = []
-        self.lista_switches = []
+
         self.rowconfigure(0, weight=1)
         self.rowconfigure(1, weight=1)
         self.rowconfigure(2, weight=1)
@@ -64,12 +67,13 @@ class App(tk.Tk):
 
         boton_op1 = tk.Button(frame_botones, text="Cambiar VLAN", command=self.accion_btn_1)
         boton_op1.grid(row=0, column=0, padx=3, pady=3, sticky="ew")
-
+        self.combobox = ttk.Combobox(frame_botones, values=fn.listar_vlans(), width=3, state='readonly')
+        self.combobox.grid(row=0, column=1, padx=3, pady=3)
         boton_op2 = tk.Button(frame_botones, text="Actualizar PortSecurity ", command=self.accion_btn_2)
-        boton_op2.grid(row=1, column=0, padx=3, pady=3, sticky="ew")
+        boton_op2.grid(row=1, column=0, padx=3, pady=3, sticky="ew", columnspan=2)
 
         boton_op3 = tk.Button(frame_botones, text="Aplicar Cisco ISE", command=self.accion_btn_3)
-        boton_op3.grid(row=2, column=0, padx=3, pady=3, sticky="ew")
+        boton_op3.grid(row=2, column=0, padx=3, pady=3, sticky="ew", columnspan=2)
 
         frame_botones.grid_columnconfigure(0, weight=1)
 
@@ -138,6 +142,7 @@ class App(tk.Tk):
         if texto:
             lineas_texto = texto.split('\n')
             self.var1, self.var2 = fn.validar_listado(lineas_texto)
+            print(self.var1)
             self.actualizar_texto_buscar()
             self.generate_textboxes()
             self.label_informacion.config(text=f"\nTotal Equipos:\t{len(self.var1)} \n\n"
@@ -148,21 +153,27 @@ class App(tk.Tk):
 
 
     def actualizar_texto_buscar(self):
+        self.codigo_cambio = 0
         no_encontrados=""
         for elemento in self.var2:
             no_encontrados += f"{elemento}\n"
-        self.lista_switches, self.lista_rangos = fn.generar_rangos(self.var1)
+        self.lista_switches, self.lista_rangos, self.lista_equipos = fn.generar_rangos(self.var1)
+        print(self.lista_equipos)
         self.texto_buscar.delete('1.0', tk.END)
         self.texto_buscar.insert(tk.END, no_encontrados)
     def accion_btn_1(self):
-
-        print("test")
-
+        if self.combobox.get() != "":
+            self.vlan = int(self.combobox.get())
+            self.codigo_cambio = 1
+            self.generate_textboxes()
+    
     def accion_btn_2(self):
-        print("test")
+        self.codigo_cambio = 2
+        self.generate_textboxes()
 
     def accion_btn_3(self):
-        print("test")
+        self.codigo_cambio = 3
+        self.generate_textboxes()
 
     def frame1_boton4(self):
         print("test")
@@ -194,20 +205,28 @@ class App(tk.Tk):
 
         for i in range(count):
             row_frame = tk.Frame(self.scrollable_frame)
+            texto = fn.escribir_script(self.lista_rangos[i], self.codigo_cambio, self.vlan)
+            num_lineas = texto.count('\n')
             row_frame.grid(row=i, column=0, sticky="ew", padx=5, pady=5)
             titulo = tk.Label(row_frame, text=self.lista_switches[i])
             titulo.grid(row=0, column=0, columnspan=2, padx=3, pady=1, sticky="w")
-            entry = tk.Text(row_frame, wrap=tk.WORD, height=6)
-            entry.insert(tk.END, self.lista_rangos[i])
+            entry = tk.Text(row_frame, wrap=tk.WORD, height=num_lineas+1)
+            entry.insert(tk.END, texto)
             entry.configure(state='disabled')
-            entry.grid(row=1, column=0, sticky="ew")
+            entry.grid(row=1, column=0, rowspan=2, sticky="ew")
 
             button = tk.Button(row_frame, text="Copiar", command=lambda e=entry: self.copiar_contenido(e))
             button.grid(row=1, column=1, padx=5, sticky="nsew")
+
+            button2 = tk.Button(row_frame, text="guardar", command=lambda index=i: self.guardar_cambios(index))
+            button2.grid(row=2, column=1, padx=5, sticky="nsew")
     def copiar_contenido(self,texto):
         self.clipboard_clear()
         self.clipboard_append(texto.get("1.0", tk.END))
         self.update()
+    def guardar_cambios(self, index):
+        print(f"cambios en switch {index} realizados\n")
+        print(self.lista_equipos[index])
 if __name__ == "__main__":
     app = App()
     app.mainloop()

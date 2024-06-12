@@ -50,20 +50,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.funciones.executor": "Run",
-    "Python.interfaz.executor": "Run",
-    "Python.lector_excel.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.organizador.executor": "Run",
-    "Python.validarLista.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "multipaginas",
-    "last_opened_file_path": "C:/Users/Jefferson/PycharmProjects/TG_Jefferson_Vasquez",
-    "run.code.analysis.last.selected.profile": "pProject Default"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.funciones.executor&quot;: &quot;Run&quot;,
+    &quot;Python.interfaz.executor&quot;: &quot;Run&quot;,
+    &quot;Python.lector_excel.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.organizador.executor&quot;: &quot;Run&quot;,
+    &quot;Python.validarLista.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;multipaginas&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jefferson/PycharmProjects/TG_Jefferson_Vasquez&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Jefferson\PycharmProjects\TG_Jefferson_Vasquez" />
@@ -192,7 +192,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718135336653</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="lector de datos">
+      <option name="closed" value="true" />
+      <created>1718144501586</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1718144501586</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
