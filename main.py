@@ -3,6 +3,8 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 import funciones as fn
+
+
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -56,6 +58,7 @@ class App(tk.Tk):
         self.rowconfigure(2, weight=1)
 
         #self.generate_textboxes()
+
     def create_tab1(self):
         frame1 = tk.Frame(self.notebook)
         self.notebook.add(frame1, text='Configurar')
@@ -82,18 +85,21 @@ class App(tk.Tk):
         frame_columna2.grid(row=0, column=1, sticky="nsew", padx=3, pady=6)
 
         self.label_informacion = tk.Label(frame_columna2, text="\nEquipos:\t__ \n\n"
-                                                            "no encontrados:\t__\n\n"
-                                                            "total switches:\t__ \n", relief="raised",font=("Arial", 16))
+                                                               "no encontrados:\t__\n\n"
+                                                               "total switches:\t__ \n", relief="raised",
+                                          font=("Arial", 16))
         self.label_informacion.grid(row=0, column=0, padx=3, pady=1, sticky="nsew")
 
         frame_botones = tk.Frame(frame_columna2, borderwidth=1, relief="solid")
         frame_botones.grid(row=1, column=0, padx=3, pady=7, sticky="ew")
 
-        boton_op1 = tk.Button(frame_botones, text="Cambiar VLAN", command=self.accion_btn_1,font=("Arial", 14))
+        boton_op1 = tk.Button(frame_botones, text="Cambiar VLAN", command=self.accion_btn_1, font=("Arial", 14))
         boton_op1.grid(row=0, column=0, padx=3, pady=3, sticky="ew")
-        self.combobox = ttk.Combobox(frame_botones, values=fn.listar_vlans(), width=4, state='readonly',font=("Arial", 16))
+        self.combobox = ttk.Combobox(frame_botones, values=fn.listar_vlans(), width=4, state='readonly',
+                                     font=("Arial", 16))
         self.combobox.grid(row=0, column=1, padx=3, pady=3)
-        boton_op2 = tk.Button(frame_botones, text="Actualizar PortSecurity ", command=self.accion_btn_2,font=("Arial", 14))
+        boton_op2 = tk.Button(frame_botones, text="Actualizar PortSecurity ", command=self.accion_btn_2,
+                              font=("Arial", 14))
         boton_op2.grid(row=1, column=0, padx=3, pady=3, sticky="ew", columnspan=2)
 
         boton_op3 = tk.Button(frame_botones, text="Aplicar Cisco ISE", command=self.accion_btn_3, font=("Arial", 14))
@@ -128,20 +134,37 @@ class App(tk.Tk):
         frame1.grid_columnconfigure(2, weight=1)
         frame_columna3.grid_rowconfigure(0, weight=1)
         frame_columna3.grid_columnconfigure(0, weight=1)
+
     def create_tab2(self):
         frame2 = ttk.Frame(self.notebook)
         self.notebook.add(frame2, text='VLANs')
 
-        frame_columna1 = tk.Frame(frame2,width=300)
+        frame_columna1 = tk.Frame(frame2, width=300)
         frame_columna1.grid(row=0, column=0, sticky="nsew", padx=3, pady=6)
 
-        self.label_informacion = tk.Label(frame_columna1, text="vlan:\n",font=("Helvetica", 20))
-        self.label_informacion.grid(row=0, column=0, padx=3, pady=1, sticky="nsew")
+        frame_control = tk.Frame(frame_columna1)
+        frame_control.grid(row=0, column=0, sticky="nsew", padx=1, pady=1)
+        self.combobox2 = ttk.Combobox(frame_control, values=fn.listar_vlans(), width=15, state='readonly',
+                                      font=("Arial", 16))
+        self.combobox2.grid(row=0, column=0, padx=3, pady=3)
+        boton_info_vlan = tk.Button(frame_control, text="Ver información", command=self.accion_btn_3,
+                                    font=("Arial", 14))
+        boton_info_vlan.grid(row=1, column=0, padx=3, pady=3, sticky="ew")
 
+        boton_edit_vlan = tk.Button(frame_control, text="Editar vlan", command=self.accion_btn_3, font=("Arial", 14))
+        boton_edit_vlan.grid(row=2, column=0, padx=3, pady=3, sticky="ew")
+
+        boton_delete_vlan = tk.Button(frame_control, text="Eliminar vlan", command=self.accion_btn_3,
+                                      font=("Arial", 14))
+        boton_delete_vlan.grid(row=3, column=0, padx=3, pady=3, sticky="ew")
+
+        frame_edicion = tk.Frame(frame_columna1)
+        frame_edicion.grid(row=1, column=0, sticky="nsew", padx=1, pady=1)
+        imagen = tk.PhotoImage(file="imagen.png")
+        label_imagen = tk.Label(frame_edicion, image=imagen)
+        label_imagen.grid(row=0, column=0)
         frame_columna2 = tk.Frame(frame2)
         frame_columna2.grid(row=0, column=1, sticky="nsew", padx=3, pady=6)
-
-
 
     def create_tab3(self):
         frame3 = ttk.Frame(self.notebook)
@@ -170,27 +193,27 @@ class App(tk.Tk):
             self.actualizar_texto_buscar()
             self.generate_textboxes()
             self.label_informacion.config(text=f"\nTotal Equipos:\t{len(self.var1)} \n\n"
-                                          f"Total Switches:\t{len(self.lista_switches)}\n\n"
-                                          f"No encontrados:\t{len(self.var2)}\n")
+                                               f"Total Switches:\t{len(self.lista_switches)}\n\n"
+                                               f"No encontrados:\t{len(self.var2)}\n")
         else:
             messagebox.showwarning("Entrada vacía", "Por favor, ingrese algún texto antes de registrar.")
 
-
     def actualizar_texto_buscar(self):
         self.codigo_cambio = 0
-        no_encontrados=""
+        no_encontrados = ""
         for elemento in self.var2:
             no_encontrados += f"{elemento}\n"
         self.lista_switches, self.lista_rangos, self.lista_equipos = fn.generar_rangos(self.var1)
         print(self.lista_equipos)
         self.texto_buscar.delete('1.0', tk.END)
         self.texto_buscar.insert(tk.END, no_encontrados)
+
     def accion_btn_1(self):
         if self.combobox.get() != "":
             self.vlan = int(self.combobox.get())
             self.codigo_cambio = 1
             self.generate_textboxes()
-    
+
     def accion_btn_2(self):
         self.codigo_cambio = 2
         self.generate_textboxes()
@@ -210,6 +233,7 @@ class App(tk.Tk):
 
     def frame1_boton7(self):
         print("test")
+
     def save_var2(self):
         value = self.var2.get()
         self.result_label2.config(text=value)
@@ -234,7 +258,7 @@ class App(tk.Tk):
             row_frame.grid(row=i, column=0, sticky="ew", padx=5, pady=5)
             titulo = tk.Label(row_frame, text=self.lista_switches[i])
             titulo.grid(row=0, column=0, columnspan=2, padx=3, pady=1, sticky="w")
-            entry = tk.Text(row_frame, wrap=tk.WORD, height=num_lineas+1, width=30)
+            entry = tk.Text(row_frame, wrap=tk.WORD, height=num_lineas + 1, width=30)
             entry.insert(tk.END, texto)
             entry.configure(state='disabled')
             entry.grid(row=1, column=0, rowspan=2, sticky="ew")
@@ -244,13 +268,17 @@ class App(tk.Tk):
 
             button2 = tk.Button(row_frame, text="guardar", command=lambda index=i: self.guardar_cambios(index))
             button2.grid(row=2, column=1, padx=5, sticky="nsew")
-    def copiar_contenido(self,texto):
+
+    def copiar_contenido(self, texto):
         self.clipboard_clear()
         self.clipboard_append(texto.get("1.0", tk.END))
         self.update()
+
     def guardar_cambios(self, index):
         print(f"cambios en switch {index} realizados\n")
         print(self.lista_equipos[index])
+
+
 if __name__ == "__main__":
     app = App()
     app.mainloop()
