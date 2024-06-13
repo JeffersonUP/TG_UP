@@ -80,7 +80,10 @@ def generar_rangos(listado, accion=1):
     return lista_switches, lista_rangos, lista_codigos
 
 def escribir_script(rango, cambios, vlan):
+    print(cambios)
     script = "conf t\n"
+    if cambios == 3 or cambios == 4:
+        script += f"default {rango}\n"
     script += f"{rango}\n"
     if cambios == 1:
         script += f"vlan-config remove all\nswitchport access vlan {vlan}\n"
@@ -92,7 +95,18 @@ def escribir_script(rango, cambios, vlan):
                     f"authentication host-mode multi-domain\nauthentication order dot1x mab\nauthentication priority dot1x mab\n"
                     f"authentication port-control auto\nauthentication violation restrict\nmab\ndot1x pae authenticator\n"
                     f"dot1x timeout tx-period 10\ndot1x timeout supp-timeout 5\nspanning-tree portfast\nspanning-tree bpduguard enable\n")
+    elif cambios == 4:
+        script += (f"switchport mode access\n"
+                     f"switchport port-security violation restrict\n"
+                     f"switchport port-security mac-address sticky\n"
+                     f"switchport port-security\n"
+                     f"spanning-tree portfast\n"
+                     f"spanning-tree bpduguard enable\n")
+    elif cambios == 5:
+        script += "shutdown\n"
 
+    elif cambios == 6:
+        script += "no shutdown\n"
     script += "end\n"
     return script
 
@@ -101,5 +115,26 @@ def guardar_cambios(equipos, cambios,vlan):
 
 
 def listar_vlans():
-    vlans = ["","104", "998", "906", "904", "938"]
-    return vlans
+    df = pd.read_excel("vlans.xlsx")
+    print(df)
+    vlans_id = df['Id'].tolist()
+    return vlans_id
+
+def listar_vlans_nombre():
+    df = pd.read_excel("vlans.xlsx")
+    vlans_id = df['Id'].tolist()
+    vlans_id =[str(n) for n in vlans_id]
+    vlans_nombre = df['Nombre'].tolist()
+    vlans_full = []
+    for i in range(len(vlans_id)):
+        vlans_full.append(vlans_id[i] +" "+ vlans_nombre[i])
+    return vlans_full
+
+def crear_tabla_vlans(index):
+    if index == 0:
+        df = pd.read_excel("vlans.xlsx")
+    else:
+        df = pd.read_excel("dataframe2.xlsx")
+        df = df.loc[df['Vlan'] == index]
+        df = df[["Equipo", "Piso", "Cuarto", "Switch"]]
+    return df
