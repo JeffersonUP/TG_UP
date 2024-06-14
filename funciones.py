@@ -132,8 +132,15 @@ def listar_vlans_nombre():
 
 def crear_tabla_vlans(index):
     if index == 0:
-        df = pd.read_excel("vlans.xlsx")
-        width = 362
+        df1 = pd.read_excel("vlans.xlsx")
+        df2 = pd.read_excel("dataframe2.xlsx")
+        df2_grouped = df2.groupby('Vlan')['Ise'].count().reset_index()
+        df = pd.merge(df1, df2_grouped, left_on='Id', right_on='Vlan', how='left')
+        df.rename(columns={'Value': 'SumValue'}, inplace=True)
+        df.drop(columns=['Vlan'], inplace=True)
+        df.rename(columns={'Ise': 'Num. Equipos', 'Id': 'Codigo VLAN', 'Nombre': 'Descripción'}, inplace=True)
+
+        width = 242
     else:
         df = pd.read_excel("dataframe2.xlsx")
         df = df.loc[df['Vlan'] == index]

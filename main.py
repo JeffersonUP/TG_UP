@@ -305,11 +305,19 @@ class App(tk.Tk):
 
     def accion_f2_boton1(self):
         vlan = self.combobox2.get().split(' ')[0]
-        if vlan=="":
+        if vlan == "":
             self.vlan2=0
         else:
             self.vlan2=int(vlan)
         self.generar_tabla_vlans(self.vlan2)
+
+    def accion_f2_boton2(self):
+        vlan = self.combobox2.get().split(' ')[0]
+        if vlan == "":
+            self.vlan2 = 0
+        else:
+            self.vlan2 = int(vlan)
+
 
     def save_var2(self):
         value = self.var2.get()
