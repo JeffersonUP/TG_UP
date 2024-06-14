@@ -16,7 +16,7 @@ class App(tk.Tk):
         self.style.theme_create('custom_theme', parent='alt', settings={
             'TNotebook': {
                 'configure': {
-                    'tabmargins': [2, 5, 2, 0],  # margenes del notebook
+                    'tabmargins': [2, 5, 2, 0],  # márgenes del notebook
                     'background': '#E4E7F3',  # Fondo del Notebook
                 }
             },
@@ -65,7 +65,27 @@ class App(tk.Tk):
                     'background': '#FFFFFF',  # Fondo de las entradas
                     'foreground': '#001A7B',  # Color del texto de las entradas
                 }
-            }
+            },
+            'Treeview': {
+                'configure': {
+                    'font': ('Helvetica', 12),  # Fuente del texto de las celdas del Treeview
+                    'background': '#E4E7F3',  # Fondo del Treeview
+                    'foreground': '#001A7B',  # Color del texto de las celdas
+                    'rowheight': 25,  # Altura de las filas
+                    'fieldbackground': '#E4E7F3',  # Fondo de los campos
+                },
+                'map': {
+                    'background': [('selected', '#001A7B')],
+                    'foreground': [('selected', '#FFFFFF')],
+                }
+            },
+            'Treeview.Heading': {
+                'configure': {
+                    'font': ('Helvetica', 14, 'bold'),  # Fuente del texto de los encabezados del Treeview
+                    'background': '#0BBBEF',  # Fondo de los encabezados
+                    'foreground': '#001A7B',  # Color del texto de los encabezados
+                }
+            },
         })
         self.style.theme_use('custom_theme')
         self.notebook = ttk.Notebook(self)
@@ -214,7 +234,6 @@ class App(tk.Tk):
 
         self.frame_columna2 = ttk.Frame(frame2)
         self.frame_columna2.grid(row=0, column=1, sticky="nsew", padx=3, pady=6)
-
         self.generar_tabla_vlans()
 
     def create_tab3(self):
@@ -342,17 +361,17 @@ class App(tk.Tk):
             self.tabla_vlans.destroy()
 
             # Crear un nuevo Frame para el Treeview
-        self.tabla_vlans = ttk.Treeview(self.frame_columna2, show="headings")
+        self.tabla_vlans = ttk.Treeview(self.frame_columna2, show="headings", height=16)
         self.tabla_vlans.grid(row=0, column=0, pady=10, sticky="nsew")
 
-        dataframe = fn.crear_tabla_vlans(index)
+        dataframe, width = fn.crear_tabla_vlans(index)
         print(dataframe)
         # Configurar las columnas y encabezados si no están configuradas previamente
         if not self.tabla_vlans["columns"]:
             self.tabla_vlans["columns"] = list(dataframe.columns)
             for col in dataframe.columns:
                 self.tabla_vlans.heading(col, text=col)
-                self.tabla_vlans.column(col, width=80,anchor="center")  # Ajustar el ancho de la columna si es necesario
+                self.tabla_vlans.column(col, width=width, anchor="center")  # Ajustar el ancho de la columna si es necesario
 
         # Insertar filas en el Treeview
         for _, row in dataframe.iterrows():

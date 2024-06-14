@@ -133,8 +133,10 @@ def listar_vlans_nombre():
 def crear_tabla_vlans(index):
     if index == 0:
         df = pd.read_excel("vlans.xlsx")
+        width = 362
     else:
         df = pd.read_excel("dataframe2.xlsx")
         df = df.loc[df['Vlan'] == index]
-        df = df[["Equipo", "Piso", "Cuarto", "Switch"]]
-    return df
+        df = df[["Equipo", "Piso", "Cuarto", "Switch", "Puerto"]]
+        width = 145
+    return df, width
