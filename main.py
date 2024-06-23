@@ -42,8 +42,9 @@ class App(tk.Tk):
             },
             'TLabel': {
                 'configure': {
-                    'background': '#001A7B',  # Fondo de los labels
+                    'background': '#E4E7F3',  # Fondo de los labels
                     'foreground': '#001A7B',  # Color del texto de los labels
+                    'font': ('Arial', 12, 'bold'),
                 }
             },
             'TButton': {
@@ -68,7 +69,7 @@ class App(tk.Tk):
             },
             'Treeview': {
                 'configure': {
-                    'font': ('Helvetica', 12),  # Fuente del texto de las celdas del Treeview
+                    'font': ('Helvetica', 10),  # Fuente del texto de las celdas del Treeview
                     'background': '#E4E7F3',  # Fondo del Treeview
                     'foreground': '#001A7B',  # Color del texto de las celdas
                     'rowheight': 25,  # Altura de las filas
@@ -101,6 +102,7 @@ class App(tk.Tk):
         self.lista_switches = []
         self.vlan = 0
         self.vlan2 = 0
+        self.opt_vlan = 0
         self.logo = tk.PhotoImage(file="imagen.png")
         self.logo2 = tk.PhotoImage(file="EMTELCOOO.png")
         # Crear las pestañas
@@ -216,6 +218,51 @@ class App(tk.Tk):
         self.combobox2 = ttk.Combobox(frame_control, values=fn.listar_vlans_nombre(), state='readonly',
                                       font=("Arial", 10), width=28)
         self.combobox2.grid(row=0, column=0, padx=10, pady=3, sticky="ew")
+        boton_info_vlan = ttk.Button(frame_control, text="Buscar", command=self.accion_f2_boton1)
+        boton_info_vlan.grid(row=1, column=0, padx=10, pady=3, sticky="ew")
+
+        frame_formulario = ttk.Frame(frame_control)
+        frame_formulario.grid(row=2, column=0, padx=(3, 0), pady=5, sticky="ns")
+
+        texlabel=['Id VLAN', 'Descripcion', '# de equipos']
+
+        label_description = tk.Label(frame_formulario,
+                                     text=f"--------------------------------------------------\nCodigo VLAN: XXX\n\n"
+                                    "salud_total_clientes\n\nxx equipos en piso 1\n\nDirección de red\n\nMáscara de red\n"
+                                    "--------------------------------------------------",
+                                     font=("Arial", 10), relief=tk.GROOVE)
+        label_description.grid(row=0, column=0, padx=(3, 0), pady=1)
+        boton_edit_vlan = ttk.Button(frame_control, text="Editar vlan", command=self.accion_f2_boton2)
+
+        boton_edit_vlan.grid(row=3, column=0, padx=10, pady=3, sticky="nsew")
+
+        boton_delete_vlan = ttk.Button(frame_control, text="Eliminar vlan", command=self.accion_f2_boton1)
+        boton_delete_vlan.grid(row=4, column=0, padx=10, pady=3, sticky="nsew")
+
+        boton_add_vlan = ttk.Button(frame_control, text="Añadir vlan", command=self.accion_f2_boton4)
+        boton_add_vlan.grid(row=5, column=0, sticky="ns", pady=5)
+
+        frame_edicion = ttk.Frame(frame_columna1)
+        frame_edicion.grid(row=1, column=0, sticky="ew", padx=1, pady=5)
+        label_imagen = tk.Label(frame_edicion, image=self.logo2)
+        label_imagen.grid(row=0, column=0, sticky="nsew")
+
+        self.frame_columna2 = ttk.Frame(frame2)
+        self.frame_columna2.grid(row=0, column=1, sticky="nsew", padx=3, pady=6)
+        self.generar_tabla_vlans()
+
+    def create_tab3(self):
+        frame3 = ttk.Frame(self.notebook)
+        self.notebook.add(frame3, text='Equipos')
+
+        frame_columna1 = ttk.Frame(frame3)
+        frame_columna1.grid(row=0, column=0, sticky="nsew", padx=3, pady=6)
+        frame_columna1.grid_rowconfigure(0, minsize=180)
+        frame_control = ttk.Frame(frame_columna1)
+        frame_control.grid(row=0, column=0, sticky="nsew", padx=1, pady=1)
+        self.combobox3 = ttk.Combobox(frame_control, values=fn.listar_vlans_nombre(), state='readonly',
+                                      font=("Arial", 10), width=28)
+        self.combobox3.grid(row=0, column=0, padx=10, pady=3, sticky="ew")
         boton_info_vlan = ttk.Button(frame_control, text="Ver equipos", command=self.accion_f2_boton1)
         boton_info_vlan.grid(row=1, column=0, padx=10, pady=3, sticky="nsew")
 
@@ -232,25 +279,9 @@ class App(tk.Tk):
         label_imagen = tk.Label(frame_edicion, image=self.logo)
         label_imagen.grid(row=1, column=0, sticky="ew")
 
-        self.frame_columna2 = ttk.Frame(frame2)
-        self.frame_columna2.grid(row=0, column=1, sticky="nsew", padx=3, pady=6)
-        self.generar_tabla_vlans()
-
-    def create_tab3(self):
-        frame3 = ttk.Frame(self.notebook)
-        self.notebook.add(frame3, text='Equipos')
-
-        label3 = tk.Label(frame3, text="Contenido de la Pestaña 3", font=("Arial", 20))
-        label3.pack(pady=20)
-
-        entry3 = tk.Entry(frame3, textvariable=self.var3)
-        entry3.pack(pady=10)
-
-        button3 = ttk.Button(frame3, text="Guardar", command=self.save_var3)
-        button3.pack(pady=10)
-
-        self.result_label3 = tk.Label(frame3, text="", font=("Arial", 20))
-        self.result_label3.pack(pady=10)
+        self.frame2_columna2 = ttk.Frame(frame3)
+        self.frame2_columna2.grid(row=0, column=1, sticky="nsew", padx=3, pady=6)
+        #self.generar_tabla_vlans()
 
     def accion_btn_buscar(self):
 
@@ -306,18 +337,27 @@ class App(tk.Tk):
     def accion_f2_boton1(self):
         vlan = self.combobox2.get().split(' ')[0]
         if vlan == "":
-            self.vlan2=0
+            self.vlan2 = 0
         else:
-            self.vlan2=int(vlan)
+            self.vlan2 = int(vlan)
         self.generar_tabla_vlans(self.vlan2)
 
+
+    #editar vlan
     def accion_f2_boton2(self):
         vlan = self.combobox2.get().split(' ')[0]
         if vlan == "":
             self.vlan2 = 0
+            messagebox.showwarning("Alerta", "No has seleccionado una VLAN a editar")
         else:
             self.vlan2 = int(vlan)
+            self.abrir_formulario(self.vlan2)
+        print(vlan)
 
+        # crear vlan
+    def accion_f2_boton4(self):
+        self.vlan2 = 0
+        self.abrir_formulario(self.vlan2)
 
     def save_var2(self):
         value = self.var2.get()
@@ -384,6 +424,77 @@ class App(tk.Tk):
         # Insertar filas en el Treeview
         for _, row in dataframe.iterrows():
             self.tabla_vlans.insert("", tk.END, values=list(row))
+
+    def abrir_formulario(self, edit):
+
+
+        # Crear una nueva ventana emergente
+        self.ventana_formulario = tk.Toplevel(self.notebook)
+
+
+        # Crear etiquetas y campos de entrada
+        ttk.Label(self.ventana_formulario, text="ID VLAN:").grid(row=0, column=0, padx=10, pady=5)
+        self.id_entry = ttk.Entry(self.ventana_formulario)
+        self.id_entry.grid(row=0, column=1, padx=10, pady=5)
+        Cambio = False
+        ttk.Label(self.ventana_formulario, text="Nombre:").grid(row=1, column=0, padx=10, pady=5)
+        self.nombre_entry = ttk.Entry(self.ventana_formulario)
+        self.nombre_entry.grid(row=1, column=1, padx=10, pady=5)
+
+        ttk.Label(self.ventana_formulario, text="Direccion:").grid(row=2, column=0, padx=10, pady=5)
+        self.direccion_entry = ttk.Entry(self.ventana_formulario)
+        self.direccion_entry.grid(row=2, column=1, padx=10, pady=5)
+
+        ttk.Label(self.ventana_formulario, text="Máscara:").grid(row=3, column=0, padx=10, pady=5)
+        self.mask_entry = ttk.Entry(self.ventana_formulario)
+        self.mask_entry.grid(row=3, column=1, padx=10, pady=5)
+
+        if edit != 0:
+            self.ventana_formulario.title("Editar VLAN")
+            nombre, dir, mask = fn.mostrar_vlan_editable(edit)
+            self.id_entry.insert(0, f"{edit}")
+            self.id_entry.config(foreground="red", state="disabled")
+            self.nombre_entry.insert(0, f"{nombre}")
+            self.direccion_entry.insert(0, f"{dir}")
+            self.mask_entry.insert(0, f"{mask}")
+
+        else:
+            self.ventana_formulario.title("Crear VLAN")
+        boton_guardar = ttk.Button(self.ventana_formulario, text="Guardar Cambios", command=self.validar)
+        boton_guardar.grid(row=4, column=0, columnspan=2, padx=10, pady=5)
+        screen_width = self.ventana_formulario.winfo_screenwidth()
+        screen_height = self.ventana_formulario.winfo_screenheight()
+
+        width = 300
+        height = 300
+
+        x = (screen_width // 2) - (width // 2)
+        y = (screen_height // 2) - (height // 2)
+
+        self.ventana_formulario.geometry(f"{width}x{height}+{x}+{y}")
+
+        self.ventana_formulario.transient(self.notebook)
+        self.ventana_formulario.grab_set()
+        self.ventana_formulario.wait_window()
+    def validar(self):
+        control = False
+        if self.vlan2 == 0:
+            data = [int(self.id_entry.get()), self.nombre_entry.get(), self.direccion_entry.get(), self.mask_entry.get()]
+            control, fallo = fn.crear_vlan(data)
+            if control:
+                self.combobox2.config(values=fn.listar_vlans_nombre())
+            else:
+                print(fallo)
+        else:
+            data = [int(self.id_entry.get()), self.nombre_entry.get(), self.direccion_entry.get(),
+                    self.mask_entry.get()]
+            control, fallo = fn.editar_vlan(data)
+            if control:
+                self.combobox2.config(values=fn.listar_vlans_nombre())
+            else:
+                print(fallo)
+        self.combobox2.current(0)
+        self.ventana_formulario.destroy()
 
 
 if __name__ == "__main__":

@@ -96,6 +96,8 @@ def escribir_script(rango, cambios, vlan):
                     f"authentication port-control auto\nauthentication violation restrict\nmab\ndot1x pae authenticator\n"
                     f"dot1x timeout tx-period 10\ndot1x timeout supp-timeout 5\nspanning-tree portfast\nspanning-tree bpduguard enable\n")
     elif cambios == 4:
+
+        
         script += (f"switchport mode access\n"
                      f"switchport port-security violation restrict\n"
                      f"switchport port-security mac-address sticky\n"
@@ -128,6 +130,7 @@ def listar_vlans_nombre():
     vlans_full = []
     for i in range(len(vlans_id)):
         vlans_full.append(vlans_id[i] +" "+ vlans_nombre[i])
+    vlans_full.insert(0, "")
     return vlans_full
 
 def crear_tabla_vlans(index):
@@ -140,10 +143,50 @@ def crear_tabla_vlans(index):
         df.drop(columns=['Vlan'], inplace=True)
         df.rename(columns={'Ise': 'Num. Equipos', 'Id': 'Codigo VLAN', 'Nombre': 'Descripción'}, inplace=True)
 
-        width = 242
+        width = 145
     else:
         df = pd.read_excel("dataframe2.xlsx")
         df = df.loc[df['Vlan'] == index]
         df = df[["Equipo", "Piso", "Cuarto", "Switch", "Puerto"]]
         width = 145
     return df, width
+
+def mostrar_vlan_editable(id):
+    df = pd.read_excel("vlans.xlsx")
+    nombre = df.loc[df['Id'] == id, 'Nombre'].values[0]
+    dir = df.loc[df['Id'] == id, 'Direccion'].values[0]
+    mask = df.loc[df['Id'] == id, 'Mascara'].values[0]
+    return nombre,dir,mask
+
+
+def crear_vlan(data):
+    #[id, nombre, dir, mask]
+    df = pd.read_excel("vlans.xlsx")
+
+    if data[0] in df['Id'].values:
+        return False, data[0]
+    elif data[1] in df['Nombre'].values:
+        return False, data[1]
+    elif data[2] in df['Direccion'].values:
+        return False, data[2]
+    nueva_fila = {'Id': data[0], 'Nombre': data[1], 'Direccion': data[2], 'Mascara': data[3]}
+    print(nueva_fila)
+    df = pd.concat([df, pd.DataFrame([nueva_fila])], ignore_index=True)
+    df.to_excel("vlans.xlsx", index=False)
+    return True, data[0]
+
+def editar_vlan(data):
+    #[id, nombre, dir, mask]
+    df = pd.read_excel("vlans.xlsx")
+
+    for i, row in df.iterrows():
+        if row['Id'] != data[0]:
+            if (row['Nombre'] == data[1] and
+                    row['Direccion'] == data[2] and
+                    row['Mascara'] == data[3]):
+                return False,
+
+    df.loc[df['Id'] == data[0], ['Nombre', 'Direccion', 'Mascara']] = data[1], data[2], data[3]
+    df.to_excel("vlans.xlsx", index=False)
+    return True, data[0]
+
