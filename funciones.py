@@ -1,5 +1,5 @@
 import pandas as pd
-
+import re
 def validar_listado(listado):
     validos = []
     no_validos = []
@@ -14,6 +14,7 @@ def validar_listado(listado):
 
 def generar_rangos(listado, accion=1):
     lista_switches = []
+    lista_interfaces = []
     lista_rangos = []
     lista_codigos = []
     df = pd.read_excel("dataframe2.xlsx")
@@ -35,7 +36,8 @@ def generar_rangos(listado, accion=1):
                 lista_codigos.append(list(df_switch["Equipo"].unique()))
                 editables_puertos = df_switch["Puerto"].unique()
                 editables_puertos.sort()
-                print(editables_puertos)
+                print("puertos del switch",editables_puertos)
+                lista_interfaces.append(editables_puertos.tolist())
                 lista_switches.append(f"Piso {piso}, Cuarto {cuarto}, switch {switch}")
                 intervalos = []
                 inicio = editables_puertos[0]
@@ -55,7 +57,7 @@ def generar_rangos(listado, accion=1):
                     intervalos.append(str(inicio))
                 else:
                     intervalos.append(f"{inicio}-{fin}")
-               #print(intervalos)
+
                 if len(editables_puertos) == 1:
                     interface_range = "int "
                 else:
@@ -77,39 +79,49 @@ def generar_rangos(listado, accion=1):
                 if cont != 0:
                     if accion != 0:
                         lista_rangos.append(interface_range)
-    return lista_switches, lista_rangos, lista_codigos
+    print(f"lista previa:{lista_switches}\n{lista_interfaces}")
+    return lista_switches, lista_rangos, lista_codigos, lista_interfaces
 
-def escribir_script(rango, cambios, vlan):
-    print(cambios)
-    script = "conf t\n"
-    if cambios == 3 or cambios == 4:
-        script += f"default {rango}\n"
-    script += f"{rango}\n"
-    if cambios == 1:
-        script += f"vlan-config remove all\nswitchport access vlan {vlan}\n"
-    elif cambios == 2:
-        script += f"no switchport portsecurity sticky\nshutdown\nswitchport portsecurity sticky\nno shutdown\n"
-    elif cambios == 3:
-        script += ("switchport mode access\nno authentication open\nauthentication event fail action next-method\n"
-                    f"authentication event server dead action authorize\nauthentication event server alive action reinitialize\n"
-                    f"authentication host-mode multi-domain\nauthentication order dot1x mab\nauthentication priority dot1x mab\n"
-                    f"authentication port-control auto\nauthentication violation restrict\nmab\ndot1x pae authenticator\n"
-                    f"dot1x timeout tx-period 10\ndot1x timeout supp-timeout 5\nspanning-tree portfast\nspanning-tree bpduguard enable\n")
-    elif cambios == 4:
+def escribir_script(rango, cambios, vlan, puertos):
 
-        
-        script += (f"switchport mode access\n"
-                     f"switchport port-security violation restrict\n"
-                     f"switchport port-security mac-address sticky\n"
-                     f"switchport port-security\n"
-                     f"spanning-tree portfast\n"
-                     f"spanning-tree bpduguard enable\n")
-    elif cambios == 5:
-        script += "shutdown\n"
+    if cambios == 0:
+        swit = int(re.search(r'\d+', rango).group())
+        script = ""
+        for interface in puertos:
+            script += f"show run int g{swit}/0/{interface}\nshow int g{swit}/0/{interface}\nshow int g{swit}/0/{interface} status\n"
+    else:
+        script = "conf t\n"
+        if cambios == 3 or cambios == 4:
+            script += f"default {rango}\n"
+        script += f"{rango}\n"
+        if cambios == 1:
+            script += f"vlan-config remove all\nswitchport access vlan {vlan}\n"
+        elif cambios == 2:
+            script += f"no switchport portsecurity sticky\nshutdown\nswitchport portsecurity sticky\nno shutdown\n"
+        elif cambios == 3:
+            script += ("switchport mode access\nno authentication open\nauthentication event fail action next-method\n"
+                        f"authentication event server dead action authorize\nauthentication event server alive action reinitialize\n"
+                        f"authentication host-mode multi-domain\nauthentication order dot1x mab\nauthentication priority dot1x mab\n"
+                        f"authentication port-control auto\nauthentication violation restrict\nmab\ndot1x pae authenticator\n"
+                        f"dot1x timeout tx-period 10\ndot1x timeout supp-timeout 5\nspanning-tree portfast\nspanning-tree bpduguard enable\n")
+        elif cambios == 4:
+            script += (f"switchport mode access\n"
+                         f"switchport port-security violation restrict\n"
+                         f"switchport port-security mac-address sticky\n"
+                         f"switchport port-security\n"
+                         f"spanning-tree portfast\n"
+                         f"spanning-tree bpduguard enable\n")
+        elif cambios == 5:
+            script += "shutdown\n"
 
-    elif cambios == 6:
-        script += "no shutdown\n"
-    script += "end\n"
+        elif cambios == 6:
+            script += "no shutdown\n"
+        elif cambios == 7:
+            script += "no switchport portsecurity sticky\n"
+        elif cambios == 8:
+            script += "switchport portsecurity sticky\n"
+
+        script += "end\n"
     return script
 
 def guardar_cambios(equipos, cambios,vlan):
@@ -181,12 +193,81 @@ def editar_vlan(data):
 
     for i, row in df.iterrows():
         if row['Id'] != data[0]:
-            if (row['Nombre'] == data[1] and
-                    row['Direccion'] == data[2] and
+            if (row['Nombre'] == data[1] or
+                    row['Direccion'] == data[2] or
                     row['Mascara'] == data[3]):
-                return False,
+                print("coincide")
+                return False
 
     df.loc[df['Id'] == data[0], ['Nombre', 'Direccion', 'Mascara']] = data[1], data[2], data[3]
     df.to_excel("vlans.xlsx", index=False)
-    return True, data[0]
+    return True
 
+def eliminar_vlan(id):
+    df = pd.read_excel("vlans.xlsx")
+    df = df[df['Id'] != id]
+    df.to_excel("vlans.xlsx", index=False)
+
+
+def buscar_equipo(equipo):
+    df = pd.read_excel("dataframe2.xlsx")
+    if (df['Equipo'] == equipo).any():
+        data = df[df['Equipo'] == equipo].iloc[0].tolist()
+        print(data)
+        return True, data
+    else:
+        return False, []
+
+
+def generar_texto_equipo(data):
+    #[VLAN, PORT, ISE]
+    texto=f"switchport access vlan {data[0]}\nswitchport mode access\n"
+    if data[2] == "Activo":
+        texto+=(f"authentication event fail action next-method\n"
+                f"authentication event server dead action authorize\n"
+                f"authentication event server alive action reinitialize\n"
+                f"authentication host-mode multi-domain\n"
+                f"authentication order dot1x mab\n"
+                f"authentication priority dot1x mab\n"
+                f"authentication port-control auto\n"
+                f"authentication violation restrict\n"
+                f"mab\n"
+                f"dot1x pae authenticator\n"
+                f"dot1x timeout tx-period 10\n"
+                f"dot1x timeout supp-timeout 5\n")
+    if data[1] == "Activo":
+        texto+=(f"switchport port-security violation restrict\n"
+                f"switchport port-security mac-address sticky\n"
+                f"switchport port-security\n")
+    texto+=("spanning-tree portfast\nspanning-tree bpduguard enable")
+    return texto
+
+def desglosarUbicacion(puerto):
+    #P4C1R1S3P20
+    #P2C1R1STACK1SW3P32
+    try:
+        puerto = list(puerto)
+        codigos = []
+        i = 0;
+        holder=""
+        while i < len(puerto):
+            if puerto[i].isnumeric():
+                holder += puerto[i]
+            else:
+                if holder != "":
+                    codigos.append(int(holder))
+                holder = ""
+            i += 1
+        codigos.append(int(holder))
+        df = pd.read_excel("dataframe2.xlsx")
+        for i, row in df.iterrows():
+            if row['Piso'] == codigos[0]:
+                if row['Cuarto'] == codigos[1]:
+                    if row['Switch'] == codigos[-2]:
+                        if row['Puerto'] == codigos[-1]:
+                            print("coincide")
+                            return False
+        print(codigos)
+        return True
+    except:
+        print("formato de codigo inválido")
