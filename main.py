@@ -287,10 +287,10 @@ class App(tk.Tk):
         boton_edit_ed = ttk.Button(frame_control, text="Editar Puerto", command=self.accion_f3_boton2)
         boton_edit_ed.grid(row=3, column=0, padx=10, pady=5, sticky="nsew")
 
-        boton_delete_ed = ttk.Button(frame_control, text="Eliminar Equipo", command=self.accion_f2_boton3)
+        boton_delete_ed = ttk.Button(frame_control, text="Eliminar Equipo", command=self.accion_f3_boton3)
         boton_delete_ed.grid(row=4, column=0, padx=10, pady=5, sticky="nsew")
 
-        boton_add_ed = ttk.Button(frame_control, text="Añadir Equipo", command=self.accion_f2_boton4)
+        boton_add_ed = ttk.Button(frame_control, text="Añadir Equipo", command=self.accion_f3_boton4)
         boton_add_ed.grid(row=5, column=0, sticky="nsew", padx=10, pady=5)
 
         frame_edicion = ttk.Frame(frame_columna1)
@@ -411,7 +411,8 @@ class App(tk.Tk):
     def accion_f3_boton1(self):
         control, info = fn.buscar_equipo(self.texto_equipo.get())
         if not control:
-            messagebox.showwarning("Alerta", "No existe ese equipo")
+            if info == 0:
+                messagebox.showwarning("Alerta", "No existe ese equipo")
             self.label_equipo.config(
                 text=f"--------------------------------------------------\nHostname:\n\n"
                      f"Codigo puerto:\n\nVLAN:\n\nPortsecurity:\n\nISE:\n--------------------------------------------------")
@@ -438,6 +439,45 @@ class App(tk.Tk):
         else:
             self.abrir_formulario2(self.texto_equipo.get(), info)
             print(info)
+    def accion_f3_boton3(self):
+        control, info = fn.buscar_equipo(self.texto_equipo.get())
+        if control and info!=0:
+            self.confirmar_eliminar_equipo()
+        else:
+            messagebox.showwarning("Alerta", "No existe ese equipo")
+    def confirmar_eliminar_equipo(self):
+        self.ventana_eliminar = tk.Toplevel(self.notebook)
+        # Crear etiquetas y campos de entrada
+        ttk.Label(self.ventana_eliminar, text=f"Estás seguro de eliminar el equipo"
+                                              f" {self.texto_equipo.get()}?").grid(row=0,column=0,padx=10,pady=5,sticky="ew")
+        btn_confirmar = ttk.Button(self.ventana_eliminar, text=" Eliminar ", command=self.eliminar_equipo)
+        btn_confirmar.grid(row=1,column=0,padx=5, pady=5)
+
+        width = 400
+        height = 75
+
+        screen_width = self.ventana_eliminar.winfo_screenwidth()
+        screen_height = self.ventana_eliminar.winfo_screenheight()
+        x = (screen_width // 2) - (width // 2)
+        y = (screen_height // 2) - (height // 2)
+        self.ventana_eliminar.geometry(f"{width}x{height}+{x}+{y}")
+
+        self.ventana_eliminar.transient(self.notebook)
+        self.ventana_eliminar.grab_set()
+        self.ventana_eliminar.wait_window()
+
+    def eliminar_equipo(self):
+
+        fn.eliminar_pc(self.texto_equipo.get())
+        messagebox.showinfo("Cambio realizado", f"Se eliminó el equipo {self.texto_equipo.get()}")
+        self.ventana_eliminar.destroy()
+        self.texto_equipo.delete(0, tk.END)
+        self.texto_equipo.insert(0, "")
+        self.accion_f3_boton1()
+
+
+    def accion_f3_boton4(self):
+        self.abrir_formulario2("", 0)
 
     def abrir_formulario2(self, edit, info):
         self.ventana_equipo = tk.Toplevel(self.notebook)
@@ -457,22 +497,59 @@ class App(tk.Tk):
             self.codigo_entry.insert(0, f"{info[1]}")
             boton_guardar = ttk.Button(self.ventana_equipo, text="Guardar cambios", command=self.validar_codigo)
         else:
-            self.ventana_formulario.title("Añadir equipo")
-            boton_guardar = ttk.Button(self.ventana_equipo, text="añadir equipo", command=self.validar)
+            self.ventana_equipo.title("Añadir equipo")
+            boton_guardar = ttk.Button(self.ventana_equipo, text="añadir equipo", command=self.validar_nuevo_equipo)
         boton_guardar.grid(row=4, column=0, columnspan=2, padx=10, pady=5)
 
+        width = 300
+        height = 120
+        screen_width = self.ventana_equipo.winfo_screenwidth()
+        screen_height = self.ventana_equipo.winfo_screenheight()
+
+        x = (screen_width // 2) - (width // 2)
+        y = (screen_height // 2) - (height // 2)
+
+        self.ventana_equipo.geometry(f"{width}x{height}+{x}+{y}")
+
+        self.ventana_equipo.transient(self.notebook)
+        self.ventana_equipo.grab_set()
+        self.ventana_equipo.wait_window()
+
+    def validar_nuevo_equipo(self):
+        control, info = fn.buscar_equipo(self.hostname_entry.get())
+        if control:
+            if info == 0:
+                messagebox.showwarning("Alerta", "Formato de Hostname inválido")
+            else:
+                messagebox.showwarning("Alerta", "Este Equipo ya existe")
+        else:
+            control, info = fn.desglosarUbicacion(self.codigo_entry.get())
+            if not control:
+                if info == 0:
+                    messagebox.showwarning("Alerta", "El Codigo coincide con otro equipo")
+                elif info == 1:
+                    messagebox.showwarning("Alerta", "Formato de codigo inválido")
+            else:
+                fn.agregar_equipo(self.hostname_entry.get(), self.codigo_entry.get(),info)
+                self.texto_equipo.delete(0, tk.END)
+                # Inserta el nuevo texto en el Entry
+                self.texto_equipo.insert(0, self.hostname_entry.get())
+                self.accion_f3_boton1()
+                messagebox.showinfo("Cambio realizado", f"Se Creó el nuevo equipo")
+            self.ventana_equipo.destroy()
     def validar_codigo(self):
-        control= fn.desglosarUbicacion(self.codigo_entry.get())
+        control, info = fn.desglosarUbicacion(self.codigo_entry.get())
+        if not control:
+            if info == 0:
+                messagebox.showwarning("Alerta", "El Codigo coincide con otro equipo")
+            elif info ==1:
+                messagebox.showwarning("Alerta", "Formato de codigo inválido")
+        else:
+            fn.editar_Equipo(self.hostname_entry.get(), self.codigo_entry.get(),info)
+            self.accion_f3_boton1()
+            messagebox.showinfo("Cambio realizado", f"Se modificó la ubicación del equipo")
+        self.ventana_equipo.destroy()
 
-
-
-    def save_var2(self):
-        value = self.var2.get()
-        self.result_label2.config(text=value)
-
-    def save_var3(self):
-        value = self.var3.get()
-        self.result_label3.config(text=value)
 
     def generate_textboxes(self):
         for widget in self.scrollable_frame.winfo_children():
@@ -523,8 +600,8 @@ class App(tk.Tk):
         self.update()
 
     def guardar_cambios(self, index):
-        print(f"cambios en switch {index} realizados\n")
-        print(self.lista_equipos[index])
+        fn.guardar_cambios(self.lista_equipos[index], self.codigo_cambio)
+        #messagebox.showinfo(text="Cambios guardados")
 
     def generar_tabla_vlans(self, index=0):
 

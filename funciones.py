@@ -210,12 +210,18 @@ def eliminar_vlan(id):
 
 
 def buscar_equipo(equipo):
+
     df = pd.read_excel("dataframe2.xlsx")
     if (df['Equipo'] == equipo).any():
         data = df[df['Equipo'] == equipo].iloc[0].tolist()
         print(data)
         return True, data
     else:
+        patron = r'^ED-\d{4}$'
+        if not re.match(patron, equipo) and equipo != '':
+            return True, 0
+        if equipo !='':
+            return False,0
         return False, []
 
 
@@ -266,8 +272,34 @@ def desglosarUbicacion(puerto):
                     if row['Switch'] == codigos[-2]:
                         if row['Puerto'] == codigos[-1]:
                             print("coincide")
-                            return False
-        print(codigos)
-        return True
+                            return False, 0
+        return True, [codigos[0], codigos[1], codigos[-2], codigos[-1]]
     except:
-        print("formato de codigo inválido")
+        return False, 1
+
+def editar_Equipo(nombre, codigo, list):
+    print(nombre, codigo, list)
+    df = pd.read_excel("dataframe2.xlsx")
+    df.loc[df['Equipo'] == nombre, ['Codigo', 'Piso', 'Cuarto', 'Switch', 'Puerto']] = codigo, list[0], list[1], list[2], list[3]
+    print(df.loc[df['Equipo'] == nombre])
+    df.to_excel("dataframe2.xlsx", index=False)
+
+def agregar_equipo(nombre, codigo, list):
+    print(nombre, codigo, list)
+    df = pd.read_excel("dataframe2.xlsx")
+    df.loc[df['Equipo'] == nombre, ['Codigo', 'Piso', 'Cuarto', 'Switch', 'Puerto']] = codigo, list[0], list[1], list[2], list[3]
+    print(df.loc[df['Equipo'] == nombre])
+    df.to_excel("dataframe2.xlsx", index=False)
+    nueva_fila = {'Equipo': nombre, 'Codigo': codigo, 'Piso': list[0], 'Cuarto': list[1], 'Switch': list[2],
+                  'Puerto': list[3], 'Stack': 'no', 'Vlan': 1, 'Portsecurity': 'No activo', 'Ise': 'No activo'}
+    print(nueva_fila)
+    df = pd.concat([df, pd.DataFrame([nueva_fila])], ignore_index=True)
+    df.to_excel("dataframe2.xlsx", index=False)
+
+def eliminar_pc(equipo):
+    df = pd.read_excel("dataframe2.xlsx")
+    df = df[df['Equipo'] != equipo]
+    df.to_excel("dataframe2.xlsx", index=False)
+
+def guardar_cambios(lista, cambio):
+    print(lista, cambio)
