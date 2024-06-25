@@ -319,7 +319,7 @@ class App(tk.Tk):
             lineas_texto = texto.split('\n')
             lineas_texto = list(set(lineas_texto))
             self.var1, self.var2 = fn.validar_listado(lineas_texto)
-            print(self.var1)
+            #print(self.var1)
             self.actualizar_texto_buscar()
             self.generate_textboxes()
             self.label_informacion.config(text=f"{len(self.var1)}\n"
@@ -334,7 +334,7 @@ class App(tk.Tk):
         for elemento in self.var2:
             no_encontrados += f"{elemento}\n"
         self.lista_switches, self.lista_rangos, self.lista_equipos , self.lista_interfaces= fn.generar_rangos(self.var1)
-        print("AQUI LA LISTA:",self.lista_equipos)
+        #print("AQUI LA LISTA:",self.lista_equipos)
         self.texto_buscar.delete('1.0', tk.END)
         self.texto_buscar.insert(tk.END, no_encontrados)
 
@@ -390,7 +390,7 @@ class App(tk.Tk):
         else:
             self.vlan2 = int(vlan)
             self.abrir_formulario(self.vlan2)
-        print(vlan)
+        #print(vlan)
 
     #eliminar vlan
     def accion_f2_boton3(self):
@@ -401,7 +401,7 @@ class App(tk.Tk):
         else:
             self.vlan2 = int(vlan)
             self.confirmar_eliminar()
-        print(vlan)
+        #print(vlan)
 
         # crear vlan
     def accion_f2_boton4(self):
@@ -410,8 +410,9 @@ class App(tk.Tk):
 
     def accion_f3_boton1(self):
         control, info = fn.buscar_equipo(self.texto_equipo.get())
-        if not control:
-            if info == 0:
+        #print(control, info)
+        if (control and info == 0) or not control:
+            if self.texto_equipo.get() !='':
                 messagebox.showwarning("Alerta", "No existe ese equipo")
             self.label_equipo.config(
                 text=f"--------------------------------------------------\nHostname:\n\n"
@@ -420,7 +421,7 @@ class App(tk.Tk):
             self.running_conf_equipo.configure(state='normal')
             self.running_conf_equipo.delete("1.0", tk.END)
             self.running_conf_equipo.configure(state='disabled')
-        else:
+        elif control and info !=0:
             self.label_equipo.config(
                 text=f"--------------------------------------------------\nHostname:{info[0]}\n\n"
                      f"Codigo puerto:{info[1]}\n\nVLAN:{info[-3]}\n\nPortsecurity:{info[-2]}\n\nISE:{info[-1]}\n--------------------------------------------------")
@@ -438,7 +439,7 @@ class App(tk.Tk):
 
         else:
             self.abrir_formulario2(self.texto_equipo.get(), info)
-            print(info)
+            #print(info)
     def accion_f3_boton3(self):
         control, info = fn.buscar_equipo(self.texto_equipo.get())
         if control and info!=0:
@@ -453,7 +454,7 @@ class App(tk.Tk):
         btn_confirmar = ttk.Button(self.ventana_eliminar, text=" Eliminar ", command=self.eliminar_equipo)
         btn_confirmar.grid(row=1,column=0,padx=5, pady=5)
 
-        width = 400
+        width = 360
         height = 75
 
         screen_width = self.ventana_eliminar.winfo_screenwidth()
@@ -600,7 +601,7 @@ class App(tk.Tk):
         self.update()
 
     def guardar_cambios(self, index):
-        fn.guardar_cambios(self.lista_equipos[index], self.codigo_cambio)
+        fn.guardar_cambios(self.lista_equipos[index], self.codigo_cambio, self.vlan)
         #messagebox.showinfo(text="Cambios guardados")
 
     def generar_tabla_vlans(self, index=0):
@@ -613,7 +614,7 @@ class App(tk.Tk):
         self.tabla_vlans.grid(row=0, column=0, pady=10, sticky="nsew")
 
         dataframe, width = fn.crear_tabla_vlans(index)
-        print(dataframe)
+        #print(dataframe)
         # Configurar las columnas y encabezados si no están configuradas previamente
         if not self.tabla_vlans["columns"]:
             self.tabla_vlans["columns"] = list(dataframe.columns)
@@ -731,7 +732,7 @@ class App(tk.Tk):
     def actualizar_info_vlan(self):
         if self.vlan2 != 0:
             nombre, dir, mask = fn.mostrar_vlan_editable(self.vlan2)
-            print("HEY",self.vlan2)
+            #print("HEY",self.vlan2)
             self.label_description.config(text=f"--------------------------------------------------\nCodigo VLAN:{self.vlan2}\n\n"
                                                    f"Nombre: {nombre}\n\nDirección:{dir}\n\nMáscara: {mask}\n--------------------------------------------------")
 

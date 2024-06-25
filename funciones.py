@@ -25,18 +25,18 @@ def generar_rangos(listado, accion=1):
         df_piso = df_busqueda[df_busqueda["Piso"] == piso]
         editables_cuartos = df_piso["Cuarto"].unique()
         editables_cuartos.sort()
-        #print("piso", piso, end=" ")
+        ##print("piso", piso, end=" ")
         for cuarto in editables_cuartos:
             df_cuarto = df_piso[df_piso["Cuarto"] == cuarto]
             editables_Switches = df_cuarto["Switch"].unique()
             editables_Switches.sort()
-            # print("cuarto", cuarto, end=" ")
+            # #print("cuarto", cuarto, end=" ")
             for switch in editables_Switches:
                 df_switch = df_cuarto[df_cuarto["Switch"] == switch].sort_values(by="Puerto")
                 lista_codigos.append(list(df_switch["Equipo"].unique()))
                 editables_puertos = df_switch["Puerto"].unique()
                 editables_puertos.sort()
-                print("puertos del switch",editables_puertos)
+                #print("puertos del switch",editables_puertos)
                 lista_interfaces.append(editables_puertos.tolist())
                 lista_switches.append(f"Piso {piso}, Cuarto {cuarto}, switch {switch}")
                 intervalos = []
@@ -73,13 +73,13 @@ def generar_rangos(listado, accion=1):
                         interface_range += " , "
                     cont += 1
                     if cont == 7:
-                        print(interface_range)
+                        #print(interface_range)
                         interface_range = "int range "
                         cont = 0
                 if cont != 0:
                     if accion != 0:
                         lista_rangos.append(interface_range)
-    print(f"lista previa:{lista_switches}\n{lista_interfaces}")
+    #print(f"lista previa:{lista_switches}\n{lista_interfaces}")
     return lista_switches, lista_rangos, lista_codigos, lista_interfaces
 
 def escribir_script(rango, cambios, vlan, puertos):
@@ -95,9 +95,9 @@ def escribir_script(rango, cambios, vlan, puertos):
             script += f"default {rango}\n"
         script += f"{rango}\n"
         if cambios == 1:
-            script += f"vlan-config remove all\nswitchport access vlan {vlan}\n"
+            script += f"switchport access vlan {vlan}\n"
         elif cambios == 2:
-            script += f"no switchport portsecurity sticky\nshutdown\nswitchport portsecurity sticky\nno shutdown\n"
+            script += f"no switchport port-security mac-address sticky\nshutdown\nswitchport port-security mac-address sticky\nno shutdown\n"
         elif cambios == 3:
             script += ("switchport mode access\nno authentication open\nauthentication event fail action next-method\n"
                         f"authentication event server dead action authorize\nauthentication event server alive action reinitialize\n"
@@ -117,20 +117,16 @@ def escribir_script(rango, cambios, vlan, puertos):
         elif cambios == 6:
             script += "no shutdown\n"
         elif cambios == 7:
-            script += "no switchport portsecurity sticky\n"
+            script += "no switchport port-security mac-address sticky\n"
         elif cambios == 8:
-            script += "switchport portsecurity sticky\n"
+            script += "switchport port-security mac-address sticky\n"
 
         script += "end\n"
     return script
 
-def guardar_cambios(equipos, cambios,vlan):
-    print("cambios realizados")
-
-
 def listar_vlans():
     df = pd.read_excel("vlans.xlsx")
-    print(df)
+    #print(df)
     vlans_id = df['Id'].tolist()
     return vlans_id
 
@@ -182,7 +178,7 @@ def crear_vlan(data):
     elif data[2] in df['Direccion'].values:
         return False, data[2]
     nueva_fila = {'Id': data[0], 'Nombre': data[1], 'Direccion': data[2], 'Mascara': data[3]}
-    print(nueva_fila)
+    #print(nueva_fila)
     df = pd.concat([df, pd.DataFrame([nueva_fila])], ignore_index=True)
     df.to_excel("vlans.xlsx", index=False)
     return True, data[0]
@@ -196,7 +192,7 @@ def editar_vlan(data):
             if (row['Nombre'] == data[1] or
                     row['Direccion'] == data[2] or
                     row['Mascara'] == data[3]):
-                print("coincide")
+                #print("coincide")
                 return False
 
     df.loc[df['Id'] == data[0], ['Nombre', 'Direccion', 'Mascara']] = data[1], data[2], data[3]
@@ -214,14 +210,12 @@ def buscar_equipo(equipo):
     df = pd.read_excel("dataframe2.xlsx")
     if (df['Equipo'] == equipo).any():
         data = df[df['Equipo'] == equipo].iloc[0].tolist()
-        print(data)
+        #print(data)
         return True, data
     else:
         patron = r'^ED-\d{4}$'
         if not re.match(patron, equipo) and equipo != '':
             return True, 0
-        if equipo !='':
-            return False,0
         return False, []
 
 
@@ -271,28 +265,28 @@ def desglosarUbicacion(puerto):
                 if row['Cuarto'] == codigos[1]:
                     if row['Switch'] == codigos[-2]:
                         if row['Puerto'] == codigos[-1]:
-                            print("coincide")
+                            #print("coincide")
                             return False, 0
         return True, [codigos[0], codigos[1], codigos[-2], codigos[-1]]
     except:
         return False, 1
 
 def editar_Equipo(nombre, codigo, list):
-    print(nombre, codigo, list)
+    #print(nombre, codigo, list)
     df = pd.read_excel("dataframe2.xlsx")
     df.loc[df['Equipo'] == nombre, ['Codigo', 'Piso', 'Cuarto', 'Switch', 'Puerto']] = codigo, list[0], list[1], list[2], list[3]
-    print(df.loc[df['Equipo'] == nombre])
+    #print(df.loc[df['Equipo'] == nombre])
     df.to_excel("dataframe2.xlsx", index=False)
 
 def agregar_equipo(nombre, codigo, list):
-    print(nombre, codigo, list)
+    #print(nombre, codigo, list)
     df = pd.read_excel("dataframe2.xlsx")
     df.loc[df['Equipo'] == nombre, ['Codigo', 'Piso', 'Cuarto', 'Switch', 'Puerto']] = codigo, list[0], list[1], list[2], list[3]
-    print(df.loc[df['Equipo'] == nombre])
+    #print(df.loc[df['Equipo'] == nombre])
     df.to_excel("dataframe2.xlsx", index=False)
     nueva_fila = {'Equipo': nombre, 'Codigo': codigo, 'Piso': list[0], 'Cuarto': list[1], 'Switch': list[2],
                   'Puerto': list[3], 'Stack': 'no', 'Vlan': 1, 'Portsecurity': 'No activo', 'Ise': 'No activo'}
-    print(nueva_fila)
+    #print(nueva_fila)
     df = pd.concat([df, pd.DataFrame([nueva_fila])], ignore_index=True)
     df.to_excel("dataframe2.xlsx", index=False)
 
@@ -301,5 +295,22 @@ def eliminar_pc(equipo):
     df = df[df['Equipo'] != equipo]
     df.to_excel("dataframe2.xlsx", index=False)
 
-def guardar_cambios(lista, cambio):
-    print(lista, cambio)
+def guardar_cambios(lista, cambio, vlan):
+    #print(lista, cambio, vlan)
+
+    df = pd.read_excel("dataframe2.xlsx")
+    for equipo in lista:
+        if cambio == 1:
+            df.loc[df['Equipo'] == equipo, ['Vlan']] = vlan
+        elif cambio == 2 or cambio == 8:
+            df.loc[df['Equipo'] == equipo, ['Portsecurity']] = "Activo"
+        elif cambio == 3:
+            df.loc[df['Equipo'] == equipo, ['Ise']] = "Activo"
+        elif cambio == 4:
+            df.loc[df['Equipo'] == equipo, ['Ise', "Portsecurity"]] = "No Activo", "Activo"
+        elif cambio == 5:
+            df.loc[df['Equipo'] == equipo, ['Ise', "Portsecurity"]] = "No Activo", "Activo"
+        elif cambio == 7:
+            df.loc[df['Equipo'] == equipo, ["Portsecurity"]] = "No Activo"
+        #print(df.loc[df['Equipo'] == equipo])
+    df.to_excel("dataframe2.xlsx", index=False)
