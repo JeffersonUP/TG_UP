@@ -72,7 +72,7 @@ def generar_rangos(listado, accion=1):
                     if i + 1 < len(intervalos):
                         interface_range += " , "
                     cont += 1
-                    if cont == 7:
+                    if cont == 30:
                         #print(interface_range)
                         interface_range = "int range "
                         cont = 0
@@ -266,7 +266,8 @@ def desglosarUbicacion(puerto):
                     if row['Switch'] == codigos[-2]:
                         if row['Puerto'] == codigos[-1]:
                             #print("coincide")
-                            return False, 0
+                            if codigos[0]!=2:
+                                return False, 0
         return True, [codigos[0], codigos[1], codigos[-2], codigos[-1]]
     except:
         return False, 1
