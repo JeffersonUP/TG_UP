@@ -84,41 +84,41 @@ def generar_rangos(listado, accion=1):
 
 def escribir_script(rango, cambios, vlan, puertos):
 
-    if cambios == 0:
+    if cambios == 8:
         swit = int(re.search(r'\d+', rango).group())
         script = ""
         for interface in puertos:
             script += f"show run int g{swit}/0/{interface}\nshow int g{swit}/0/{interface}\nshow int g{swit}/0/{interface} status\n"
     else:
         script = "conf t\n"
-        if cambios == 3 or cambios == 4:
+        if cambios == 2 or cambios == 3:
             script += f"default {rango}\n"
         script += f"{rango}\n"
-        if cambios == 1:
+        if cambios == 0:
             script += f"switchport access vlan {vlan}\n"
-        elif cambios == 2:
+        elif cambios == 1:
             script += f"no switchport port-security mac-address sticky\nshutdown\nswitchport port-security mac-address sticky\nno shutdown\n"
-        elif cambios == 3:
+        elif cambios == 2:
             script += ("switchport mode access\nno authentication open\nauthentication event fail action next-method\n"
                         f"authentication event server dead action authorize\nauthentication event server alive action reinitialize\n"
                         f"authentication host-mode multi-domain\nauthentication order dot1x mab\nauthentication priority dot1x mab\n"
                         f"authentication port-control auto\nauthentication violation restrict\nmab\ndot1x pae authenticator\n"
                         f"dot1x timeout tx-period 10\ndot1x timeout supp-timeout 5\nspanning-tree portfast\nspanning-tree bpduguard enable\n")
-        elif cambios == 4:
+        elif cambios == 3:
             script += (f"switchport mode access\n"
                          f"switchport port-security violation restrict\n"
                          f"switchport port-security mac-address sticky\n"
                          f"switchport port-security\n"
                          f"spanning-tree portfast\n"
                          f"spanning-tree bpduguard enable\n")
-        elif cambios == 5:
+        elif cambios == 4:
             script += "shutdown\n"
 
-        elif cambios == 6:
+        elif cambios == 5:
             script += "no shutdown\n"
-        elif cambios == 7:
+        elif cambios == 6:
             script += "no switchport port-security mac-address sticky\n"
-        elif cambios == 8:
+        elif cambios == 7:
             script += "switchport port-security mac-address sticky\n"
 
         script += "end\n"
