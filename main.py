@@ -1,10 +1,7 @@
-import tkinter
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 import funciones as fn
-
-import pandas as pd
 
 
 class App(tk.Tk):
@@ -159,7 +156,7 @@ class App(tk.Tk):
         botones_tab1_frame = ttk.Frame(tab1_col2, borderwidth=1, relief="solid")
         botones_tab1_frame.grid(row=1, column=0, padx=3, pady=7, sticky="ew")
 
-        txt_ops = ["Cambiar VLAN", "Actualizar PortSecurity", "Aplicar Cisco ISE","Aplicar vlan unica",
+        txt_ops = ["Cambiar VLAN", "Actualizar PortSecurity", "Aplicar Cisco ISE", "Aplicar vlan unica",
                    "Desactivar puerto", "Encender puerto", "Desactivar Sticky", "Encender Sticky", "ver status"]
 
         for i in range(9):
@@ -167,8 +164,9 @@ class App(tk.Tk):
                                           command=lambda opt=i: self.accion_cambios_tab1_btn(opt))
             if i == 0:
                 cambios_tab1_btn.grid(row=i, column=0, padx=3, pady=3, sticky="ew")
-                self.vlans_tab1_combobox = ttk.Combobox(botones_tab1_frame, values=fn.listar_vlans(), width=4, state='readonly',
-                                             font=("Arial", 16))
+                self.vlans_tab1_combobox = ttk.Combobox(botones_tab1_frame, values=fn.listar_vlans(), width=4,
+                                                        state='readonly',
+                                                        font=("Arial", 16))
                 self.vlans_tab1_combobox.grid(row=i, column=1, padx=3, pady=3)
 
             else:
@@ -181,7 +179,7 @@ class App(tk.Tk):
         imagen_tab1_label.pack(pady=(0, 0), expand=True, fill="both")
 
         #Columna 3
-        
+
         tab1_col3 = ttk.Frame(tab1)
         tab1_col3.grid(row=0, column=2, sticky="nsew", padx=3, pady=6)
 
@@ -227,24 +225,23 @@ class App(tk.Tk):
 
         texlabel = ['Id VLAN', 'Descripcion', '# de equipos']
         info_label_txt = (f"--------------------------------------------------\nCodigo VLAN:\n\nNombre:\n\nDirección:"
-                        f"\n\nMáscara:\n""--------------------------------------------------")
+                          f"\n\nMáscara:\n""--------------------------------------------------")
 
-        self.info_vlan_label = tk.Label(frame_formulario,text=info_label_txt,font=("Arial", 10), relief=tk.GROOVE)
+        self.info_vlan_label = tk.Label(frame_formulario, text=info_label_txt, font=("Arial", 10), relief=tk.GROOVE)
         self.info_vlan_label.grid(row=0, column=0, padx=(3, 0), pady=1)
 
-        txt_vlans=["Buscar", "Editar vlan", "Eliminar vlan", "Añadir vlan"]
+        txt_vlans = ["Buscar", "Editar vlan", "Eliminar vlan", "Añadir vlan"]
         for i in range(4):
             cambios_tab2_btn = ttk.Button(frame_control, text=txt_vlans[i],
                                           command=lambda opt=i: self.accion_cambios_tab2_btn(opt))
             if i == 0:
-                cambios_tab2_btn.grid(row=i+1, column=0, padx=10, pady=5, sticky="nsew")
+                cambios_tab2_btn.grid(row=i + 1, column=0, padx=10, pady=5, sticky="nsew")
             else:
-                cambios_tab2_btn.grid(row=i+2, column=0, padx=10, pady=5, sticky="nsew")
-
+                cambios_tab2_btn.grid(row=i + 2, column=0, padx=10, pady=5, sticky="nsew")
 
         imagen_tab2_frame = ttk.Frame(tab2_col1)
         imagen_tab2_frame.grid(row=1, column=0, sticky="ew", padx=1, pady=10)
-        
+
         imagen_tab2_label = tk.Label(imagen_tab2_frame, image=self.logo2)
         imagen_tab2_label.grid(row=0, column=0, padx=(25, 0))
 
@@ -269,7 +266,6 @@ class App(tk.Tk):
         frame_formulario.grid(row=2, column=0, padx=(3, 0), pady=5, sticky="ns")
 
         texlabel = ['Id VLAN', 'Descripcion', '# de equipos']
-
         lbltext = (f"--------------------------------------------------\nHostname:\n\nCodigo puerto:\n\nVLAN:\n\n"
                    f"Portsecurity:\n\nISE:\n--------------------------------------------------")
 
@@ -292,42 +288,37 @@ class App(tk.Tk):
 
         self.frame_equipo = ttk.Frame(tab3)
         self.frame_equipo.grid(row=0, column=1, sticky="nsew", padx=3, pady=6)
-        self.ubicacion_equipo = tk.Label(self.frame_equipo,
-                                         text="PISO __ CUARTO __ SWITCH __ PUERTO __",
-                                         bg='#E4E7F3',
-                                         fg='#000000',
+        ubi_txt = "PISO __ CUARTO __ SWITCH __ PUERTO __"
+        self.ubicacion_equipo = tk.Label(self.frame_equipo, text=ubi_txt, bg='#E4E7F3', fg='#000000',
                                          font=("Neuer Weltschmerz", 12))
-
         self.ubicacion_equipo.grid(row=0, column=0, pady=(10, 3), sticky="w")
+
         self.running_conf_equipo = tk.Text(self.frame_equipo, wrap=tk.WORD, width=80, bg='#E4E7F3', fg='#000000',
                                            insertbackground='#2D2D2D', font=("Neuer Weltschmerz", 13))
+
         self.running_conf_equipo.insert(tk.END, "")
         self.running_conf_equipo.configure(state='disabled')
         self.running_conf_equipo.grid(row=1, column=0, sticky="ew", pady=3)
 
     def accion_buscar_tab1_btn(self):
-
         texto = self.buscar_tab1_txt.get("1.0", tk.END).strip()
         if texto:
             lineas_texto = texto.split('\n')
             lineas_texto = list(set(lineas_texto))
             self.var1, self.var2 = fn.validar_listado(lineas_texto)
-            #print(self.var1)
             self.actualizar_buscar_tab1_txt()
             self.generate_textboxes()
-            self.informacion_tab1_label.config(text=f"{len(self.var1)}\n"
-                                                    f"{len(self.lista_switches)}\n"
-                                                    f"{len(self.var2)}")
+            self.informacion_tab1_label.config(text=f"{len(self.var1)}\n{len(self.lista_switches)}\n{len(self.var2)}")
         else:
             messagebox.showwarning("Entrada vacía", "Por favor, ingrese algún texto antes de registrar.")
 
     def actualizar_buscar_tab1_txt(self):
+        #Actualiza la caja de texto con los equipos no encontrados y divide por switches a los encontrados
         self.codigo_cambio = 8
         no_encontrados = ""
         for elemento in self.var2:
             no_encontrados += f"{elemento}\n"
         self.lista_switches, self.lista_rangos, self.lista_equipos, self.lista_interfaces = fn.generar_rangos(self.var1)
-        #print("AQUI LA LISTA:",self.lista_equipos)
         self.buscar_tab1_txt.delete('1.0', tk.END)
         self.buscar_tab1_txt.insert(tk.END, no_encontrados)
 
@@ -341,19 +332,26 @@ class App(tk.Tk):
 
     def accion_cambios_tab2_btn(self, opt):
         vlan = self.vlans_tab2_combobox.get().split(' ')[0]
-
-        if opt == 0:
-            print("")
-        elif opt==1:
-            print("")
-        elif opt == 2:
-            print("")
-        elif opt == 3:
-            print("")
         if vlan == "":
             self.vlan2 = 0
         else:
             self.vlan2 = int(vlan)
+        if opt == 0:
+            self.generar_tabla_vlans(self.vlan2)
+            print("buscar")
+        elif opt == 1:
+            if self.vlan2 == 0:
+                messagebox.showwarning("Alerta", "No has seleccionado una VLAN a editar")
+            else:
+                self.abrir_formulario(self.vlan2)
+        elif opt == 2:
+            if self.vlan2 == 0:
+                messagebox.showwarning("Alerta", "No has seleccionado una VLAN para eliminar")
+            else:
+                self.confirmar_eliminar()
+        elif opt == 3:
+            print("añadir")
+            self.abrir_formulario(0)
         self.actualizar_info_vlan()
         self.generar_tabla_vlans(self.vlan2)
 
@@ -366,19 +364,6 @@ class App(tk.Tk):
         else:
             self.vlan2 = int(vlan)
             self.abrir_formulario(self.vlan2)
-        #print(vlan)
-
-    #eliminar vlan
-    def accion_f2_boton3(self):
-        vlan = self.vlans_tab2_combobox.get().split(' ')[0]
-        if vlan == "":
-            self.vlan2 = 0
-            messagebox.showwarning("Alerta", "No has seleccionado una VLAN para eliminar")
-        else:
-            self.vlan2 = int(vlan)
-            self.confirmar_eliminar()
-        #print(vlan)
-        # crear vlan
 
     def accion_f2_boton4(self):
         self.vlan2 = 0
@@ -434,15 +419,11 @@ class App(tk.Tk):
         btn_confirmar = ttk.Button(self.ventana_eliminar, text=" Eliminar ", command=self.eliminar_equipo)
         btn_confirmar.grid(row=1, column=0, padx=5, pady=5)
 
-        width = 360
-        height = 75
-
         screen_width = self.ventana_eliminar.winfo_screenwidth()
         screen_height = self.ventana_eliminar.winfo_screenheight()
-        x = (screen_width // 2) - (width // 2)
-        y = (screen_height // 2) - (height // 2)
-        self.ventana_eliminar.geometry(f"{width}x{height}+{x}+{y}")
-
+        x = (screen_width // 2) - (180)
+        y = (screen_height // 2) - (37)
+        self.ventana_eliminar.geometry(f"{306}x{75}+{x}+{y}")
         self.ventana_eliminar.transient(self.notebook)
         self.ventana_eliminar.grab_set()
         self.ventana_eliminar.wait_window()
@@ -490,7 +471,6 @@ class App(tk.Tk):
         y = (screen_height // 2) - (height // 2)
 
         self.ventana_equipo.geometry(f"{width}x{height}+{x}+{y}")
-
         self.ventana_equipo.transient(self.notebook)
         self.ventana_equipo.grab_set()
         self.ventana_equipo.wait_window()
@@ -503,7 +483,7 @@ class App(tk.Tk):
             else:
                 messagebox.showwarning("Alerta", "Este Equipo ya existe")
         else:
-            control, info = fn.desglosarUbicacion(self.codigo_entry.get())
+            control, info = fn.desglosar_ubicacion(self.codigo_entry.get())
             if not control:
                 if info == 0:
                     messagebox.showwarning("Alerta", "El Codigo coincide con otro equipo")
@@ -519,7 +499,7 @@ class App(tk.Tk):
             self.ventana_equipo.destroy()
 
     def validar_codigo(self):
-        control, info = fn.desglosarUbicacion(self.codigo_entry.get())
+        control, info = fn.desglosar_ubicacion(self.codigo_entry.get())
         if not control:
             if info == 0:
                 messagebox.showwarning("Alerta", "El Codigo coincide con otro equipo")
@@ -581,13 +561,10 @@ class App(tk.Tk):
 
     def guardar_cambios(self, index):
         fn.guardar_cambios(self.lista_equipos[index], self.codigo_cambio, self.vlan)
-        #messagebox.showinfo(text="Cambios guardados")
 
     def generar_tabla_vlans(self, index=0):
-
         if hasattr(self, 'tabla_vlans'):
             self.tabla_vlans.destroy()
-
             # Crear un nuevo Frame para el Treeview
         self.tabla_vlans = ttk.Treeview(self.tab2_col2, show="headings", height=16)
         self.tabla_vlans.grid(row=0, column=0, pady=10, sticky="nsew")
@@ -660,12 +637,11 @@ class App(tk.Tk):
         if self.vlan2 == 0:
             data = [int(self.id_entry.get()), self.nombre_entry.get(), self.direccion_entry.get(),
                     self.mask_entry.get()]
-            control, fallo = fn.crear_vlan(data)
+            control = fn.crear_vlan(data)
             if control:
                 self.vlans_tab1_combobox.config(values=fn.listar_vlans())
                 self.vlans_tab2_combobox.config(values=fn.listar_vlans_nombre())
                 self.vlans_tab2_combobox.current(0)
-                self.accion_f2_boton1()
             else:
                 messagebox.showwarning("Alerta", "Los datos coinciden con una vlan existente")
         else:
@@ -684,14 +660,12 @@ class App(tk.Tk):
     def confirmar_eliminar(self):
         self.ventana_eliminar = tk.Toplevel(self.notebook)
         # Crear etiquetas y campos de entrada
-        ttk.Label(self.ventana_eliminar, text=f"Estás seguro de que quieres eliminar la VLAN {self.vlan2}?").grid(row=0,
-                                                                                                                  column=0,
-                                                                                                                  padx=10,
-                                                                                                                  pady=5,
-                                                                                                                  sticky="ew")
+        txt_confirm = (f"Estás seguro de que quieres eliminar la VLAN {self.vlan2}?")
+        ttk.Label(self.ventana_eliminar, text=txt_confirm).grid(row=0, column=0, padx=10, pady=5, sticky="ew")
 
         btn_confirmar = ttk.Button(self.ventana_eliminar, text=" Eliminar ", command=self.eliminar)
-        btn_confirmar.grid(row=1,column=0, padx=5, pady=5)
+        btn_confirmar.grid(row=1, column=0, padx=5, pady=5)
+
         width = 420
         height = 75
         screen_width = self.ventana_eliminar.winfo_screenwidth()
@@ -711,26 +685,24 @@ class App(tk.Tk):
         self.vlans_tab1_combobox.config(values=fn.listar_vlans())
         self.vlans_tab2_combobox.current(0)
         self.vlans_tab2_combobox.config(values=fn.listar_vlans_nombre())
-        self.accion_f2_boton1()
 
     def actualizar_info_vlan(self):
-        if self.vlan2 != 0:
-            nombre, dir, mask = fn.mostrar_vlan_editable(self.vlan2)
+        nombre, dir, mask = fn.mostrar_vlan_editable(self.vlan2)
+        if self.vlan2 != 0 and nombre != "":
             #print("HEY",self.vlan2)
             self.info_vlan_label.config(
-                text=f"--------------------------------------------------\nCodigo VLAN:{self.vlan2}\n\n"
-                     f"Nombre: {nombre}\n\nDirección:{dir}\n\nMáscara: {mask}\n--------------------------------------------------")
-
+                text=f"--------------------------------------------------\n"
+                     f"Codigo VLAN:{self.vlan2}\n\nNombre: {nombre}\n\nDirección:{dir}\n\nMáscara: {mask}\n"
+                     f"--------------------------------------------------")
         else:
             self.info_vlan_label.config(
-                text=f"--------------------------------------------------\nCodigo VLAN:\n\n"
-                     f"Nombre:\n\nDirección:\n\nMáscara:\n--------------------------------------------------")
+                text=f"--------------------------------------------------\n"
+                     f"Codigo VLAN:\n\nNombre:\n\nDirección:\n\nMáscara:\n"
+                     f"--------------------------------------------------")
 
     def mostrar_equipo(self):
-        self.ubicacion_equipo = tk.Label(self.frame_equipo, text="PISO CUARTO SWITCH PUERTO", bg='#E4E7F3',
-                                         fg='#000000',
-                                         font=("Neuer Weltschmerz", 12))
-        self.ubicacion_equipo.grid(row=0, column=0, pady=1, sticky="w")
+        self.ubicacion_equipo = tk.Label(self.frame_equipo, text="PISO CUARTO SWITCH PUERTO", bg='#E4E7F3')
+        self.ubicacion_equipo.grid(fg='#000000', font=("Neuer Weltschmerz", 12), row=0, column=0, pady=1, sticky="w")
 
 
 if __name__ == "__main__":

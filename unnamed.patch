@@ -1,0 +1,251 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 5b82756d5cc9fb7dcfe854b0f79ad7a44394c226)
++++ b/.idea/workspace.xml	(revision dca50ae018c43b2e15357bb61716e1164a0ae5f7)
+@@ -6,9 +6,8 @@
+   <component name="ChangeListManager">
+     <list default="true" id="13d4f1e7-3b47-4587-adb1-8f4e14df5a14" name="Changes" comment="lector de datos">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/dataframe2.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/dataframe2.xlsx" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/interfaz.py" beforeDir="false" afterPath="$PROJECT_DIR$/interfaz.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/validarLista.py" beforeDir="false" afterPath="$PROJECT_DIR$/validarLista.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -25,7 +24,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="master" />
++        <entry key="$PROJECT_DIR$" value="Validacion-de-listas" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -51,19 +50,19 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;Python.interfaz.executor&quot;: &quot;Run&quot;,
+-    &quot;Python.lector_excel.executor&quot;: &quot;Run&quot;,
+-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+-    &quot;Python.organizador.executor&quot;: &quot;Run&quot;,
+-    &quot;Python.validarLista.executor&quot;: &quot;Run&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;Validacion-de-listas&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jefferson/PycharmProjects/TG_Jefferson_Vasquez&quot;,
+-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "Python.interfaz.executor": "Run",
++    "Python.lector_excel.executor": "Run",
++    "Python.main.executor": "Run",
++    "Python.organizador.executor": "Run",
++    "Python.validarLista.executor": "Run",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "git-widget-placeholder": "interfaz",
++    "last_opened_file_path": "C:/Users/Jefferson/PycharmProjects/TG_Jefferson_Vasquez",
++    "run.code.analysis.last.selected.profile": "pProject Default"
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="C:\Users\Jefferson\PycharmProjects\TG_Jefferson_Vasquez" />
+@@ -112,8 +111,43 @@
+       <option name="project" value="LOCAL" />
+       <updated>1717611738529</updated>
+     </task>
+-    <option name="localTasksCounter" value="4" />
++    <task id="LOCAL-00004" summary="lector de datos">
++      <option name="closed" value="true" />
++      <created>1717621924743</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1717621924743</updated>
++    </task>
++    <task id="LOCAL-00005" summary="lector de datos">
++      <option name="closed" value="true" />
++      <created>1717684455137</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1717684455137</updated>
++    </task>
++    <task id="LOCAL-00006" summary="lector de datos">
++      <option name="closed" value="true" />
++      <created>1717685042555</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1717685042556</updated>
++    </task>
++    <option name="localTasksCounter" value="7" />
+     <servers />
++  </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="lector de datos" />
+Index: interfaz.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/interfaz.py b/interfaz.py
+--- a/interfaz.py	(revision 5b82756d5cc9fb7dcfe854b0f79ad7a44394c226)
++++ b/interfaz.py	(revision dca50ae018c43b2e15357bb61716e1164a0ae5f7)
+@@ -1,5 +1,8 @@
+ import tkinter as tk
+ 
++def boton_funcion(dato):
++    print(f"Botón presionado para: {dato}")
++
+ 
+ def buscar():
+     # Acción a realizar cuando se presione el botón Buscar
+@@ -7,7 +10,7 @@
+ 
+ root = tk.Tk()
+ root.title("Switch manager")
+-root.geometry("900x400")
++root.geometry("760x400")
+ # Crear un frame para contener la caja de texto y el scrollbar
+ frame_texto = tk.Frame(root)
+ frame_texto.grid(row=0, column=0, sticky="nsew")
+@@ -26,11 +29,10 @@
+ boton_buscar.grid(row=1, column=0, sticky="ew")
+ 
+ 
+-# Crear las otras dos columnas vacías
+-frame_opciones = tk.Frame(root,)
++frame_opciones = tk.Frame(root, bg="gray", pady=2, padx=2,borderwidth=1)
+ frame_opciones.grid(row=0, column=1, sticky="nsew")
+ # Crear el label
+-label = tk.Label(frame_opciones, text="Equipos consultados: \nEquipos no encontrados: \nSwitches involucrados:\n")
++label = tk.Label(frame_opciones, text="\nEquipos consultados: \n\nEquipos no encontrados: \n\nSwitches involucrados:\n", relief="raised")
+ label.grid(row=0, column=1, pady=5, sticky="nsew")
+ 
+ # Crear un frame para contener los botones
+@@ -38,13 +40,54 @@
+ boton_frame.grid(row=1, column=1, pady=5, sticky="nsew")
+ 
+ # Crear los 7 botones
+-for i in range(1, 8):
+-    boton = tk.Button(boton_frame, text=f"Funcionalidad {i}")
++for i in range(1, 7):
++    boton = tk.Button(boton_frame, text=f"Funcionalidadkkkk {i}")
+     boton.grid(row=i-1, column=0, padx=5, pady=2, sticky="ew")
++boton = tk.Button(boton_frame, text=f"Fukk {i}")
++boton.grid(row=7, column=0, padx=5, pady=2, sticky="ew")
++
++
++# Crear un canvas
++canvas = tk.Canvas(root, bg="cyan")
++canvas.grid(row=0, column=2, sticky="nsew")
++
++# Crear un scrollbar vertical y asociarlo con el canvas
++scrollbar = tk.Scrollbar(orient="vertical", command=canvas.yview)
++scrollbar.grid(row=0, column=3, sticky="nsew")
++canvas.configure(yscrollcommand=scrollbar.set)
++
++# Crear un frame dentro del canvas
++frame_contenido = tk.Frame(canvas)
++
++# Crear un window dentro del canvas para contener el frame
++canvas.create_window((0, 0), window=frame_contenido, anchor="nw")
++
+ 
++# Función para configurar el scrollregion del canvas
++def configurar_scrollregion(event):
++    canvas.configure(scrollregion=canvas.bbox("all"))
+ 
+ 
+-tk.Label(root, text="Columna 3").grid(row=0, column=2, sticky="nsew")
++frame_contenido.bind("<Configure>", configurar_scrollregion)
++
++# Datos de ejemplo
++datos = [f"Dato {i}\nunificador de anchor, esta primera linea tendrá artificialmente el anchor maximo disponible" for i
++         in range(1, 51)]
++# Crear la tabla de datos con botones
++for i, dato in enumerate(datos):
++
++    celda_frame = tk.Frame(frame_contenido, height=30, borderwidth=1, relief="solid")
++    celda_frame.grid(row=i, column=0, padx=5, pady=5)
++    if i == 1:
++        etiqueta = tk.Label(celda_frame, text="miau")
++    else:
++        etiqueta = tk.Label(celda_frame, text=dato)
++    etiqueta.pack(expand=True, fill='both')
++
++    boton = tk.Button(celda_frame, text="Botón", command=lambda d=dato: boton_funcion(d))
++    boton.pack(expand=True, fill='both')
++#11
++
+ 
+ # Configurar la columna 0 para que mantenga su ancho fijo y ajustable en alto
+ root.columnconfigure(0, weight=0)
+Index: main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.py b/main.py
+--- a/main.py	(revision 0dc6eaf309ae17ff522a986a50c9cc6b7c478657)
++++ b/main.py	(revision dca50ae018c43b2e15357bb61716e1164a0ae5f7)
+@@ -1,1 +1,37 @@
+-print("prueba de push")
+\ No newline at end of file
++import tkinter as tk
++from tkinter import ttk
++
++# Crear la ventana principal
++root = tk.Tk()
++root.title("Sistema de Pestañas")
++
++# Crear un Notebook (pestañas)
++notebook = ttk.Notebook(root)
++notebook.pack(fill='both', expand=True)
++
++# Crear el primer frame/pestaña
++frame1 = ttk.Frame(notebook)
++notebook.add(frame1, text='Pestaña 1')
++
++# Añadir contenido a la primera pestaña
++label1 = tk.Label(frame1, text="Contenido de la Pestaña 1", font=("Arial", 20))
++label1.pack(pady=20)
++
++# Crear el segundo frame/pestaña
++frame2 = ttk.Frame(notebook)
++notebook.add(frame2, text='Pestaña 2')
++
++# Añadir contenido a la segunda pestaña
++label2 = tk.Label(frame2, text="Contenido de la Pestaña 2", font=("Arial", 20))
++label2.pack(pady=20)
++
++# Crear el tercer frame/pestaña
++frame3 = ttk.Frame(notebook)
++notebook.add(frame3, text='Pestaña 3')
++
++# Añadir contenido a la tercera pestaña
++label3 = tk.Label(frame3, text="Contenido de la Pestaña 3", font=("Arial", 20))
++label3.pack(pady=20)
++
++# Ejecutar la aplicación
++root.mainloop()

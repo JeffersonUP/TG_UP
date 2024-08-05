@@ -1,15 +1,19 @@
+import sqlite3
+
 import pandas as pd
 import re
 def validar_listado(listado):
     validos = []
     no_validos = []
-    df = pd.read_excel("dataframe2.xlsx")
-    df_busqueda = df[df['Equipo'].isin(listado)]
+    conexion = sqlite3.connect("database.db")
+    cursor = conexion.cursor()
     for puerto in listado:
-        if df['Equipo'].isin([puerto]).any():
+        cursor.execute("select COUNT(*) FROM equipos WHERE id = ?", (puerto,))
+        if (cursor.fetchone()[0]) > 0:
             validos.append(puerto)
         else:
             no_validos.append(puerto)
+    conexion.close()
     return validos, no_validos
 
 def generar_rangos(listado, accion=1):
@@ -17,26 +21,31 @@ def generar_rangos(listado, accion=1):
     lista_interfaces = []
     lista_rangos = []
     lista_codigos = []
-    df = pd.read_excel("dataframe2.xlsx")
-    df_busqueda = df[df['Equipo'].isin(listado)]
-    editables_pisos = df_busqueda["Piso"].unique()
+
+    conexion = sqlite3.connect("database.db")
+    cursor = conexion.cursor()
+    query = "SELECT * FROM equipos WHERE id IN ({})".format(','.join('?' for _ in listado))
+    cursor.execute(query, listado)
+    lista = cursor.fetchall()
+
+    df_busqueda = pd.DataFrame(lista, columns=[desc[0] for desc in cursor.description])
+
+    editables_pisos = df_busqueda["piso"].unique()
     editables_pisos.sort()
+
     for piso in editables_pisos:
-        df_piso = df_busqueda[df_busqueda["Piso"] == piso]
-        editables_cuartos = df_piso["Cuarto"].unique()
+        df_piso = df_busqueda[df_busqueda["piso"] == piso]
+        editables_cuartos = df_piso["cuarto"].unique()
         editables_cuartos.sort()
-        ##print("piso", piso, end=" ")
         for cuarto in editables_cuartos:
-            df_cuarto = df_piso[df_piso["Cuarto"] == cuarto]
-            editables_Switches = df_cuarto["Switch"].unique()
+            df_cuarto = df_piso[df_piso["cuarto"] == cuarto]
+            editables_Switches = df_cuarto["switch"].unique()
             editables_Switches.sort()
-            # #print("cuarto", cuarto, end=" ")
             for switch in editables_Switches:
-                df_switch = df_cuarto[df_cuarto["Switch"] == switch].sort_values(by="Puerto")
-                lista_codigos.append(list(df_switch["Equipo"].unique()))
-                editables_puertos = df_switch["Puerto"].unique()
+                df_switch = df_cuarto[df_cuarto["switch"] == switch].sort_values(by="puerto")
+                lista_codigos.append(list(df_switch["id"].unique()))
+                editables_puertos = df_switch["puerto"].unique()
                 editables_puertos.sort()
-                #print("puertos del switch",editables_puertos)
                 lista_interfaces.append(editables_puertos.tolist())
                 lista_switches.append(f"Piso {piso}, Cuarto {cuarto}, switch {switch}")
                 intervalos = []
@@ -48,8 +57,9 @@ def generar_rangos(listado, accion=1):
                     else:
                         if inicio == fin:
                             intervalos.append(str(inicio))
-                        else:
                             intervalos.append(f"{inicio}-{fin}")
+                        else:
+                            pass
                         inicio = editables_puertos[i]
                         fin = editables_puertos[i]
 
@@ -73,17 +83,14 @@ def generar_rangos(listado, accion=1):
                         interface_range += " , "
                     cont += 1
                     if cont == 30:
-                        #print(interface_range)
                         interface_range = "int range "
                         cont = 0
                 if cont != 0:
                     if accion != 0:
                         lista_rangos.append(interface_range)
-    #print(f"lista previa:{lista_switches}\n{lista_interfaces}")
     return lista_switches, lista_rangos, lista_codigos, lista_interfaces
 
 def escribir_script(rango, cambios, vlan, puertos):
-
     if cambios == 8:
         swit = int(re.search(r'\d+', rango).group())
         script = ""
@@ -125,93 +132,104 @@ def escribir_script(rango, cambios, vlan, puertos):
     return script
 
 def listar_vlans():
-    df = pd.read_excel("vlans.xlsx")
-    #print(df)
-    vlans_id = df['Id'].tolist()
+    conexion = sqlite3.connect('database.db')
+    cursor = conexion.cursor()
+    cursor.execute("SELECT id FROM vlans")
+    lista = cursor.fetchall()
+    vlans_id = [id[0] for id in lista]
+    conexion.close()
     return vlans_id
 
 def listar_vlans_nombre():
-    df = pd.read_excel("vlans.xlsx")
-    vlans_id = df['Id'].tolist()
-    vlans_id =[str(n) for n in vlans_id]
-    vlans_nombre = df['Nombre'].tolist()
-    vlans_full = []
+    conexion = sqlite3.connect('database.db')
+    cursor = conexion.cursor()
+    cursor.execute("SELECT id, nombre FROM vlans ORDER BY id")
+    lista = cursor.fetchall()
+    vlans_id = [str(id[0]) for id in lista]
+    vlans_nombre = [id[1] for id in lista]
+    vlans_full = [""]
     for i in range(len(vlans_id)):
         vlans_full.append(vlans_id[i] +" "+ vlans_nombre[i])
-    vlans_full.insert(0, "")
+    conexion.close()
     return vlans_full
 
 def crear_tabla_vlans(index):
+    conexion = sqlite3.connect('database.db')
     if index == 0:
-        df1 = pd.read_excel("vlans.xlsx")
-        df2 = pd.read_excel("dataframe2.xlsx")
-        df2_grouped = df2.groupby('Vlan')['Ise'].count().reset_index()
-        df = pd.merge(df1, df2_grouped, left_on='Id', right_on='Vlan', how='left')
-        df.rename(columns={'Value': 'SumValue'}, inplace=True)
-        df.drop(columns=['Vlan'], inplace=True)
-        df.rename(columns={'Ise': 'Num. Equipos', 'Id': 'Codigo VLAN', 'Nombre': 'Descripción'}, inplace=True)
-
-        width = 145
+        query = '''
+        SELECT vlans.id AS 'Id', vlans.nombre AS 'Codigo VLAN', COUNT(equipos.id) AS 'Num. Equipos' FROM vlans
+        LEFT JOIN equipos ON vlans.id = equipos.vlan_id
+        GROUP BY vlans.id, vlans.nombre; 
+        '''
+        width = 245
     else:
-        df = pd.read_excel("dataframe2.xlsx")
-        df = df.loc[df['Vlan'] == index]
-        df = df[["Equipo", "Piso", "Cuarto", "Switch", "Puerto"]]
+        query = f"SELECT id AS 'EQUIPO', piso, cuarto, switch, puerto from equipos WHERE equipos.vlan_id = {index}"
         width = 145
+    df = pd.read_sql_query(query, conexion)
+    conexion.close()
     return df, width
 
 def mostrar_vlan_editable(id):
-    df = pd.read_excel("vlans.xlsx")
-    nombre = df.loc[df['Id'] == id, 'Nombre'].values[0]
-    dir = df.loc[df['Id'] == id, 'Direccion'].values[0]
-    mask = df.loc[df['Id'] == id, 'Mascara'].values[0]
-    return nombre,dir,mask
+    conexion = sqlite3.connect('database.db')
+    cursor = conexion.cursor()
+    cursor.execute(f"SELECT nombre, direccion, mascara from vlans WHERE id = {id}")
+    data = cursor.fetchone()
+    if data != None:
+        nombre, dir, mask = list(data)
+    else:
+        nombre, dir, mask = "", "", ""
+    conexion.close()
+    return nombre, dir, mask
 
 
 def crear_vlan(data):
     #[id, nombre, dir, mask]
-    df = pd.read_excel("vlans.xlsx")
-
-    if data[0] in df['Id'].values:
-        return False, data[0]
-    elif data[1] in df['Nombre'].values:
-        return False, data[1]
-    elif data[2] in df['Direccion'].values:
-        return False, data[2]
-    nueva_fila = {'Id': data[0], 'Nombre': data[1], 'Direccion': data[2], 'Mascara': data[3]}
-    #print(nueva_fila)
-    df = pd.concat([df, pd.DataFrame([nueva_fila])], ignore_index=True)
-    df.to_excel("vlans.xlsx", index=False)
-    return True, data[0]
+    conexion = sqlite3.connect('database.db')
+    cursor = conexion.cursor()
+    cursor.execute("SELECT 1 from vlans WHERE id = ? OR nombre = ? OR direccion = ?",
+                   (data[0], data[1], data[2]))
+    res = cursor.fetchone()
+    if res is None:
+        cursor.execute("insert INTO vlans(id, nombre, direccion, mascara) VALUES (?,?,?,?)", data)
+        res = True
+    else:
+        res = False
+    conexion.commit()
+    conexion.close()
+    return res
 
 def editar_vlan(data):
     #[id, nombre, dir, mask]
-    df = pd.read_excel("vlans.xlsx")
-
-    for i, row in df.iterrows():
-        if row['Id'] != data[0]:
-            if (row['Nombre'] == data[1] or
-                    row['Direccion'] == data[2] or
-                    row['Mascara'] == data[3]):
-                #print("coincide")
-                return False
-
-    df.loc[df['Id'] == data[0], ['Nombre', 'Direccion', 'Mascara']] = data[1], data[2], data[3]
-    df.to_excel("vlans.xlsx", index=False)
-    return True
+    conexion = sqlite3.connect('database.db')
+    cursor = conexion.cursor()
+    cursor.execute("SELECT 1 from vlans WHERE id = ? OR nombre = ? OR direccion = ?",
+                   (data[0], data[1], data[2]))
+    res = cursor.fetchone()
+    if res is None:
+        cursor.execute("UPDATE vlans SET nombre = ?, direccion = ?, mascara = ?",
+                       (data[1], data[2], data[3]))
+        res = True
+    else:
+        res = False
+    conexion.commit()
+    conexion.close()
+    return res
 
 def eliminar_vlan(id):
-    df = pd.read_excel("vlans.xlsx")
-    df = df[df['Id'] != id]
-    df.to_excel("vlans.xlsx", index=False)
+    conexion = sqlite3.connect('database.db')
+    cursor = conexion.cursor()
+    cursor.execute("DELETE from vlans WHERE id = ?", (id,))
+    conexion.commit()
+    conexion.close()
 
 
 def buscar_equipo(equipo):
-
-    df = pd.read_excel("dataframe2.xlsx")
-    if (df['Equipo'] == equipo).any():
-        data = df[df['Equipo'] == equipo].iloc[0].tolist()
-        #print(data)
-        return True, data
+    conexion = sqlite3.connect('database.db')
+    cursor = conexion.cursor()
+    cursor.execute("SELECT * from equipos WHERE id = ?", (equipo,))
+    res = cursor.fetchone()
+    if res is not None:
+        return True, list(res)
     else:
         patron = r'^ED-\d{4}$'
         if not re.match(patron, equipo) and equipo != '':
@@ -242,14 +260,14 @@ def generar_texto_equipo(data):
     texto+=("spanning-tree portfast\nspanning-tree bpduguard enable")
     return texto
 
-def desglosarUbicacion(puerto):
+def desglosar_ubicacion(puerto):
     #P4C1R1S3P20
     #P2C1R1STACK1SW3P32
     try:
         puerto = list(puerto)
         codigos = []
-        i = 0;
-        holder=""
+        i = 0
+        holder = ""
         while i < len(puerto):
             if puerto[i].isnumeric():
                 holder += puerto[i]
@@ -259,59 +277,65 @@ def desglosarUbicacion(puerto):
                 holder = ""
             i += 1
         codigos.append(int(holder))
-        df = pd.read_excel("dataframe2.xlsx")
-        for i, row in df.iterrows():
-            if row['Piso'] == codigos[0]:
-                if row['Cuarto'] == codigos[1]:
-                    if row['Switch'] == codigos[-2]:
-                        if row['Puerto'] == codigos[-1]:
-                            #print("coincide")
-                            if codigos[0]!=2:
-                                return False, 0
-        return True, [codigos[0], codigos[1], codigos[-2], codigos[-1]]
+        print(codigos)
     except:
         return False, 1
 
+    conexion = sqlite3.connect('database.db')
+    cursor = conexion.cursor()
+    cursor.execute("SELECT 1 from equipos WHERE piso = ? AND cuarto = ? AND switch = ? AND puerto = ?",
+                   (codigos[0], codigos[1], codigos[-2], codigos[-1]))
+    res = cursor.fetchone()
+    conexion.close()
+    if res is None:
+        return True, [codigos[0], codigos[1], codigos[-2], codigos[-1]]
+    else:
+        return False, 0
+        
 def editar_Equipo(nombre, codigo, list):
     #print(nombre, codigo, list)
-    df = pd.read_excel("dataframe2.xlsx")
-    df.loc[df['Equipo'] == nombre, ['Codigo', 'Piso', 'Cuarto', 'Switch', 'Puerto']] = codigo, list[0], list[1], list[2], list[3]
-    #print(df.loc[df['Equipo'] == nombre])
-    df.to_excel("dataframe2.xlsx", index=False)
-
+    conexion = sqlite3.connect("database.db")
+    cursor = conexion.cursor()
+    cursor.execute("UPDATE eq   uipos SET codigo = ?, piso = ?, cuarto = ?, switch = ?, puerto = ? WHERE id = ?",
+                   (codigo, list[0], list[1], list[2], list[3], nombre))
+    conexion.commit()
+    conexion.close()
 def agregar_equipo(nombre, codigo, list):
     #print(nombre, codigo, list)
-    df = pd.read_excel("dataframe2.xlsx")
-    df.loc[df['Equipo'] == nombre, ['Codigo', 'Piso', 'Cuarto', 'Switch', 'Puerto']] = codigo, list[0], list[1], list[2], list[3]
-    #print(df.loc[df['Equipo'] == nombre])
-    df.to_excel("dataframe2.xlsx", index=False)
-    nueva_fila = {'Equipo': nombre, 'Codigo': codigo, 'Piso': list[0], 'Cuarto': list[1], 'Switch': list[2],
-                  'Puerto': list[3], 'Stack': 'no', 'Vlan': 1, 'Portsecurity': 'No activo', 'Ise': 'No activo'}
-    #print(nueva_fila)
-    df = pd.concat([df, pd.DataFrame([nueva_fila])], ignore_index=True)
-    df.to_excel("dataframe2.xlsx", index=False)
+    conexion = sqlite3.connect("database.db")
+    cursor = conexion.cursor()
+    cursor.execute("INSERT into equipos(id, codigo, piso, cuarto, switch, puerto) VALUES (?, ?, ?, ?, ?, ?)",
+                   (nombre, codigo, list[0], list[1], list[2], list[3]))
+    conexion.commit()
+    conexion.close()
 
 def eliminar_pc(equipo):
-    df = pd.read_excel("dataframe2.xlsx")
-    df = df[df['Equipo'] != equipo]
-    df.to_excel("dataframe2.xlsx", index=False)
+    conexion = sqlite3.connect("database.db")
+    cursor = conexion.cursor()
+    cursor.execute("DELETE from equipos WHERE id = ?", (equipo, ))
+    conexion.commit()
+    conexion.close()
+
 
 def guardar_cambios(lista, cambio, vlan):
-    #print(lista, cambio, vlan)
-
-    df = pd.read_excel("dataframe2.xlsx")
+    print(lista, cambio, vlan)
+    cambio = cambio+1
+    conexion = sqlite3.connect("database.db")
+    cursor = conexion.cursor()
     for equipo in lista:
         if cambio == 1:
-            df.loc[df['Equipo'] == equipo, ['Vlan']] = vlan
+            cursor.execute("UPDATE equipos SET vlan_id = 'vlan' WHERE id = 'equipo'")
         elif cambio == 2 or cambio == 8:
-            df.loc[df['Equipo'] == equipo, ['Portsecurity']] = "Activo"
+            print("hey")
+            cursor.execute("UPDATE equipos SET portsecurity = 'True' WHERE id = ?", (equipo,))
         elif cambio == 3:
-            df.loc[df['Equipo'] == equipo, ['Ise']] = "Activo"
+            cursor.execute("UPDATE equipos SET portsecurity = True WHERE id = 'equipo'")
         elif cambio == 4:
-            df.loc[df['Equipo'] == equipo, ['Ise', "Portsecurity"]] = "No Activo", "Activo"
+            cursor.execute("UPDATE equipos SET portsecurity = True WHERE id = 'equipo'")
         elif cambio == 5:
-            df.loc[df['Equipo'] == equipo, ['Ise', "Portsecurity"]] = "No Activo", "Activo"
+            cursor.execute("UPDATE equipos SET portsecurity = True WHERE id = 'equipo'")
         elif cambio == 7:
-            df.loc[df['Equipo'] == equipo, ["Portsecurity"]] = "No Activo"
+            cursor.execute("UPDATE equipos SET portsecurity = True WHERE id = 'equipo'")
         #print(df.loc[df['Equipo'] == equipo])
-    df.to_excel("dataframe2.xlsx", index=False)
+    conexion.commit()
+    conexion.close()

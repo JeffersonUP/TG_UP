@@ -1,0 +1,327 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision d4d32ae03393e5b47a02a09ea62672526579f93c)
++++ b/.idea/workspace.xml	(revision 0f3b93e4eabcaad66cfab9251d2d32e534e8909d)
+@@ -248,7 +248,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1718373922410</updated>
+     </task>
+-    <option name="localTasksCounter" value="21" />
++    <task id="LOCAL-00021" summary="lector de datos">
++      <option name="closed" value="true" />
++      <created>1718403872225</created>
++      <option name="number" value="00021" />
++      <option name="presentableId" value="LOCAL-00021" />
++      <option name="project" value="LOCAL" />
++      <updated>1718403872225</updated>
++    </task>
++    <option name="localTasksCounter" value="22" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+Index: funciones.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/funciones.py b/funciones.py
+--- a/funciones.py	(revision d4d32ae03393e5b47a02a09ea62672526579f93c)
++++ b/funciones.py	(revision 0f3b93e4eabcaad66cfab9251d2d32e534e8909d)
+@@ -96,6 +96,8 @@
+                     f"authentication port-control auto\nauthentication violation restrict\nmab\ndot1x pae authenticator\n"
+                     f"dot1x timeout tx-period 10\ndot1x timeout supp-timeout 5\nspanning-tree portfast\nspanning-tree bpduguard enable\n")
+     elif cambios == 4:
++
++        
+         script += (f"switchport mode access\n"
+                      f"switchport port-security violation restrict\n"
+                      f"switchport port-security mac-address sticky\n"
+@@ -128,6 +130,7 @@
+     vlans_full = []
+     for i in range(len(vlans_id)):
+         vlans_full.append(vlans_id[i] +" "+ vlans_nombre[i])
++    vlans_full.insert(0, "")
+     return vlans_full
+ 
+ def crear_tabla_vlans(index):
+@@ -140,10 +143,50 @@
+         df.drop(columns=['Vlan'], inplace=True)
+         df.rename(columns={'Ise': 'Num. Equipos', 'Id': 'Codigo VLAN', 'Nombre': 'Descripción'}, inplace=True)
+ 
+-        width = 242
++        width = 145
+     else:
+         df = pd.read_excel("dataframe2.xlsx")
+         df = df.loc[df['Vlan'] == index]
+         df = df[["Equipo", "Piso", "Cuarto", "Switch", "Puerto"]]
+         width = 145
+     return df, width
++
++def mostrar_vlan_editable(id):
++    df = pd.read_excel("vlans.xlsx")
++    nombre = df.loc[df['Id'] == id, 'Nombre'].values[0]
++    dir = df.loc[df['Id'] == id, 'Direccion'].values[0]
++    mask = df.loc[df['Id'] == id, 'Mascara'].values[0]
++    return nombre,dir,mask
++
++
++def crear_vlan(data):
++    #[id, nombre, dir, mask]
++    df = pd.read_excel("vlans.xlsx")
++
++    if data[0] in df['Id'].values:
++        return False, data[0]
++    elif data[1] in df['Nombre'].values:
++        return False, data[1]
++    elif data[2] in df['Direccion'].values:
++        return False, data[2]
++    nueva_fila = {'Id': data[0], 'Nombre': data[1], 'Direccion': data[2], 'Mascara': data[3]}
++    print(nueva_fila)
++    df = pd.concat([df, pd.DataFrame([nueva_fila])], ignore_index=True)
++    df.to_excel("vlans.xlsx", index=False)
++    return True, data[0]
++
++def editar_vlan(data):
++    #[id, nombre, dir, mask]
++    df = pd.read_excel("vlans.xlsx")
++
++    for i, row in df.iterrows():
++        if row['Id'] != data[0]:
++            if (row['Nombre'] == data[1] and
++                    row['Direccion'] == data[2] and
++                    row['Mascara'] == data[3]):
++                return False,
++
++    df.loc[df['Id'] == data[0], ['Nombre', 'Direccion', 'Mascara']] = data[1], data[2], data[3]
++    df.to_excel("vlans.xlsx", index=False)
++    return True, data[0]
++
+Index: main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.py b/main.py
+--- a/main.py	(revision d4d32ae03393e5b47a02a09ea62672526579f93c)
++++ b/main.py	(revision 0f3b93e4eabcaad66cfab9251d2d32e534e8909d)
+@@ -42,8 +42,9 @@
+             },
+             'TLabel': {
+                 'configure': {
+-                    'background': '#001A7B',  # Fondo de los labels
++                    'background': '#E4E7F3',  # Fondo de los labels
+                     'foreground': '#001A7B',  # Color del texto de los labels
++                    'font': ('Arial', 12, 'bold'),
+                 }
+             },
+             'TButton': {
+@@ -68,7 +69,7 @@
+             },
+             'Treeview': {
+                 'configure': {
+-                    'font': ('Helvetica', 12),  # Fuente del texto de las celdas del Treeview
++                    'font': ('Helvetica', 10),  # Fuente del texto de las celdas del Treeview
+                     'background': '#E4E7F3',  # Fondo del Treeview
+                     'foreground': '#001A7B',  # Color del texto de las celdas
+                     'rowheight': 25,  # Altura de las filas
+@@ -101,6 +102,7 @@
+         self.lista_switches = []
+         self.vlan = 0
+         self.vlan2 = 0
++        self.opt_vlan = 0
+         self.logo = tk.PhotoImage(file="imagen.png")
+         self.logo2 = tk.PhotoImage(file="EMTELCOOO.png")
+         # Crear las pestañas
+@@ -216,6 +218,51 @@
+         self.combobox2 = ttk.Combobox(frame_control, values=fn.listar_vlans_nombre(), state='readonly',
+                                       font=("Arial", 10), width=28)
+         self.combobox2.grid(row=0, column=0, padx=10, pady=3, sticky="ew")
++        boton_info_vlan = ttk.Button(frame_control, text="Buscar", command=self.accion_f2_boton1)
++        boton_info_vlan.grid(row=1, column=0, padx=10, pady=3, sticky="ew")
++
++        frame_formulario = ttk.Frame(frame_control)
++        frame_formulario.grid(row=2, column=0, padx=(3, 0), pady=5, sticky="ns")
++
++        texlabel=['Id VLAN', 'Descripcion', '# de equipos']
++
++        label_description = tk.Label(frame_formulario,
++                                     text=f"--------------------------------------------------\nCodigo VLAN: XXX\n\n"
++                                    "salud_total_clientes\n\nxx equipos en piso 1\n\nDirección de red\n\nMáscara de red\n"
++                                    "--------------------------------------------------",
++                                     font=("Arial", 10), relief=tk.GROOVE)
++        label_description.grid(row=0, column=0, padx=(3, 0), pady=1)
++        boton_edit_vlan = ttk.Button(frame_control, text="Editar vlan", command=self.accion_f2_boton2)
++
++        boton_edit_vlan.grid(row=3, column=0, padx=10, pady=3, sticky="nsew")
++
++        boton_delete_vlan = ttk.Button(frame_control, text="Eliminar vlan", command=self.accion_f2_boton1)
++        boton_delete_vlan.grid(row=4, column=0, padx=10, pady=3, sticky="nsew")
++
++        boton_add_vlan = ttk.Button(frame_control, text="Añadir vlan", command=self.accion_f2_boton4)
++        boton_add_vlan.grid(row=5, column=0, sticky="ns", pady=5)
++
++        frame_edicion = ttk.Frame(frame_columna1)
++        frame_edicion.grid(row=1, column=0, sticky="ew", padx=1, pady=5)
++        label_imagen = tk.Label(frame_edicion, image=self.logo2)
++        label_imagen.grid(row=0, column=0, sticky="nsew")
++
++        self.frame_columna2 = ttk.Frame(frame2)
++        self.frame_columna2.grid(row=0, column=1, sticky="nsew", padx=3, pady=6)
++        self.generar_tabla_vlans()
++
++    def create_tab3(self):
++        frame3 = ttk.Frame(self.notebook)
++        self.notebook.add(frame3, text='Equipos')
++
++        frame_columna1 = ttk.Frame(frame3)
++        frame_columna1.grid(row=0, column=0, sticky="nsew", padx=3, pady=6)
++        frame_columna1.grid_rowconfigure(0, minsize=180)
++        frame_control = ttk.Frame(frame_columna1)
++        frame_control.grid(row=0, column=0, sticky="nsew", padx=1, pady=1)
++        self.combobox3 = ttk.Combobox(frame_control, values=fn.listar_vlans_nombre(), state='readonly',
++                                      font=("Arial", 10), width=28)
++        self.combobox3.grid(row=0, column=0, padx=10, pady=3, sticky="ew")
+         boton_info_vlan = ttk.Button(frame_control, text="Ver equipos", command=self.accion_f2_boton1)
+         boton_info_vlan.grid(row=1, column=0, padx=10, pady=3, sticky="nsew")
+ 
+@@ -232,25 +279,9 @@
+         label_imagen = tk.Label(frame_edicion, image=self.logo)
+         label_imagen.grid(row=1, column=0, sticky="ew")
+ 
+-        self.frame_columna2 = ttk.Frame(frame2)
+-        self.frame_columna2.grid(row=0, column=1, sticky="nsew", padx=3, pady=6)
+-        self.generar_tabla_vlans()
+-
+-    def create_tab3(self):
+-        frame3 = ttk.Frame(self.notebook)
+-        self.notebook.add(frame3, text='Equipos')
+-
+-        label3 = tk.Label(frame3, text="Contenido de la Pestaña 3", font=("Arial", 20))
+-        label3.pack(pady=20)
+-
+-        entry3 = tk.Entry(frame3, textvariable=self.var3)
+-        entry3.pack(pady=10)
+-
+-        button3 = ttk.Button(frame3, text="Guardar", command=self.save_var3)
+-        button3.pack(pady=10)
+-
+-        self.result_label3 = tk.Label(frame3, text="", font=("Arial", 20))
+-        self.result_label3.pack(pady=10)
++        self.frame2_columna2 = ttk.Frame(frame3)
++        self.frame2_columna2.grid(row=0, column=1, sticky="nsew", padx=3, pady=6)
++        #self.generar_tabla_vlans()
+ 
+     def accion_btn_buscar(self):
+ 
+@@ -306,18 +337,27 @@
+     def accion_f2_boton1(self):
+         vlan = self.combobox2.get().split(' ')[0]
+         if vlan == "":
+-            self.vlan2=0
++            self.vlan2 = 0
+         else:
+-            self.vlan2=int(vlan)
++            self.vlan2 = int(vlan)
+         self.generar_tabla_vlans(self.vlan2)
+ 
++
++    #editar vlan
+     def accion_f2_boton2(self):
+         vlan = self.combobox2.get().split(' ')[0]
+         if vlan == "":
+             self.vlan2 = 0
++            messagebox.showwarning("Alerta", "No has seleccionado una VLAN a editar")
+         else:
+             self.vlan2 = int(vlan)
++            self.abrir_formulario(self.vlan2)
++        print(vlan)
+ 
++        # crear vlan
++    def accion_f2_boton4(self):
++        self.vlan2 = 0
++        self.abrir_formulario(self.vlan2)
+ 
+     def save_var2(self):
+         value = self.var2.get()
+@@ -385,6 +425,77 @@
+         for _, row in dataframe.iterrows():
+             self.tabla_vlans.insert("", tk.END, values=list(row))
+ 
++    def abrir_formulario(self, edit):
++
++
++        # Crear una nueva ventana emergente
++        self.ventana_formulario = tk.Toplevel(self.notebook)
++
++
++        # Crear etiquetas y campos de entrada
++        ttk.Label(self.ventana_formulario, text="ID VLAN:").grid(row=0, column=0, padx=10, pady=5)
++        self.id_entry = ttk.Entry(self.ventana_formulario)
++        self.id_entry.grid(row=0, column=1, padx=10, pady=5)
++        Cambio = False
++        ttk.Label(self.ventana_formulario, text="Nombre:").grid(row=1, column=0, padx=10, pady=5)
++        self.nombre_entry = ttk.Entry(self.ventana_formulario)
++        self.nombre_entry.grid(row=1, column=1, padx=10, pady=5)
++
++        ttk.Label(self.ventana_formulario, text="Direccion:").grid(row=2, column=0, padx=10, pady=5)
++        self.direccion_entry = ttk.Entry(self.ventana_formulario)
++        self.direccion_entry.grid(row=2, column=1, padx=10, pady=5)
++
++        ttk.Label(self.ventana_formulario, text="Máscara:").grid(row=3, column=0, padx=10, pady=5)
++        self.mask_entry = ttk.Entry(self.ventana_formulario)
++        self.mask_entry.grid(row=3, column=1, padx=10, pady=5)
++
++        if edit != 0:
++            self.ventana_formulario.title("Editar VLAN")
++            nombre, dir, mask = fn.mostrar_vlan_editable(edit)
++            self.id_entry.insert(0, f"{edit}")
++            self.id_entry.config(foreground="red", state="disabled")
++            self.nombre_entry.insert(0, f"{nombre}")
++            self.direccion_entry.insert(0, f"{dir}")
++            self.mask_entry.insert(0, f"{mask}")
++
++        else:
++            self.ventana_formulario.title("Crear VLAN")
++        boton_guardar = ttk.Button(self.ventana_formulario, text="Guardar Cambios", command=self.validar)
++        boton_guardar.grid(row=4, column=0, columnspan=2, padx=10, pady=5)
++        screen_width = self.ventana_formulario.winfo_screenwidth()
++        screen_height = self.ventana_formulario.winfo_screenheight()
++
++        width = 300
++        height = 300
++
++        x = (screen_width // 2) - (width // 2)
++        y = (screen_height // 2) - (height // 2)
++
++        self.ventana_formulario.geometry(f"{width}x{height}+{x}+{y}")
++
++        self.ventana_formulario.transient(self.notebook)
++        self.ventana_formulario.grab_set()
++        self.ventana_formulario.wait_window()
++    def validar(self):
++        control = False
++        if self.vlan2 == 0:
++            data = [int(self.id_entry.get()), self.nombre_entry.get(), self.direccion_entry.get(), self.mask_entry.get()]
++            control, fallo = fn.crear_vlan(data)
++            if control:
++                self.combobox2.config(values=fn.listar_vlans_nombre())
++            else:
++                print(fallo)
++        else:
++            data = [int(self.id_entry.get()), self.nombre_entry.get(), self.direccion_entry.get(),
++                    self.mask_entry.get()]
++            control, fallo = fn.editar_vlan(data)
++            if control:
++                self.combobox2.config(values=fn.listar_vlans_nombre())
++            else:
++                print(fallo)
++        self.combobox2.current(0)
++        self.ventana_formulario.destroy()
++
+ 
+ if __name__ == "__main__":
+     app = App()

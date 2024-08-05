@@ -5,11 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13d4f1e7-3b47-4587-adb1-8f4e14df5a14" name="Changes" comment="lector de datos">
+      <change afterPath="$PROJECT_DIR$/RedesControlador.spec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/archivos del programa.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/RedesControlador/Analysis-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/RedesControlador/EXE-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/RedesControlador/PKG-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/RedesControlador/PYZ-00.pyz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/RedesControlador/PYZ-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/RedesControlador/RedesControlador.pkg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/RedesControlador/Tree-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/RedesControlador/Tree-01.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/RedesControlador/Tree-02.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/RedesControlador/base_library.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/RedesControlador/warn-RedesControlador.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/RedesControlador/xref-RedesControlador.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/Analysis-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/EXE-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/PKG-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/PYZ-00.pyz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/PYZ-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/Tree-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/Tree-01.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/Tree-02.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/base_library.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/main.pkg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/warn-main.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/main/xref-main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/conexion.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/ControladorRedesInstaller.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/RedesControlador.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/instalador y .exe.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/funciones del programa.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.spec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unnamed.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unnamed1.patch" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dataframe2.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/dataframe2.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/dataframe2.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/dist/dataframe2.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/vlans.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/dist/vlans.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vlans.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/vlans.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/funciones.py" beforeDir="false" afterPath="$PROJECT_DIR$/funciones.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +59,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="multipaginas" />
+        <entry key="$PROJECT_DIR$" value="vlans-done" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -54,6 +87,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Python.conexion.executor&quot;: &quot;Run&quot;,
     &quot;Python.funciones.executor&quot;: &quot;Run&quot;,
     &quot;Python.interfaz.executor&quot;: &quot;Run&quot;,
     &quot;Python.lector_excel.executor&quot;: &quot;Run&quot;,
@@ -61,7 +95,7 @@
     &quot;Python.organizador.executor&quot;: &quot;Run&quot;,
     &quot;Python.validarLista.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;vlans-done&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;1.0-Versión-Estable&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Jefferson/PycharmProjects/TG_Jefferson_Vasquez&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
   }
@@ -298,7 +332,23 @@
       <option name="project" value="LOCAL" />
       <updated>1719421662000</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="lector de datos">
+      <option name="closed" value="true" />
+      <created>1719460051384</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1719460051384</updated>
+    </task>
+    <task id="LOCAL-00028" summary="lector de datos">
+      <option name="closed" value="true" />
+      <created>1719953000099</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1719953000099</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
