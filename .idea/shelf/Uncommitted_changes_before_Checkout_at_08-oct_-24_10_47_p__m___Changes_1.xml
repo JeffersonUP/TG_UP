@@ -1,0 +1,24 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_08-oct_-24_10_47_p_ m__[Changes]1" date="1728445703665" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_08-oct_-24_10_47_p_ m__[Changes]1/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 08-oct.-24 10:47 p. m. [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="dist/ControladorRedesInstaller.exe" />
+    <option name="AFTER_PATH" value="dist/ControladorRedesInstaller.exe" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_08-oct_-24_10_47_p_ m__[Changes]1/ControladorRedesInstaller.exe" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="build/RedesControlador/RedesControlador.pkg" />
+    <option name="AFTER_PATH" value="build/RedesControlador/RedesControlador.pkg" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_08-oct_-24_10_47_p_ m__[Changes]1/RedesControlador.pkg" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="dist/RedesControlador.exe" />
+    <option name="AFTER_PATH" value="dist/RedesControlador.exe" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_08-oct_-24_10_47_p_ m__[Changes]1/RedesControlador.exe" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="build/RedesControlador/PYZ-00.pyz" />
+    <option name="AFTER_PATH" value="build/RedesControlador/PYZ-00.pyz" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_08-oct_-24_10_47_p_ m__[Changes]1/PYZ-00.pyz" />
+  </binary>
+</changelist>

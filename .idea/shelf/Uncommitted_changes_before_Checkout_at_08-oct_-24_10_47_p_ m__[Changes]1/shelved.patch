@@ -1,0 +1,719 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"13d4f1e7-3b47-4587-adb1-8f4e14df5a14\" name=\"Changes\" comment=\"lector de datos\">\r\n      <change afterPath=\"$PROJECT_DIR$/RedesControlador.spec\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/archivos del programa.zip\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/RedesControlador/Analysis-00.toc\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/RedesControlador/EXE-00.toc\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/RedesControlador/PKG-00.toc\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/RedesControlador/PYZ-00.pyz\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/RedesControlador/PYZ-00.toc\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/RedesControlador/RedesControlador.pkg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/RedesControlador/Tree-00.toc\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/RedesControlador/Tree-01.toc\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/RedesControlador/Tree-02.toc\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/RedesControlador/base_library.zip\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/RedesControlador/warn-RedesControlador.txt\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/RedesControlador/xref-RedesControlador.html\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/main/Analysis-00.toc\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/main/EXE-00.toc\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/main/PKG-00.toc\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/main/PYZ-00.pyz\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/main/PYZ-00.toc\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/main/Tree-00.toc\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/main/Tree-01.toc\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/main/Tree-02.toc\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/main/base_library.zip\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/main/main.pkg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/main/warn-main.txt\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/build/main/xref-main.html\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/conexion.py\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/dist/ControladorRedesInstaller.exe\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/dist/RedesControlador.exe\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/dist/instalador y .exe.zip\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/funciones del programa.xlsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/main.spec\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/unnamed.patch\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/unnamed1.patch\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/dataframe2.xlsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/dataframe2.xlsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/funciones.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/funciones.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/main.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/main.py\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Python Script\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"vlans-done\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;JeffersonUP&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/JeffersonUP/TG_UP.git&quot;,\r\n    &quot;accountId&quot;: &quot;b1f20281-791a-4a33-a4ba-faa9d6bdca3e&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2h6Lad5OmNAhZa1U52FsCcXaCWK\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Python.conexion.executor&quot;: &quot;Run&quot;,\r\n    &quot;Python.funciones.executor&quot;: &quot;Run&quot;,\r\n    &quot;Python.interfaz.executor&quot;: &quot;Run&quot;,\r\n    &quot;Python.lector_excel.executor&quot;: &quot;Run&quot;,\r\n    &quot;Python.main.executor&quot;: &quot;Run&quot;,\r\n    &quot;Python.organizador.executor&quot;: &quot;Run&quot;,\r\n    &quot;Python.validarLista.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;1.0-Versión-Estable&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jefferson/PycharmProjects/TG_Jefferson_Vasquez&quot;,\r\n    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Jefferson\\PycharmProjects\\TG_Jefferson_Vasquez\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Jefferson\\PycharmProjects\\TG_Jefferson_Vasquez\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-python-sdk-0509580d9d50-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.14494.241\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"13d4f1e7-3b47-4587-adb1-8f4e14df5a14\" name=\"Changes\" comment=\"\" />\r\n      <created>1716909644345</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1716909644345</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1717532194060</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1717532194060</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1717611595438</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1717611595438</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1717611738529</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1717611738529</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1717621924743</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1717621924743</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1717684455137</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1717684455137</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1717685042555</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1717685042556</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1717700507742</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1717700507743</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1717707935446</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1717707935446</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1718072260458</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718072260458</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1718080472115</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718080472115</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1718080557094</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718080557095</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1718080689003</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718080689003</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1718135336653</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718135336653</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1718144501586</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718144501586</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1718215362267</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718215362267</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1718227584142</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718227584142</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1718230787597</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718230787597</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1718246728230</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718246728230</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00019\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1718317849608</created>\r\n      <option name=\"number\" value=\"00019\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00019\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718317849608</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00020\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1718373922410</created>\r\n      <option name=\"number\" value=\"00020\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00020\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718373922410</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00021\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1718403872225</created>\r\n      <option name=\"number\" value=\"00021\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00021\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1718403872225</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00022\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1719187119509</created>\r\n      <option name=\"number\" value=\"00022\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00022\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1719187119509</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00023\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1719267106301</created>\r\n      <option name=\"number\" value=\"00023\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00023\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1719267106301</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00024\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1719288378344</created>\r\n      <option name=\"number\" value=\"00024\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00024\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1719288378344</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00025\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1719333654836</created>\r\n      <option name=\"number\" value=\"00025\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00025\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1719333654836</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00026\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1719421662000</created>\r\n      <option name=\"number\" value=\"00026\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00026\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1719421662000</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00027\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1719460051384</created>\r\n      <option name=\"number\" value=\"00027\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00027\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1719460051384</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00028\" summary=\"lector de datos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1719953000099</created>\r\n      <option name=\"number\" value=\"00028\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00028\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1719953000099</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"29\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"lector de datos\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"lector de datos\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -5,42 +5,21 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="13d4f1e7-3b47-4587-adb1-8f4e14df5a14" name="Changes" comment="lector de datos">
+-      <change afterPath="$PROJECT_DIR$/RedesControlador.spec" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/archivos del programa.zip" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/RedesControlador/Analysis-00.toc" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/RedesControlador/EXE-00.toc" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/RedesControlador/PKG-00.toc" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/RedesControlador/PYZ-00.pyz" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/RedesControlador/PYZ-00.toc" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/RedesControlador/RedesControlador.pkg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/RedesControlador/Tree-00.toc" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/RedesControlador/Tree-01.toc" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/RedesControlador/Tree-02.toc" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/RedesControlador/base_library.zip" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/RedesControlador/warn-RedesControlador.txt" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/RedesControlador/xref-RedesControlador.html" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/main/Analysis-00.toc" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/main/EXE-00.toc" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/main/PKG-00.toc" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/main/PYZ-00.pyz" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/main/PYZ-00.toc" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/main/Tree-00.toc" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/main/Tree-01.toc" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/main/Tree-02.toc" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/main/base_library.zip" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/main/main.pkg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/main/warn-main.txt" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/build/main/xref-main.html" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/conexion.py" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/dist/ControladorRedesInstaller.exe" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/dist/RedesControlador.exe" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/dist/instalador y .exe.zip" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/funciones del programa.xlsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/main.spec" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/unnamed.patch" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/unnamed1.patch" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/dataframe2.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/dataframe2.xlsx" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/RedesControlador.spec" beforeDir="false" afterPath="$PROJECT_DIR$/RedesControlador.spec" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/RedesControlador/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/RedesControlador/Analysis-00.toc" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/RedesControlador/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/RedesControlador/EXE-00.toc" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/RedesControlador/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/RedesControlador/PKG-00.toc" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/RedesControlador/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/build/RedesControlador/PYZ-00.pyz" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/RedesControlador/RedesControlador.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/build/RedesControlador/RedesControlador.pkg" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/RedesControlador/warn-RedesControlador.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/RedesControlador/warn-RedesControlador.txt" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/RedesControlador/xref-RedesControlador.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/RedesControlador/xref-RedesControlador.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database.db" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/dist/ControladorRedesInstaller.exe" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ControladorRedesInstaller.exe" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/dist/RedesControlador.exe" beforeDir="false" afterPath="$PROJECT_DIR$/dist/RedesControlador.exe" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/dist/dataframe2.xlsx" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/dist/instalador y .exe.zip" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/dist/vlans.xlsx" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/funciones.py" beforeDir="false" afterPath="$PROJECT_DIR$/funciones.py" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+     </list>
+@@ -59,7 +38,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="vlans-done" />
++        <entry key="$PROJECT_DIR$" value="1.0-Versión-Estable" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -95,9 +74,9 @@
+     &quot;Python.organizador.executor&quot;: &quot;Run&quot;,
+     &quot;Python.validarLista.executor&quot;: &quot;Run&quot;,
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;1.0-Versión-Estable&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;refactor-1&quot;,
+     &quot;last_opened_file_path&quot;: &quot;C:/Users/Jefferson/PycharmProjects/TG_Jefferson_Vasquez&quot;,
+-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
++    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;
+   }
+ }</component>
+   <component name="RecentsManager">
+@@ -107,6 +86,35 @@
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="C:\Users\Jefferson\PycharmProjects\TG_Jefferson_Vasquez" />
+     </key>
++  </component>
++  <component name="RunManager">
++    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
++      <module name="TG_Jefferson_Vasquez" />
++      <option name="ENV_FILES" value="" />
++      <option name="INTERPRETER_OPTIONS" value="" />
++      <option name="PARENT_ENVS" value="true" />
++      <envs>
++        <env name="PYTHONUNBUFFERED" value="1" />
++      </envs>
++      <option name="SDK_HOME" value="" />
++      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
++      <option name="IS_MODULE_SDK" value="true" />
++      <option name="ADD_CONTENT_ROOTS" value="true" />
++      <option name="ADD_SOURCE_ROOTS" value="true" />
++      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
++      <option name="PARAMETERS" value="" />
++      <option name="SHOW_COMMAND_LINE" value="false" />
++      <option name="EMULATE_TERMINAL" value="false" />
++      <option name="MODULE_MODE" value="false" />
++      <option name="REDIRECT_INPUT" value="false" />
++      <option name="INPUT_FILE" value="" />
++      <method v="2" />
++    </configuration>
++    <recent_temporary>
++      <list>
++        <item itemvalue="Python.main" />
++      </list>
++    </recent_temporary>
+   </component>
+   <component name="SharedIndexes">
+     <attachedChunks>
+@@ -348,7 +356,23 @@
+       <option name="project" value="LOCAL" />
+       <updated>1719953000099</updated>
+     </task>
+-    <option name="localTasksCounter" value="29" />
++    <task id="LOCAL-00029" summary="lector de datos">
++      <option name="closed" value="true" />
++      <created>1722872337757</created>
++      <option name="number" value="00029" />
++      <option name="presentableId" value="LOCAL-00029" />
++      <option name="project" value="LOCAL" />
++      <updated>1722872337757</updated>
++    </task>
++    <task id="LOCAL-00030" summary="lector de datos">
++      <option name="closed" value="true" />
++      <created>1722872350103</created>
++      <option name="number" value="00030" />
++      <option name="presentableId" value="LOCAL-00030" />
++      <option name="project" value="LOCAL" />
++      <updated>1722872350103</updated>
++    </task>
++    <option name="localTasksCounter" value="31" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -356,7 +380,19 @@
+       <map>
+         <entry key="MAIN">
+           <value>
+-            <State />
++            <State>
++              <option name="FILTERS">
++                <map>
++                  <entry key="branch">
++                    <value>
++                      <list>
++                        <option value="1.0-Versión-Estable" />
++                      </list>
++                    </value>
++                  </entry>
++                </map>
++              </option>
++            </State>
+           </value>
+         </entry>
+       </map>
+Index: funciones.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import sqlite3\r\n\r\nimport pandas as pd\r\nimport re\r\ndef validar_listado(listado):\r\n    validos = []\r\n    no_validos = []\r\n    conexion = sqlite3.connect(\"database.db\")\r\n    cursor = conexion.cursor()\r\n    for puerto in listado:\r\n        cursor.execute(\"select COUNT(*) FROM equipos WHERE id = ?\", (puerto,))\r\n        if (cursor.fetchone()[0]) > 0:\r\n            validos.append(puerto)\r\n        else:\r\n            no_validos.append(puerto)\r\n    conexion.close()\r\n    return validos, no_validos\r\n\r\ndef generar_rangos(listado, accion=1):\r\n    lista_switches = []\r\n    lista_interfaces = []\r\n    lista_rangos = []\r\n    lista_codigos = []\r\n\r\n    conexion = sqlite3.connect(\"database.db\")\r\n    cursor = conexion.cursor()\r\n    query = \"SELECT * FROM equipos WHERE id IN ({})\".format(','.join('?' for _ in listado))\r\n    cursor.execute(query, listado)\r\n    lista = cursor.fetchall()\r\n\r\n    df_busqueda = pd.DataFrame(lista, columns=[desc[0] for desc in cursor.description])\r\n\r\n    editables_pisos = df_busqueda[\"piso\"].unique()\r\n    editables_pisos.sort()\r\n\r\n    for piso in editables_pisos:\r\n        df_piso = df_busqueda[df_busqueda[\"piso\"] == piso]\r\n        editables_cuartos = df_piso[\"cuarto\"].unique()\r\n        editables_cuartos.sort()\r\n        for cuarto in editables_cuartos:\r\n            df_cuarto = df_piso[df_piso[\"cuarto\"] == cuarto]\r\n            editables_Switches = df_cuarto[\"switch\"].unique()\r\n            editables_Switches.sort()\r\n            for switch in editables_Switches:\r\n                df_switch = df_cuarto[df_cuarto[\"switch\"] == switch].sort_values(by=\"puerto\")\r\n                lista_codigos.append(list(df_switch[\"id\"].unique()))\r\n                editables_puertos = df_switch[\"puerto\"].unique()\r\n                editables_puertos.sort()\r\n                lista_interfaces.append(editables_puertos.tolist())\r\n                lista_switches.append(f\"Piso {piso}, Cuarto {cuarto}, switch {switch}\")\r\n                intervalos = []\r\n                inicio = editables_puertos[0]\r\n                fin = editables_puertos[0]\r\n                for i in range(1, len(editables_puertos)):\r\n                    if editables_puertos[i] == fin + 1:\r\n                        fin = editables_puertos[i]\r\n                    else:\r\n                        if inicio == fin:\r\n                            intervalos.append(str(inicio))\r\n                            intervalos.append(f\"{inicio}-{fin}\")\r\n                        else:\r\n                            pass\r\n                        inicio = editables_puertos[i]\r\n                        fin = editables_puertos[i]\r\n\r\n                if inicio == fin:\r\n                    intervalos.append(str(inicio))\r\n                else:\r\n                    intervalos.append(f\"{inicio}-{fin}\")\r\n\r\n                if len(editables_puertos) == 1:\r\n                    interface_range = \"int \"\r\n                else:\r\n                    interface_range = \"int range \"\r\n                cont = 0\r\n                for i in range(0, len(intervalos)):\r\n                    if piso == 2:\r\n                        interface = switch\r\n                    else:\r\n                        interface = 1\r\n                    interface_range += f\"g{interface}/0/{intervalos[i]}\"\r\n                    if i + 1 < len(intervalos):\r\n                        interface_range += \" , \"\r\n                    cont += 1\r\n                    if cont == 30:\r\n                        interface_range = \"int range \"\r\n                        cont = 0\r\n                if cont != 0:\r\n                    if accion != 0:\r\n                        lista_rangos.append(interface_range)\r\n    return lista_switches, lista_rangos, lista_codigos, lista_interfaces\r\n\r\ndef escribir_script(rango, cambios, vlan, puertos):\r\n    if cambios == 8:\r\n        swit = int(re.search(r'\\d+', rango).group())\r\n        script = \"\"\r\n        for interface in puertos:\r\n            script += f\"show run int g{swit}/0/{interface}\\nshow int g{swit}/0/{interface}\\nshow int g{swit}/0/{interface} status\\n\"\r\n    else:\r\n        script = \"conf t\\n\"\r\n        if cambios == 2 or cambios == 3:\r\n            script += f\"default {rango}\\n\"\r\n        script += f\"{rango}\\n\"\r\n        if cambios == 0:\r\n            script += f\"switchport access vlan {vlan}\\n\"\r\n        elif cambios == 1:\r\n            script += f\"no switchport port-security mac-address sticky\\nshutdown\\nswitchport port-security mac-address sticky\\nno shutdown\\n\"\r\n        elif cambios == 2:\r\n            script += (\"switchport mode access\\nno authentication open\\nauthentication event fail action next-method\\n\"\r\n                        f\"authentication event server dead action authorize\\nauthentication event server alive action reinitialize\\n\"\r\n                        f\"authentication host-mode multi-domain\\nauthentication order dot1x mab\\nauthentication priority dot1x mab\\n\"\r\n                        f\"authentication port-control auto\\nauthentication violation restrict\\nmab\\ndot1x pae authenticator\\n\"\r\n                        f\"dot1x timeout tx-period 10\\ndot1x timeout supp-timeout 5\\nspanning-tree portfast\\nspanning-tree bpduguard enable\\n\")\r\n        elif cambios == 3:\r\n            script += (f\"switchport mode access\\n\"\r\n                         f\"switchport port-security violation restrict\\n\"\r\n                         f\"switchport port-security mac-address sticky\\n\"\r\n                         f\"switchport port-security\\n\"\r\n                         f\"spanning-tree portfast\\n\"\r\n                         f\"spanning-tree bpduguard enable\\n\")\r\n        elif cambios == 4:\r\n            script += \"shutdown\\n\"\r\n\r\n        elif cambios == 5:\r\n            script += \"no shutdown\\n\"\r\n        elif cambios == 6:\r\n            script += \"no switchport port-security mac-address sticky\\n\"\r\n        elif cambios == 7:\r\n            script += \"switchport port-security mac-address sticky\\n\"\r\n\r\n        script += \"end\\n\"\r\n    return script\r\n\r\ndef listar_vlans():\r\n    conexion = sqlite3.connect('database.db')\r\n    cursor = conexion.cursor()\r\n    cursor.execute(\"SELECT id FROM vlans\")\r\n    lista = cursor.fetchall()\r\n    vlans_id = [id[0] for id in lista]\r\n    conexion.close()\r\n    return vlans_id\r\n\r\ndef listar_vlans_nombre():\r\n    conexion = sqlite3.connect('database.db')\r\n    cursor = conexion.cursor()\r\n    cursor.execute(\"SELECT id, nombre FROM vlans ORDER BY id\")\r\n    lista = cursor.fetchall()\r\n    vlans_id = [str(id[0]) for id in lista]\r\n    vlans_nombre = [id[1] for id in lista]\r\n    vlans_full = [\"\"]\r\n    for i in range(len(vlans_id)):\r\n        vlans_full.append(vlans_id[i] +\" \"+ vlans_nombre[i])\r\n    conexion.close()\r\n    return vlans_full\r\n\r\ndef crear_tabla_vlans(index):\r\n    conexion = sqlite3.connect('database.db')\r\n    if index == 0:\r\n        query = '''\r\n        SELECT vlans.id AS 'Id', vlans.nombre AS 'Codigo VLAN', COUNT(equipos.id) AS 'Num. Equipos' FROM vlans\r\n        LEFT JOIN equipos ON vlans.id = equipos.vlan_id\r\n        GROUP BY vlans.id, vlans.nombre; \r\n        '''\r\n        width = 245\r\n    else:\r\n        query = f\"SELECT id AS 'EQUIPO', piso, cuarto, switch, puerto from equipos WHERE equipos.vlan_id = {index}\"\r\n        width = 145\r\n    df = pd.read_sql_query(query, conexion)\r\n    conexion.close()\r\n    return df, width\r\n\r\ndef mostrar_vlan_editable(id):\r\n    conexion = sqlite3.connect('database.db')\r\n    cursor = conexion.cursor()\r\n    cursor.execute(f\"SELECT nombre, direccion, mascara from vlans WHERE id = {id}\")\r\n    data = cursor.fetchone()\r\n    if data != None:\r\n        nombre, dir, mask = list(data)\r\n    else:\r\n        nombre, dir, mask = \"\", \"\", \"\"\r\n    conexion.close()\r\n    return nombre, dir, mask\r\n\r\n\r\ndef crear_vlan(data):\r\n    #[id, nombre, dir, mask]\r\n    conexion = sqlite3.connect('database.db')\r\n    cursor = conexion.cursor()\r\n    cursor.execute(\"SELECT 1 from vlans WHERE id = ? OR nombre = ? OR direccion = ?\",\r\n                   (data[0], data[1], data[2]))\r\n    res = cursor.fetchone()\r\n    if res is None:\r\n        cursor.execute(\"insert INTO vlans(id, nombre, direccion, mascara) VALUES (?,?,?,?)\", data)\r\n        res = True\r\n    else:\r\n        res = False\r\n    conexion.commit()\r\n    conexion.close()\r\n    return res\r\n\r\ndef editar_vlan(data):\r\n    #[id, nombre, dir, mask]\r\n    conexion = sqlite3.connect('database.db')\r\n    cursor = conexion.cursor()\r\n    cursor.execute(\"SELECT 1 from vlans WHERE id = ? OR nombre = ? OR direccion = ?\",\r\n                   (data[0], data[1], data[2]))\r\n    res = cursor.fetchone()\r\n    if res is None:\r\n        cursor.execute(\"UPDATE vlans SET nombre = ?, direccion = ?, mascara = ?\",\r\n                       (data[1], data[2], data[3]))\r\n        res = True\r\n    else:\r\n        res = False\r\n    conexion.commit()\r\n    conexion.close()\r\n    return res\r\n\r\ndef eliminar_vlan(id):\r\n    conexion = sqlite3.connect('database.db')\r\n    cursor = conexion.cursor()\r\n    cursor.execute(\"DELETE from vlans WHERE id = ?\", (id,))\r\n    conexion.commit()\r\n    conexion.close()\r\n\r\n\r\ndef buscar_equipo(equipo):\r\n    conexion = sqlite3.connect('database.db')\r\n    cursor = conexion.cursor()\r\n    cursor.execute(\"SELECT * from equipos WHERE id = ?\", (equipo,))\r\n    res = cursor.fetchone()\r\n    if res is not None:\r\n        return True, list(res)\r\n    else:\r\n        patron = r'^ED-\\d{4}$'\r\n        if not re.match(patron, equipo) and equipo != '':\r\n            return True, 0\r\n        return False, []\r\n\r\n\r\ndef generar_texto_equipo(data):\r\n    #[VLAN, PORT, ISE]\r\n    texto=f\"switchport access vlan {data[0]}\\nswitchport mode access\\n\"\r\n    if data[2] == \"Activo\":\r\n        texto+=(f\"authentication event fail action next-method\\n\"\r\n                f\"authentication event server dead action authorize\\n\"\r\n                f\"authentication event server alive action reinitialize\\n\"\r\n                f\"authentication host-mode multi-domain\\n\"\r\n                f\"authentication order dot1x mab\\n\"\r\n                f\"authentication priority dot1x mab\\n\"\r\n                f\"authentication port-control auto\\n\"\r\n                f\"authentication violation restrict\\n\"\r\n                f\"mab\\n\"\r\n                f\"dot1x pae authenticator\\n\"\r\n                f\"dot1x timeout tx-period 10\\n\"\r\n                f\"dot1x timeout supp-timeout 5\\n\")\r\n    if data[1] == \"Activo\":\r\n        texto+=(f\"switchport port-security violation restrict\\n\"\r\n                f\"switchport port-security mac-address sticky\\n\"\r\n                f\"switchport port-security\\n\")\r\n    texto+=(\"spanning-tree portfast\\nspanning-tree bpduguard enable\")\r\n    return texto\r\n\r\ndef desglosar_ubicacion(puerto):\r\n    #P4C1R1S3P20\r\n    #P2C1R1STACK1SW3P32\r\n    try:\r\n        puerto = list(puerto)\r\n        codigos = []\r\n        i = 0\r\n        holder = \"\"\r\n        while i < len(puerto):\r\n            if puerto[i].isnumeric():\r\n                holder += puerto[i]\r\n            else:\r\n                if holder != \"\":\r\n                    codigos.append(int(holder))\r\n                holder = \"\"\r\n            i += 1\r\n        codigos.append(int(holder))\r\n        print(codigos)\r\n    except:\r\n        return False, 1\r\n\r\n    conexion = sqlite3.connect('database.db')\r\n    cursor = conexion.cursor()\r\n    cursor.execute(\"SELECT 1 from equipos WHERE piso = ? AND cuarto = ? AND switch = ? AND puerto = ?\",\r\n                   (codigos[0], codigos[1], codigos[-2], codigos[-1]))\r\n    res = cursor.fetchone()\r\n    conexion.close()\r\n    if res is None:\r\n        return True, [codigos[0], codigos[1], codigos[-2], codigos[-1]]\r\n    else:\r\n        return False, 0\r\n        \r\ndef editar_Equipo(nombre, codigo, list):\r\n    #print(nombre, codigo, list)\r\n    conexion = sqlite3.connect(\"database.db\")\r\n    cursor = conexion.cursor()\r\n    cursor.execute(\"UPDATE eq   uipos SET codigo = ?, piso = ?, cuarto = ?, switch = ?, puerto = ? WHERE id = ?\",\r\n                   (codigo, list[0], list[1], list[2], list[3], nombre))\r\n    conexion.commit()\r\n    conexion.close()\r\ndef agregar_equipo(nombre, codigo, list):\r\n    #print(nombre, codigo, list)\r\n    conexion = sqlite3.connect(\"database.db\")\r\n    cursor = conexion.cursor()\r\n    cursor.execute(\"INSERT into equipos(id, codigo, piso, cuarto, switch, puerto) VALUES (?, ?, ?, ?, ?, ?)\",\r\n                   (nombre, codigo, list[0], list[1], list[2], list[3]))\r\n    conexion.commit()\r\n    conexion.close()\r\n\r\ndef eliminar_pc(equipo):\r\n    conexion = sqlite3.connect(\"database.db\")\r\n    cursor = conexion.cursor()\r\n    cursor.execute(\"DELETE from equipos WHERE id = ?\", (equipo, ))\r\n    conexion.commit()\r\n    conexion.close()\r\n\r\n\r\ndef guardar_cambios(lista, cambio, vlan):\r\n    print(lista, cambio, vlan)\r\n    cambio = cambio+1\r\n    conexion = sqlite3.connect(\"database.db\")\r\n    cursor = conexion.cursor()\r\n    for equipo in lista:\r\n        if cambio == 1:\r\n            cursor.execute(\"UPDATE equipos SET vlan_id = 'vlan' WHERE id = 'equipo'\")\r\n        elif cambio == 2 or cambio == 8:\r\n            print(\"hey\")\r\n            cursor.execute(\"UPDATE equipos SET portsecurity = 'True' WHERE id = ?\", (equipo,))\r\n        elif cambio == 3:\r\n            cursor.execute(\"UPDATE equipos SET portsecurity = True WHERE id = 'equipo'\")\r\n        elif cambio == 4:\r\n            cursor.execute(\"UPDATE equipos SET portsecurity = True WHERE id = 'equipo'\")\r\n        elif cambio == 5:\r\n            cursor.execute(\"UPDATE equipos SET portsecurity = True WHERE id = 'equipo'\")\r\n        elif cambio == 7:\r\n            cursor.execute(\"UPDATE equipos SET portsecurity = True WHERE id = 'equipo'\")\r\n        #print(df.loc[df['Equipo'] == equipo])\r\n    conexion.commit()\r\n    conexion.close()
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/funciones.py b/funciones.py
+--- a/funciones.py	
++++ b/funciones.py	
+@@ -1,38 +1,36 @@
+ import sqlite3
+-
++import os
+ import pandas as pd
+ import re
++app_data_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'MiAplicacion')
++db_path = os.path.join(app_data_dir, "database.db")
+ def validar_listado(listado):
+     validos = []
+     no_validos = []
+-    conexion = sqlite3.connect("database.db")
+-    cursor = conexion.cursor()
+-    for puerto in listado:
+-        cursor.execute("select COUNT(*) FROM equipos WHERE id = ?", (puerto,))
+-        if (cursor.fetchone()[0]) > 0:
+-            validos.append(puerto)
+-        else:
+-            no_validos.append(puerto)
+-    conexion.close()
++    with sqlite3.connect(db_path) as conexion:
++        cursor = conexion.cursor()
++        for puerto in listado:
++            cursor.execute("select COUNT(*) FROM equipos WHERE id = ?", (puerto,))
++            if (cursor.fetchone()[0]) > 0:
++                validos.append(puerto)
++            else:
++                no_validos.append(puerto)
+     return validos, no_validos
+ 
++
+ def generar_rangos(listado, accion=1):
+     lista_switches = []
+     lista_interfaces = []
+     lista_rangos = []
+     lista_codigos = []
+-
+-    conexion = sqlite3.connect("database.db")
+-    cursor = conexion.cursor()
+-    query = "SELECT * FROM equipos WHERE id IN ({})".format(','.join('?' for _ in listado))
+-    cursor.execute(query, listado)
+-    lista = cursor.fetchall()
+-
++    with sqlite3.connect(db_path) as conexion:
++        cursor = conexion.cursor()
++        query = "SELECT * FROM equipos WHERE id IN ({})".format(','.join('?' for _ in listado))
++        cursor.execute(query, listado)
++        lista = cursor.fetchall()
+     df_busqueda = pd.DataFrame(lista, columns=[desc[0] for desc in cursor.description])
+-
+     editables_pisos = df_busqueda["piso"].unique()
+     editables_pisos.sort()
+-
+     for piso in editables_pisos:
+         df_piso = df_busqueda[df_busqueda["piso"] == piso]
+         editables_cuartos = df_piso["cuarto"].unique()
+@@ -49,24 +47,23 @@
+                 lista_interfaces.append(editables_puertos.tolist())
+                 lista_switches.append(f"Piso {piso}, Cuarto {cuarto}, switch {switch}")
+                 intervalos = []
+-                inicio = editables_puertos[0]
+-                fin = editables_puertos[0]
++                inicio = 0
++                cont = 1
+                 for i in range(1, len(editables_puertos)):
+-                    if editables_puertos[i] == fin + 1:
+-                        fin = editables_puertos[i]
++                    if editables_puertos[inicio]+cont == editables_puertos[i]:
++                        cont += 1
+                     else:
+-                        if inicio == fin:
+-                            intervalos.append(str(inicio))
+-                            intervalos.append(f"{inicio}-{fin}")
++                        if cont == 1:
++                            intervalos.append(str(editables_puertos[inicio]))
+                         else:
+-                            pass
+-                        inicio = editables_puertos[i]
+-                        fin = editables_puertos[i]
+-
+-                if inicio == fin:
+-                    intervalos.append(str(inicio))
++                            intervalos.append(f"{editables_puertos[inicio]}-{editables_puertos[inicio]+cont-1}")
++                        cont = 1
++                        inicio = i
++                    print(editables_puertos, intervalos, inicio, cont)
++                if cont == 1:
++                    intervalos.append(str(editables_puertos[inicio]))
+                 else:
+-                    intervalos.append(f"{inicio}-{fin}")
++                    intervalos.append(f"{editables_puertos[inicio]}-{editables_puertos[inicio] + cont - 1}")
+ 
+                 if len(editables_puertos) == 1:
+                     interface_range = "int "
+@@ -90,6 +87,7 @@
+                         lista_rangos.append(interface_range)
+     return lista_switches, lista_rangos, lista_codigos, lista_interfaces
+ 
++
+ def escribir_script(rango, cambios, vlan, puertos):
+     if cambios == 8:
+         swit = int(re.search(r'\d+', rango).group())
+@@ -106,13 +104,14 @@
+         elif cambios == 1:
+             script += f"no switchport port-security mac-address sticky\nshutdown\nswitchport port-security mac-address sticky\nno shutdown\n"
+         elif cambios == 2:
+-            script += ("switchport mode access\nno authentication open\nauthentication event fail action next-method\n"
++            script += ("switchport access vlan 998\nswitchport mode access\nno authentication open\nauthentication event fail action next-method\n"
+                         f"authentication event server dead action authorize\nauthentication event server alive action reinitialize\n"
+                         f"authentication host-mode multi-domain\nauthentication order dot1x mab\nauthentication priority dot1x mab\n"
+                         f"authentication port-control auto\nauthentication violation restrict\nmab\ndot1x pae authenticator\n"
+                         f"dot1x timeout tx-period 10\ndot1x timeout supp-timeout 5\nspanning-tree portfast\nspanning-tree bpduguard enable\n")
+         elif cambios == 3:
+-            script += (f"switchport mode access\n"
++            script += (f"switchport access vlan {vlan}\n"
++                         f"switchport mode access\n"
+                          f"switchport port-security violation restrict\n"
+                          f"switchport port-security mac-address sticky\n"
+                          f"switchport port-security\n"
+@@ -120,115 +119,116 @@
+                          f"spanning-tree bpduguard enable\n")
+         elif cambios == 4:
+             script += "shutdown\n"
+-
+         elif cambios == 5:
+             script += "no shutdown\n"
+         elif cambios == 6:
+-            script += "no switchport port-security mac-address sticky\n"
++            script += ("no switchport port-security violation restrict\nno switchport port-security mac-address sticky\n"
++                       "no switchport port-security\n")
+         elif cambios == 7:
+-            script += "switchport port-security mac-address sticky\n"
++            script += ("switchport port-security violation restrict\nswitchport port-security mac-address sticky\n"
++                       "switchport port-security\n")
+ 
+         script += "end\n"
+     return script
+ 
+ def listar_vlans():
+-    conexion = sqlite3.connect('database.db')
+-    cursor = conexion.cursor()
+-    cursor.execute("SELECT id FROM vlans")
+-    lista = cursor.fetchall()
+-    vlans_id = [id[0] for id in lista]
+-    conexion.close()
++    with sqlite3.connect(db_path) as conexion:
++        cursor = conexion.cursor()
++        cursor.execute("SELECT id FROM vlans")
++        lista = cursor.fetchall()
++        vlans_id = [id[0] for id in lista]
+     return vlans_id
+ 
++
+ def listar_vlans_nombre():
+-    conexion = sqlite3.connect('database.db')
+-    cursor = conexion.cursor()
+-    cursor.execute("SELECT id, nombre FROM vlans ORDER BY id")
+-    lista = cursor.fetchall()
+-    vlans_id = [str(id[0]) for id in lista]
+-    vlans_nombre = [id[1] for id in lista]
+-    vlans_full = [""]
+-    for i in range(len(vlans_id)):
+-        vlans_full.append(vlans_id[i] +" "+ vlans_nombre[i])
+-    conexion.close()
++    with sqlite3.connect(db_path) as conexion:
++        cursor = conexion.cursor()
++        cursor.execute("SELECT id, nombre FROM vlans ORDER BY id")
++        lista = cursor.fetchall()
++        vlans_id = [str(id[0]) for id in lista]
++        vlans_nombre = [id[1] for id in lista]
++        vlans_full = [""]
++        for i in range(len(vlans_id)):
++            vlans_full.append(vlans_id[i] +" "+ vlans_nombre[i])
+     return vlans_full
+ 
++
+ def crear_tabla_vlans(index):
+-    conexion = sqlite3.connect('database.db')
+-    if index == 0:
+-        query = '''
+-        SELECT vlans.id AS 'Id', vlans.nombre AS 'Codigo VLAN', COUNT(equipos.id) AS 'Num. Equipos' FROM vlans
+-        LEFT JOIN equipos ON vlans.id = equipos.vlan_id
+-        GROUP BY vlans.id, vlans.nombre; 
+-        '''
+-        width = 245
+-    else:
+-        query = f"SELECT id AS 'EQUIPO', piso, cuarto, switch, puerto from equipos WHERE equipos.vlan_id = {index}"
+-        width = 145
+-    df = pd.read_sql_query(query, conexion)
+-    conexion.close()
++    with sqlite3.connect(db_path) as conexion:
++        if index == 0:
++            query = '''
++            SELECT vlans.id AS 'Id', vlans.nombre AS 'Codigo VLAN', COUNT(equipos.id) AS 'Num. Equipos' FROM vlans
++            LEFT JOIN equipos ON vlans.id = equipos.vlan_id
++            GROUP BY vlans.id, vlans.nombre; 
++            '''
++            width = 245
++        else:
++            query = f"SELECT id AS 'EQUIPO', piso, cuarto, switch, puerto from equipos WHERE equipos.vlan_id = {index}"
++            width = 145
++        df = pd.read_sql_query(query, conexion)
+     return df, width
+ 
++
+ def mostrar_vlan_editable(id):
+-    conexion = sqlite3.connect('database.db')
+-    cursor = conexion.cursor()
+-    cursor.execute(f"SELECT nombre, direccion, mascara from vlans WHERE id = {id}")
+-    data = cursor.fetchone()
+-    if data != None:
+-        nombre, dir, mask = list(data)
+-    else:
+-        nombre, dir, mask = "", "", ""
+-    conexion.close()
++    with sqlite3.connect(db_path) as conexion:
++        cursor = conexion.cursor()
++        cursor.execute(f"SELECT nombre, direccion, mascara from vlans WHERE id = {id}")
++        data = cursor.fetchone()
++        if data is not None:
++            nombre, dir, mask = list(data)
++        else:
++            nombre, dir, mask = "", "", ""
+     return nombre, dir, mask
+ 
+ 
+ def crear_vlan(data):
+     #[id, nombre, dir, mask]
+-    conexion = sqlite3.connect('database.db')
+-    cursor = conexion.cursor()
+-    cursor.execute("SELECT 1 from vlans WHERE id = ? OR nombre = ? OR direccion = ?",
+-                   (data[0], data[1], data[2]))
+-    res = cursor.fetchone()
+-    if res is None:
+-        cursor.execute("insert INTO vlans(id, nombre, direccion, mascara) VALUES (?,?,?,?)", data)
+-        res = True
+-    else:
+-        res = False
+-    conexion.commit()
+-    conexion.close()
++    with sqlite3.connect(db_path) as conexion:
++        cursor = conexion.cursor()
++        data[1] = data[1].replace(" ", "_")
++        cursor.execute("SELECT 1 from vlans WHERE id = ? OR nombre = ? OR direccion = ?",
++                       (data[0], data[1], data[2]))
++        res = cursor.fetchone()
++        if res is None:
++            cursor.execute("insert INTO vlans(id, nombre, direccion, mascara) VALUES (?,?,?,?)", data)
++            res = True
++        else:
++            res = False
++        conexion.commit()
+     return res
+ 
+ def editar_vlan(data):
+     #[id, nombre, dir, mask]
+-    conexion = sqlite3.connect('database.db')
+-    cursor = conexion.cursor()
+-    cursor.execute("SELECT 1 from vlans WHERE id = ? OR nombre = ? OR direccion = ?",
+-                   (data[0], data[1], data[2]))
+-    res = cursor.fetchone()
+-    if res is None:
+-        cursor.execute("UPDATE vlans SET nombre = ?, direccion = ?, mascara = ?",
+-                       (data[1], data[2], data[3]))
+-        res = True
+-    else:
+-        res = False
+-    conexion.commit()
+-    conexion.close()
++    with sqlite3.connect(db_path) as conexion:
++        cursor = conexion.cursor()
++        cursor.execute("SELECT 1 from vlans WHERE id = ? OR nombre = ? OR direccion = ?",
++                       (data[0], data[1], data[2]))
++        res = cursor.fetchone()
++        if res is None:
++            cursor.execute("UPDATE vlans SET nombre = ?, direccion = ?, mascara = ?",
++                           (data[1], data[2], data[3]))
++            res = True
++        else:
++            res = False
++        conexion.commit()
+     return res
+ 
+ def eliminar_vlan(id):
+-    conexion = sqlite3.connect('database.db')
+-    cursor = conexion.cursor()
+-    cursor.execute("DELETE from vlans WHERE id = ?", (id,))
+-    conexion.commit()
+-    conexion.close()
++    with sqlite3.connect(db_path) as conexion:
++        cursor = conexion.cursor()
++        cursor.execute("DELETE from vlans WHERE id = ?", (id,))
++        conexion.commit()
+ 
+ 
+ def buscar_equipo(equipo):
+-    conexion = sqlite3.connect('database.db')
+-    cursor = conexion.cursor()
+-    cursor.execute("SELECT * from equipos WHERE id = ?", (equipo,))
+-    res = cursor.fetchone()
++    print(equipo)
++    with sqlite3.connect(db_path) as conexion:
++        cursor = conexion.cursor()
++        cursor.execute("SELECT * from equipos WHERE id = ?", (equipo,))
++        res = cursor.fetchone()
++
+     if res is not None:
++        print(list(res))
+         return True, list(res)
+     else:
+         patron = r'^ED-\d{4}$'
+@@ -240,7 +240,7 @@
+ def generar_texto_equipo(data):
+     #[VLAN, PORT, ISE]
+     texto=f"switchport access vlan {data[0]}\nswitchport mode access\n"
+-    if data[2] == "Activo":
++    if data[2] == 1:
+         texto+=(f"authentication event fail action next-method\n"
+                 f"authentication event server dead action authorize\n"
+                 f"authentication event server alive action reinitialize\n"
+@@ -253,7 +253,7 @@
+                 f"dot1x pae authenticator\n"
+                 f"dot1x timeout tx-period 10\n"
+                 f"dot1x timeout supp-timeout 5\n")
+-    if data[1] == "Activo":
++    if data[1] == 1:
+         texto+=(f"switchport port-security violation restrict\n"
+                 f"switchport port-security mac-address sticky\n"
+                 f"switchport port-security\n")
+@@ -279,14 +279,17 @@
+         codigos.append(int(holder))
+         print(codigos)
+     except:
++
++
++
++
+         return False, 1
+ 
+-    conexion = sqlite3.connect('database.db')
+-    cursor = conexion.cursor()
+-    cursor.execute("SELECT 1 from equipos WHERE piso = ? AND cuarto = ? AND switch = ? AND puerto = ?",
+-                   (codigos[0], codigos[1], codigos[-2], codigos[-1]))
+-    res = cursor.fetchone()
+-    conexion.close()
++    with sqlite3.connect(db_path) as conexion:
++        cursor = conexion.cursor()
++        cursor.execute("SELECT 1 from equipos WHERE piso = ? AND cuarto = ? AND switch = ? AND puerto = ?",
++                       (codigos[0], codigos[1], codigos[-2], codigos[-1]))
++        res = cursor.fetchone()
+     if res is None:
+         return True, [codigos[0], codigos[1], codigos[-2], codigos[-1]]
+     else:
+@@ -294,48 +297,46 @@
+         
+ def editar_Equipo(nombre, codigo, list):
+     #print(nombre, codigo, list)
+-    conexion = sqlite3.connect("database.db")
+-    cursor = conexion.cursor()
+-    cursor.execute("UPDATE eq   uipos SET codigo = ?, piso = ?, cuarto = ?, switch = ?, puerto = ? WHERE id = ?",
+-                   (codigo, list[0], list[1], list[2], list[3], nombre))
+-    conexion.commit()
+-    conexion.close()
++    with sqlite3.connect(db_path) as conexion:
++        cursor = conexion.cursor()
++        cursor.execute("UPDATE equipos SET codigo = ?, piso = ?, cuarto = ?, switch = ?, puerto = ? WHERE id = ?",
++                       (codigo, list[0], list[1], list[2], list[3], nombre))
++        conexion.commit()
++
++
+ def agregar_equipo(nombre, codigo, list):
+     #print(nombre, codigo, list)
+-    conexion = sqlite3.connect("database.db")
+-    cursor = conexion.cursor()
+-    cursor.execute("INSERT into equipos(id, codigo, piso, cuarto, switch, puerto) VALUES (?, ?, ?, ?, ?, ?)",
+-                   (nombre, codigo, list[0], list[1], list[2], list[3]))
+-    conexion.commit()
+-    conexion.close()
+-
++    with sqlite3.connect(db_path) as conexion:
++        cursor = conexion.cursor()
++        cursor.execute("INSERT into equipos(id, codigo, piso, cuarto, switch, puerto) VALUES (?, ?, ?, ?, ?, ?)",
++                       (nombre, codigo, list[0], list[1], list[2], list[3]))
++        conexion.commit()
+ def eliminar_pc(equipo):
+-    conexion = sqlite3.connect("database.db")
+-    cursor = conexion.cursor()
+-    cursor.execute("DELETE from equipos WHERE id = ?", (equipo, ))
+-    conexion.commit()
+-    conexion.close()
++    with sqlite3.connect(db_path) as conexion:
++        cursor = conexion.cursor()
++        cursor.execute("DELETE from equipos WHERE id = ?", (equipo, ))
++        conexion.commit()
+ 
+ 
+ def guardar_cambios(lista, cambio, vlan):
+     print(lista, cambio, vlan)
+     cambio = cambio+1
+-    conexion = sqlite3.connect("database.db")
+-    cursor = conexion.cursor()
+-    for equipo in lista:
+-        if cambio == 1:
+-            cursor.execute("UPDATE equipos SET vlan_id = 'vlan' WHERE id = 'equipo'")
+-        elif cambio == 2 or cambio == 8:
+-            print("hey")
+-            cursor.execute("UPDATE equipos SET portsecurity = 'True' WHERE id = ?", (equipo,))
+-        elif cambio == 3:
+-            cursor.execute("UPDATE equipos SET portsecurity = True WHERE id = 'equipo'")
+-        elif cambio == 4:
+-            cursor.execute("UPDATE equipos SET portsecurity = True WHERE id = 'equipo'")
+-        elif cambio == 5:
+-            cursor.execute("UPDATE equipos SET portsecurity = True WHERE id = 'equipo'")
+-        elif cambio == 7:
+-            cursor.execute("UPDATE equipos SET portsecurity = True WHERE id = 'equipo'")
+-        #print(df.loc[df['Equipo'] == equipo])
+-    conexion.commit()
+-    conexion.close()
+\ No newline at end of file
++    print(cambio)   
++    with sqlite3.connect(db_path) as conexion:
++        cursor = conexion.cursor()
++        for equipo in lista:
++            if cambio == 1:
++                print(equipo, cambio)
++                cursor.execute("UPDATE equipos SET vlan_id = ? WHERE id = ?", (vlan, equipo))
++            elif cambio == 2 or cambio == 8:
++                cursor.execute("UPDATE equipos SET portsecurity = True WHERE id = ?", (equipo,))
++            elif cambio == 3:
++                cursor.execute("UPDATE equipos SET portsecurity = ?, vlan_id = 998, ise = ? WHERE id = ?",
++                               (False, True, equipo))
++            elif cambio == 4:
++                cursor.execute("UPDATE equipos SET portsecurity = ?, vlan_id = ?, ise = ? WHERE id = ?",
++                               (True, vlan, False, equipo))
++            elif cambio == 7:
++                cursor.execute("UPDATE equipos SET portsecurity = ? WHERE id = ?", (False, equipo))
++        conexion.commit()
++
+Index: main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import tkinter as tk\r\nfrom tkinter import ttk\r\nfrom tkinter import messagebox\r\nimport funciones as fn\r\n\r\n\r\nclass App(tk.Tk):\r\n    def __init__(self):\r\n        super().__init__()\r\n\r\n        self.title(\"Controlador de redes\")\r\n        # Crear un Notebook (pestañas)\r\n        self.style = ttk.Style(self)\r\n        self.style.theme_create('custom_theme', parent='alt', settings={\r\n            'TNotebook': {\r\n                'configure': {\r\n                    'tabmargins': [2, 5, 2, 0],  # márgenes del notebook\r\n                    'background': '#E4E7F3',  # Fondo del Notebook\r\n                }\r\n            },\r\n            'TNotebook.Tab': {\r\n                'configure': {\r\n                    'padding': [10, 5],  # padding de cada pestaña\r\n                    'background': '#0BBBEF',  # color de fondo de las pestañas\r\n                    'foreground': '#001A7B',  # color del texto de las pestañas\r\n                    'font': ('Arial', 10, 'bold'),  # fuente del texto\r\n                    'borderwidth': 1,  # ancho del borde\r\n                    'relief': 'raised'  # estilo del borde\r\n                },\r\n                'map': {\r\n                    'background': [('selected', '#001A7B'), ('active', '#D2D600')],\r\n                    'foreground': [('selected', '#FFFFFF'), ('active', '#FFFFFF')],\r\n                    'expand': [('selected', [1, 1, 1, 0])]  # expansión de la pestaña seleccionada\r\n                }\r\n            },\r\n            'TFrame': {\r\n                'configure': {\r\n                    'background': '#001A7B',  # Fondo de los frames\r\n                }\r\n            },\r\n            'TLabel': {\r\n                'configure': {\r\n                    'background': '#E4E7F3',  # Fondo de los labels\r\n                    'foreground': '#001A7B',  # Color del texto de los labels\r\n                    'font': ('Arial', 12, 'bold'),\r\n                }\r\n            },\r\n            'TButton': {\r\n                'configure': {\r\n                    'background': '#8FB738',  # Fondo de los botones\r\n                    'foreground': '#FFFFFF',  # Color del texto de los botones\r\n                    'font': ('Arial', 12, 'bold'),  # Fuente del texto de los botones\r\n                    'borderwidth': 1,\r\n                    'relief': 'raised',\r\n                    'anchor': 'center'\r\n                },\r\n                'map': {\r\n                    'background': [('active', '#D2D600')],\r\n                    'foreground': [('active', '#001A7B')]\r\n                }\r\n            },\r\n            'TEntry': {\r\n                'configure': {\r\n                    'background': '#FFFFFF',  # Fondo de las entradas\r\n                    'foreground': '#001A7B',  # Color del texto de las entradas\r\n                }\r\n            },\r\n            'Treeview': {\r\n                'configure': {\r\n                    'font': ('Helvetica', 10),  # Fuente del texto de las celdas del Treeview\r\n                    'background': '#E4E7F3',  # Fondo del Treeview\r\n                    'foreground': '#001A7B',  # Color del texto de las celdas\r\n                    'rowheight': 25,  # Altura de las filas\r\n                    'fieldbackground': '#E4E7F3',  # Fondo de los campos\r\n                },\r\n                'map': {\r\n                    'background': [('selected', '#001A7B')],\r\n                    'foreground': [('selected', '#FFFFFF')],\r\n                }\r\n            },\r\n            'Treeview.Heading': {\r\n                'configure': {\r\n                    'font': ('Helvetica', 14, 'bold'),  # Fuente del texto de los encabezados del Treeview\r\n                    'background': '#0BBBEF',  # Fondo de los encabezados\r\n                    'foreground': '#001A7B',  # Color del texto de los encabezados\r\n                }\r\n            },\r\n        })\r\n        self.style.theme_use('custom_theme')\r\n        self.notebook = ttk.Notebook(self)\r\n        self.notebook.pack(fill='both', expand=True)\r\n        self.geometry(\"1000x500\")\r\n        self.resizable(False, False)\r\n\r\n        # Variables para almacenar datos\r\n        self.lista_equipos = []\r\n        self.codigo_cambio = 0\r\n        self.lista_switches = []\r\n        self.lista_interfaces = []\r\n        self.vlan = 0\r\n        self.vlan2 = 0\r\n        self.opt_vlan = 0\r\n        self.logo = tk.PhotoImage(file=\"imagen.png\")\r\n        self.logo2 = tk.PhotoImage(file=\"EMTELCOOO.png\")\r\n        # Crear las pestañas\r\n        self.crearTab1()\r\n        self.create_tab2()\r\n        self.create_tab3()\r\n\r\n        self.rowconfigure(0, weight=1)\r\n        self.rowconfigure(1, weight=1)\r\n        self.rowconfigure(2, weight=1)\r\n\r\n        # Establecer el ícono como la foto de la ventana principal\r\n        self.iconphoto(True, self.logo)\r\n\r\n    def crearTab1(self):\r\n        tab1 = ttk.Frame(self.notebook)\r\n        self.notebook.add(tab1, text='Configurar')\r\n\r\n        #Columna 1\r\n\r\n        tab1_col1 = ttk.Frame(tab1)\r\n        tab1_col1.grid(row=0, column=0, sticky=\"nsew\", padx=3, pady=6)\r\n\r\n        self.buscar_tab1_txt = tk.Text(tab1_col1, width=10, wrap=\"word\")\r\n        self.buscar_tab1_txt.grid(row=0, column=0, sticky=\"nsew\")\r\n\r\n        buscar_tab1_scroll = tk.Scrollbar(tab1_col1, orient=\"vertical\", command=self.buscar_tab1_txt.yview)\r\n        buscar_tab1_scroll.grid(row=0, column=1, sticky=\"ns\")\r\n\r\n        self.buscar_tab1_txt.config(yscrollcommand=buscar_tab1_scroll.set)\r\n\r\n        buscar_tab1_btn = ttk.Button(tab1_col1, text=\"Buscar\", command=self.accion_buscar_tab1_btn)\r\n        buscar_tab1_btn.grid(row=1, column=0, columnspan=2, sticky=\"ew\")\r\n\r\n        tab1.grid_rowconfigure(0, weight=1)\r\n        tab1_col1.grid_rowconfigure(0, weight=1)\r\n\r\n        #Columna 2\r\n\r\n        tab1_col2 = ttk.Frame(tab1, width=60)\r\n        tab1_col2.grid(row=0, column=1, sticky=\"nsew\", padx=3, pady=6)\r\n\r\n        informacion_tab1_frame = ttk.Frame(tab1_col2)\r\n        informacion_tab1_frame.grid(row=0, column=0, padx=3, pady=1, sticky=\"nsew\")\r\n\r\n        label_description = tk.Label(informacion_tab1_frame, text=f\"Total Equipos\\nTotal Switches\\n No encontrados\",\r\n                                     font=(\"Arial\", 16), relief=tk.GROOVE)\r\n        label_description.grid(row=0, column=0, padx=(3, 0), pady=1, sticky=\"ns\")\r\n\r\n        self.informacion_tab1_label = tk.Label(informacion_tab1_frame, text=\"__\\n\"\"__\\n\"\"__\", font=(\"Arial\", 16),\r\n                                               width=3, relief=tk.GROOVE)\r\n        self.informacion_tab1_label.grid(row=0, column=1, padx=(0, 3), pady=1, sticky=\"nsew\")\r\n\r\n        botones_tab1_frame = ttk.Frame(tab1_col2, borderwidth=1, relief=\"solid\")\r\n        botones_tab1_frame.grid(row=1, column=0, padx=3, pady=7, sticky=\"ew\")\r\n\r\n        txt_ops = [\"Cambiar VLAN\", \"Actualizar PortSecurity\", \"Aplicar Cisco ISE\", \"Aplicar vlan unica\",\r\n                   \"Desactivar puerto\", \"Encender puerto\", \"Desactivar Sticky\", \"Encender Sticky\", \"ver status\"]\r\n\r\n        for i in range(9):\r\n            cambios_tab1_btn = ttk.Button(botones_tab1_frame, text=txt_ops[i],\r\n                                          command=lambda opt=i: self.accion_cambios_tab1_btn(opt))\r\n            if i == 0:\r\n                cambios_tab1_btn.grid(row=i, column=0, padx=3, pady=3, sticky=\"ew\")\r\n                self.vlans_tab1_combobox = ttk.Combobox(botones_tab1_frame, values=fn.listar_vlans(), width=4,\r\n                                                        state='readonly',\r\n                                                        font=(\"Arial\", 16))\r\n                self.vlans_tab1_combobox.grid(row=i, column=1, padx=3, pady=3)\r\n\r\n            else:\r\n                cambios_tab1_btn.grid(row=i, column=0, padx=3, pady=3, sticky=\"nsew\", columnspan=2)\r\n\r\n        imagen_tab1_frame = ttk.Frame(tab1_col2)\r\n        imagen_tab1_frame.grid(row=2, column=0, sticky=\"ns\")\r\n\r\n        imagen_tab1_label = ttk.Label(imagen_tab1_frame, image=self.logo2)\r\n        imagen_tab1_label.pack(pady=(0, 0), expand=True, fill=\"both\")\r\n\r\n        #Columna 3\r\n\r\n        tab1_col3 = ttk.Frame(tab1)\r\n        tab1_col3.grid(row=0, column=2, sticky=\"nsew\", padx=3, pady=6)\r\n\r\n        # Frame para las cajas de texto generadas y el scrollbar\r\n        self.canvas_tab1_frame = ttk.Frame(tab1_col3)\r\n        self.canvas_tab1_frame.grid(row=0, column=0, sticky=\"nsew\")\r\n        self.tab1_canvas = tk.Canvas(self.canvas_tab1_frame)\r\n        self.tab1_canvas.config(bg=\"#E4E7F3\")\r\n        self.canvas_tab1_scroll = ttk.Scrollbar(self.canvas_tab1_frame, orient=\"vertical\",\r\n                                                command=self.tab1_canvas.yview)\r\n        self.canvas_scroll_frame = ttk.Frame(self.tab1_canvas)\r\n\r\n        self.canvas_scroll_frame.bind(\"<Configure>\",\r\n                                      lambda e: self.tab1_canvas.configure(scrollregion=self.tab1_canvas.bbox(\"all\")))\r\n\r\n        self.tab1_canvas.create_window((0, 0), window=self.canvas_scroll_frame, anchor=\"nw\")\r\n        self.tab1_canvas.configure(yscrollcommand=self.canvas_tab1_scroll.set)\r\n\r\n        self.tab1_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)\r\n        self.canvas_tab1_scroll.pack(side=tk.RIGHT, fill=tk.Y)\r\n\r\n        tab1.grid_columnconfigure(2, weight=1)\r\n        tab1_col3.grid_rowconfigure(0, weight=1)\r\n        tab1_col3.grid_columnconfigure(0, weight=1)\r\n\r\n    def create_tab2(self):\r\n        tab2 = ttk.Frame(self.notebook)\r\n        self.notebook.add(tab2, text='VLANs')\r\n\r\n        tab2_col1 = ttk.Frame(tab2)\r\n        tab2_col1.grid(row=0, column=0, sticky=\"nsew\", padx=3, pady=6)\r\n        tab2_col1.grid_rowconfigure(0, minsize=180)\r\n\r\n        frame_control = ttk.Frame(tab2_col1)\r\n        frame_control.grid(row=0, column=0, sticky=\"nsew\", padx=1, pady=1)\r\n\r\n        self.vlans_tab2_combobox = ttk.Combobox(frame_control, values=fn.listar_vlans_nombre(), state='readonly',\r\n                                                font=(\"Arial\", 10), width=28)\r\n        self.vlans_tab2_combobox.grid(row=0, column=0, padx=10, pady=3, sticky=\"ew\")\r\n\r\n        frame_formulario = ttk.Frame(frame_control)\r\n        frame_formulario.grid(row=2, column=0, padx=(3, 0), pady=5, sticky=\"ns\")\r\n\r\n        texlabel = ['Id VLAN', 'Descripcion', '# de equipos']\r\n        info_label_txt = (f\"--------------------------------------------------\\nCodigo VLAN:\\n\\nNombre:\\n\\nDirección:\"\r\n                          f\"\\n\\nMáscara:\\n\"\"--------------------------------------------------\")\r\n\r\n        self.info_vlan_label = tk.Label(frame_formulario, text=info_label_txt, font=(\"Arial\", 10), relief=tk.GROOVE)\r\n        self.info_vlan_label.grid(row=0, column=0, padx=(3, 0), pady=1)\r\n\r\n        txt_vlans = [\"Buscar\", \"Editar vlan\", \"Eliminar vlan\", \"Añadir vlan\"]\r\n        for i in range(4):\r\n            cambios_tab2_btn = ttk.Button(frame_control, text=txt_vlans[i],\r\n                                          command=lambda opt=i: self.accion_cambios_tab2_btn(opt))\r\n            if i == 0:\r\n                cambios_tab2_btn.grid(row=i + 1, column=0, padx=10, pady=5, sticky=\"nsew\")\r\n            else:\r\n                cambios_tab2_btn.grid(row=i + 2, column=0, padx=10, pady=5, sticky=\"nsew\")\r\n\r\n        imagen_tab2_frame = ttk.Frame(tab2_col1)\r\n        imagen_tab2_frame.grid(row=1, column=0, sticky=\"ew\", padx=1, pady=10)\r\n\r\n        imagen_tab2_label = tk.Label(imagen_tab2_frame, image=self.logo2)\r\n        imagen_tab2_label.grid(row=0, column=0, padx=(25, 0))\r\n\r\n        self.tab2_col2 = ttk.Frame(tab2)\r\n        self.tab2_col2.grid(row=0, column=1, sticky=\"nsew\", padx=3, pady=6)\r\n        self.generar_tabla_vlans()\r\n\r\n    def create_tab3(self):\r\n        tab3 = ttk.Frame(self.notebook)\r\n        self.notebook.add(tab3, text='Equipos')\r\n        tab3_col1 = ttk.Frame(tab3)\r\n        tab3_col1.grid(row=0, column=0, sticky=\"nsew\", padx=3, pady=6)\r\n        tab3_col1.grid_rowconfigure(0, minsize=180)\r\n        frame_control = ttk.Frame(tab3_col1)\r\n        frame_control.grid(row=0, column=0, sticky=\"nsew\", padx=1, pady=1)\r\n        self.texto_equipo = ttk.Entry(frame_control, font=(\"Arial\", 10), width=30)\r\n        self.texto_equipo.grid(row=0, column=0, padx=10, pady=3, sticky=\"ew\")\r\n        buscar_vlan_tab2_btn = ttk.Button(frame_control, text=\"Buscar\", command=self.accion_f3_boton1)\r\n        buscar_vlan_tab2_btn.grid(row=1, column=0, padx=10, pady=3, sticky=\"ew\")\r\n\r\n        frame_formulario = ttk.Frame(frame_control)\r\n        frame_formulario.grid(row=2, column=0, padx=(3, 0), pady=5, sticky=\"ns\")\r\n\r\n        texlabel = ['Id VLAN', 'Descripcion', '# de equipos']\r\n        lbltext = (f\"--------------------------------------------------\\nHostname:\\n\\nCodigo puerto:\\n\\nVLAN:\\n\\n\"\r\n                   f\"Portsecurity:\\n\\nISE:\\n--------------------------------------------------\")\r\n\r\n        self.label_equipo = tk.Label(frame_formulario, text=lbltext, font=(\"Arial\", 10), relief=tk.GROOVE)\r\n        self.label_equipo.grid(row=0, column=0, padx=(3, 0), pady=1)\r\n\r\n        boton_edit_ed = ttk.Button(frame_control, text=\"Editar Puerto\", command=self.accion_f3_boton2)\r\n        boton_edit_ed.grid(row=3, column=0, padx=10, pady=5, sticky=\"nsew\")\r\n\r\n        boton_delete_ed = ttk.Button(frame_control, text=\"Eliminar Equipo\", command=self.accion_f3_boton3)\r\n        boton_delete_ed.grid(row=4, column=0, padx=10, pady=5, sticky=\"nsew\")\r\n\r\n        boton_add_ed = ttk.Button(frame_control, text=\"Añadir Equipo\", command=self.accion_f3_boton4)\r\n        boton_add_ed.grid(row=5, column=0, sticky=\"nsew\", padx=10, pady=5)\r\n\r\n        imagen_tab3_frame = ttk.Frame(tab3_col1)\r\n        imagen_tab3_frame.grid(row=1, column=0, sticky=\"ew\", padx=1, pady=10)\r\n        imagen_tab3_label = tk.Label(imagen_tab3_frame, image=self.logo2)\r\n        imagen_tab3_label.grid(row=0, column=0, padx=(25, 0))\r\n\r\n        self.frame_equipo = ttk.Frame(tab3)\r\n        self.frame_equipo.grid(row=0, column=1, sticky=\"nsew\", padx=3, pady=6)\r\n        ubi_txt = \"PISO __ CUARTO __ SWITCH __ PUERTO __\"\r\n        self.ubicacion_equipo = tk.Label(self.frame_equipo, text=ubi_txt, bg='#E4E7F3', fg='#000000',\r\n                                         font=(\"Neuer Weltschmerz\", 12))\r\n        self.ubicacion_equipo.grid(row=0, column=0, pady=(10, 3), sticky=\"w\")\r\n\r\n        self.running_conf_equipo = tk.Text(self.frame_equipo, wrap=tk.WORD, width=80, bg='#E4E7F3', fg='#000000',\r\n                                           insertbackground='#2D2D2D', font=(\"Neuer Weltschmerz\", 13))\r\n\r\n        self.running_conf_equipo.insert(tk.END, \"\")\r\n        self.running_conf_equipo.configure(state='disabled')\r\n        self.running_conf_equipo.grid(row=1, column=0, sticky=\"ew\", pady=3)\r\n\r\n    def accion_buscar_tab1_btn(self):\r\n        texto = self.buscar_tab1_txt.get(\"1.0\", tk.END).strip()\r\n        if texto:\r\n            lineas_texto = texto.split('\\n')\r\n            lineas_texto = list(set(lineas_texto))\r\n            self.var1, self.var2 = fn.validar_listado(lineas_texto)\r\n            self.actualizar_buscar_tab1_txt()\r\n            self.generate_textboxes()\r\n            self.informacion_tab1_label.config(text=f\"{len(self.var1)}\\n{len(self.lista_switches)}\\n{len(self.var2)}\")\r\n        else:\r\n            messagebox.showwarning(\"Entrada vacía\", \"Por favor, ingrese algún texto antes de registrar.\")\r\n\r\n    def actualizar_buscar_tab1_txt(self):\r\n        #Actualiza la caja de texto con los equipos no encontrados y divide por switches a los encontrados\r\n        self.codigo_cambio = 8\r\n        no_encontrados = \"\"\r\n        for elemento in self.var2:\r\n            no_encontrados += f\"{elemento}\\n\"\r\n        self.lista_switches, self.lista_rangos, self.lista_equipos, self.lista_interfaces = fn.generar_rangos(self.var1)\r\n        self.buscar_tab1_txt.delete('1.0', tk.END)\r\n        self.buscar_tab1_txt.insert(tk.END, no_encontrados)\r\n\r\n    def accion_cambios_tab1_btn(self, opt):\r\n        self.codigo_cambio = opt\r\n        if opt == 0 and self.vlans_tab1_combobox.get() == \"\":\r\n            return\r\n        else:\r\n            self.vlan = int(self.vlans_tab1_combobox.get())\r\n            self.generate_textboxes()\r\n\r\n    def accion_cambios_tab2_btn(self, opt):\r\n        vlan = self.vlans_tab2_combobox.get().split(' ')[0]\r\n        if vlan == \"\":\r\n            self.vlan2 = 0\r\n        else:\r\n            self.vlan2 = int(vlan)\r\n        if opt == 0:\r\n            self.generar_tabla_vlans(self.vlan2)\r\n            print(\"buscar\")\r\n        elif opt == 1:\r\n            if self.vlan2 == 0:\r\n                messagebox.showwarning(\"Alerta\", \"No has seleccionado una VLAN a editar\")\r\n            else:\r\n                self.abrir_formulario(self.vlan2)\r\n        elif opt == 2:\r\n            if self.vlan2 == 0:\r\n                messagebox.showwarning(\"Alerta\", \"No has seleccionado una VLAN para eliminar\")\r\n            else:\r\n                self.confirmar_eliminar()\r\n        elif opt == 3:\r\n            print(\"añadir\")\r\n            self.abrir_formulario(0)\r\n        self.actualizar_info_vlan()\r\n        self.generar_tabla_vlans(self.vlan2)\r\n\r\n    #editar vlan\r\n    def accion_f2_boton2(self):\r\n        vlan = self.vlans_tab2_combobox.get().split(' ')[0]\r\n        if vlan == \"\":\r\n            self.vlan2 = 0\r\n            messagebox.showwarning(\"Alerta\", \"No has seleccionado una VLAN a editar\")\r\n        else:\r\n            self.vlan2 = int(vlan)\r\n            self.abrir_formulario(self.vlan2)\r\n\r\n    def accion_f2_boton4(self):\r\n        self.vlan2 = 0\r\n        self.abrir_formulario(self.vlan2)\r\n\r\n    def accion_f3_boton1(self):\r\n        control, info = fn.buscar_equipo(self.texto_equipo.get())\r\n        #print(control, info)\r\n        if (control and info == 0) or not control:\r\n            if self.texto_equipo.get() != '':\r\n                messagebox.showwarning(\"Alerta\", \"No existe ese equipo\")\r\n            self.label_equipo.config(\r\n                text=f\"--------------------------------------------------\\nHostname:\\n\\n\"\r\n                     f\"Codigo puerto:\\n\\nVLAN:\\n\\nPortsecurity:\\n\\nISE:\\n--------------------------------------------------\")\r\n            self.ubicacion_equipo.config(text=\"PISO __ CUARTO __ SWITCH __ PUERTO __\")\r\n            self.running_conf_equipo.configure(state='normal')\r\n            self.running_conf_equipo.delete(\"1.0\", tk.END)\r\n            self.running_conf_equipo.configure(state='disabled')\r\n        elif control and info != 0:\r\n            self.label_equipo.config(\r\n                text=f\"--------------------------------------------------\\nHostname:{info[0]}\\n\\n\"\r\n                     f\"Codigo puerto:{info[1]}\\n\\nVLAN:{info[-3]}\\n\\nPortsecurity:{info[-2]}\\n\\nISE:{info[-1]}\\n--------------------------------------------------\")\r\n            self.ubicacion_equipo.config(text=f\"PISO {info[2]} CUARTO {info[3]} SWITCH {info[4]} PUERTO {info[5]}\")\r\n            texto = fn.generar_texto_equipo([info[-3], info[-2], info[-1]])\r\n            self.running_conf_equipo.configure(state='normal')\r\n            self.running_conf_equipo.delete(\"1.0\", tk.END)\r\n            self.running_conf_equipo.insert(\"1.0\", texto)\r\n            self.running_conf_equipo.configure(state='disabled')\r\n\r\n    def accion_f3_boton2(self):\r\n\r\n        control, info = fn.buscar_equipo(self.texto_equipo.get())\r\n        if not control:\r\n            messagebox.showwarning(\"Alerta\", \"No existe ese equipo\")\r\n\r\n        else:\r\n            self.abrir_formulario2(self.texto_equipo.get(), info)\r\n            #print(info)\r\n\r\n    def accion_f3_boton3(self):\r\n        control, info = fn.buscar_equipo(self.texto_equipo.get())\r\n        if control and info != 0:\r\n            self.confirmar_eliminar_equipo()\r\n        else:\r\n            messagebox.showwarning(\"Alerta\", \"No existe ese equipo\")\r\n\r\n    def confirmar_eliminar_equipo(self):\r\n        self.ventana_eliminar = tk.Toplevel(self.notebook)\r\n        # Crear etiquetas y campos de entrada\r\n        ttk.Label(self.ventana_eliminar, text=f\"Estás seguro de eliminar el equipo\"\r\n                                              f\" {self.texto_equipo.get()}?\").grid(row=0, column=0, padx=10, pady=5,\r\n                                                                                   sticky=\"ew\")\r\n        btn_confirmar = ttk.Button(self.ventana_eliminar, text=\" Eliminar \", command=self.eliminar_equipo)\r\n        btn_confirmar.grid(row=1, column=0, padx=5, pady=5)\r\n\r\n        screen_width = self.ventana_eliminar.winfo_screenwidth()\r\n        screen_height = self.ventana_eliminar.winfo_screenheight()\r\n        x = (screen_width // 2) - (180)\r\n        y = (screen_height // 2) - (37)\r\n        self.ventana_eliminar.geometry(f\"{306}x{75}+{x}+{y}\")\r\n        self.ventana_eliminar.transient(self.notebook)\r\n        self.ventana_eliminar.grab_set()\r\n        self.ventana_eliminar.wait_window()\r\n\r\n    def eliminar_equipo(self):\r\n\r\n        fn.eliminar_pc(self.texto_equipo.get())\r\n        messagebox.showinfo(\"Cambio realizado\", f\"Se eliminó el equipo {self.texto_equipo.get()}\")\r\n        self.ventana_eliminar.destroy()\r\n        self.texto_equipo.delete(0, tk.END)\r\n        self.texto_equipo.insert(0, \"\")\r\n        self.accion_f3_boton1()\r\n\r\n    def accion_f3_boton4(self):\r\n        self.abrir_formulario2(\"\", 0)\r\n\r\n    def abrir_formulario2(self, edit, info):\r\n        self.ventana_equipo = tk.Toplevel(self.notebook)\r\n\r\n        # Crear etiquetas y campos de entrada\r\n        ttk.Label(self.ventana_equipo, text=\"Hostname: \\n\\nCod Puerto:\").grid(row=0, pady=5, rowspan=2)\r\n        self.hostname_entry = ttk.Entry(self.ventana_equipo, width=30)\r\n        self.hostname_entry.grid(row=0, column=1, padx=5, pady=5, sticky=\"ew\")\r\n\r\n        self.codigo_entry = ttk.Entry(self.ventana_equipo, width=30)\r\n        self.codigo_entry.grid(row=1, column=1, padx=5, pady=5)\r\n\r\n        if edit != \"\":\r\n            self.ventana_equipo.title(\"Editar Puerto\")\r\n            self.hostname_entry.insert(0, f\"{edit}\")\r\n            self.hostname_entry.config(foreground=\"red\", state=\"disabled\")\r\n            self.codigo_entry.insert(0, f\"{info[1]}\")\r\n            boton_guardar = ttk.Button(self.ventana_equipo, text=\"Guardar cambios\", command=self.validar_codigo)\r\n        else:\r\n            self.ventana_equipo.title(\"Añadir equipo\")\r\n            boton_guardar = ttk.Button(self.ventana_equipo, text=\"añadir equipo\", command=self.validar_nuevo_equipo)\r\n        boton_guardar.grid(row=4, column=0, columnspan=2, padx=10, pady=5)\r\n\r\n        width = 300\r\n        height = 120\r\n        screen_width = self.ventana_equipo.winfo_screenwidth()\r\n        screen_height = self.ventana_equipo.winfo_screenheight()\r\n\r\n        x = (screen_width // 2) - (width // 2)\r\n        y = (screen_height // 2) - (height // 2)\r\n\r\n        self.ventana_equipo.geometry(f\"{width}x{height}+{x}+{y}\")\r\n        self.ventana_equipo.transient(self.notebook)\r\n        self.ventana_equipo.grab_set()\r\n        self.ventana_equipo.wait_window()\r\n\r\n    def validar_nuevo_equipo(self):\r\n        control, info = fn.buscar_equipo(self.hostname_entry.get())\r\n        if control:\r\n            if info == 0:\r\n                messagebox.showwarning(\"Alerta\", \"Formato de Hostname inválido\")\r\n            else:\r\n                messagebox.showwarning(\"Alerta\", \"Este Equipo ya existe\")\r\n        else:\r\n            control, info = fn.desglosar_ubicacion(self.codigo_entry.get())\r\n            if not control:\r\n                if info == 0:\r\n                    messagebox.showwarning(\"Alerta\", \"El Codigo coincide con otro equipo\")\r\n                elif info == 1:\r\n                    messagebox.showwarning(\"Alerta\", \"Formato de codigo inválido\")\r\n            else:\r\n                fn.agregar_equipo(self.hostname_entry.get(), self.codigo_entry.get(), info)\r\n                self.texto_equipo.delete(0, tk.END)\r\n                # Inserta el nuevo texto en el Entry\r\n                self.texto_equipo.insert(0, self.hostname_entry.get())\r\n                self.accion_f3_boton1()\r\n                messagebox.showinfo(\"Cambio realizado\", f\"Se Creó el nuevo equipo\")\r\n            self.ventana_equipo.destroy()\r\n\r\n    def validar_codigo(self):\r\n        control, info = fn.desglosar_ubicacion(self.codigo_entry.get())\r\n        if not control:\r\n            if info == 0:\r\n                messagebox.showwarning(\"Alerta\", \"El Codigo coincide con otro equipo\")\r\n            elif info == 1:\r\n                messagebox.showwarning(\"Alerta\", \"Formato de codigo inválido\")\r\n        else:\r\n            fn.editar_Equipo(self.hostname_entry.get(), self.codigo_entry.get(), info)\r\n            self.accion_f3_boton1()\r\n            messagebox.showinfo(\"Cambio realizado\", f\"Se modificó la ubicación del equipo\")\r\n        self.ventana_equipo.destroy()\r\n\r\n    def generate_textboxes(self):\r\n        for widget in self.canvas_scroll_frame.winfo_children():\r\n            widget.destroy()\r\n        try:\r\n            count = int(len(self.lista_switches))\r\n        except ValueError:\r\n            count = 0\r\n\r\n        for i in range(count):\r\n            row_frame = ttk.Frame(self.canvas_scroll_frame)\r\n            texto = fn.escribir_script(self.lista_rangos[i], self.codigo_cambio, self.vlan, self.lista_interfaces[i])\r\n            afectados = '\\n'.join(self.lista_equipos[i]) + '\\n'\r\n\r\n            num_lineas1 = texto.count('\\n')\r\n            num_lineas2 = afectados.count('\\n')\r\n            if num_lineas1 > num_lineas2:\r\n                num_lineas = num_lineas1\r\n            else:\r\n                num_lineas = num_lineas2\r\n            row_frame.grid(row=i, column=0, sticky=\"ew\", padx=5, pady=3)\r\n            titulo = tk.Label(row_frame, text=self.lista_switches[i], bg='#E4E7F3', fg='#000000',\r\n                              font=(\"Neuer Weltschmerz\", 12))\r\n            titulo.grid(row=0, column=0, columnspan=3, pady=1, sticky=\"w\")\r\n\r\n            entry = tk.Text(row_frame, wrap=tk.WORD, height=num_lineas + 1, width=61, bg='#E4E7F3', fg='#000000',\r\n                            insertbackground='#2D2D2D')\r\n            entry.insert(tk.END, texto)\r\n            entry.configure(state='disabled')\r\n            entry.grid(row=1, column=1, rowspan=2, sticky=\"ew\", pady=3)\r\n\r\n            entry2 = tk.Text(row_frame, wrap=tk.WORD, height=num_lineas + 1, width=8, bg='#E4E7F3', fg='#000000',\r\n                             insertbackground='#2D2D2D')\r\n            afectados = '\\n'.join(self.lista_equipos[i]) + '\\n'\r\n            entry2.insert(tk.END, afectados)\r\n            entry2.configure(state='disabled')\r\n            entry2.grid(row=1, column=0, rowspan=2, sticky=\"ew\", pady=3)\r\n\r\n            button = ttk.Button(row_frame, text=\" Copiar\", command=lambda e=entry: self.copiar_contenido(e))\r\n            button.grid(row=1, column=2, padx=5, pady=(3, num_lineas), sticky=\"nsew\")\r\n\r\n            button2 = ttk.Button(row_frame, text=\"guardar\", command=lambda index=i: self.guardar_cambios(index))\r\n            button2.grid(row=2, column=2, padx=5, pady=(num_lineas, 3), sticky=\"nsew\")\r\n\r\n    def copiar_contenido(self, texto):\r\n        self.clipboard_clear()\r\n        self.clipboard_append(texto.get(\"1.0\", tk.END))\r\n        self.update()\r\n\r\n    def guardar_cambios(self, index):\r\n        fn.guardar_cambios(self.lista_equipos[index], self.codigo_cambio, self.vlan)\r\n\r\n    def generar_tabla_vlans(self, index=0):\r\n        if hasattr(self, 'tabla_vlans'):\r\n            self.tabla_vlans.destroy()\r\n            # Crear un nuevo Frame para el Treeview\r\n        self.tabla_vlans = ttk.Treeview(self.tab2_col2, show=\"headings\", height=16)\r\n        self.tabla_vlans.grid(row=0, column=0, pady=10, sticky=\"nsew\")\r\n\r\n        dataframe, width = fn.crear_tabla_vlans(index)\r\n        #print(dataframe)\r\n        # Configurar las columnas y encabezados si no están configuradas previamente\r\n        if not self.tabla_vlans[\"columns\"]:\r\n            self.tabla_vlans[\"columns\"] = list(dataframe.columns)\r\n            for col in dataframe.columns:\r\n                self.tabla_vlans.heading(col, text=col)\r\n                self.tabla_vlans.column(col, width=width,\r\n                                        anchor=\"center\")  # Ajustar el ancho de la columna si es necesario\r\n\r\n        # Insertar filas en el Treeview\r\n        for _, row in dataframe.iterrows():\r\n            self.tabla_vlans.insert(\"\", tk.END, values=list(row))\r\n\r\n    def abrir_formulario(self, edit):\r\n\r\n        # Crear una nueva ventana emergente\r\n        self.ventana_formulario = tk.Toplevel(self.notebook)\r\n\r\n        # Crear etiquetas y campos de entrada\r\n        txt = \"Id VLAN: \\n\\nNombre: \\n\\nDirección: \\n\\nMascara: \"\r\n        ttk.Label(self.ventana_formulario, text=txt).grid(row=0, column=0, rowspan=4, padx=2, pady=5)\r\n\r\n        self.id_entry = ttk.Entry(self.ventana_formulario, width=30)\r\n        self.id_entry.grid(row=0, column=1, padx=5, pady=5, sticky=\"ew\")\r\n\r\n        self.nombre_entry = ttk.Entry(self.ventana_formulario, width=30)\r\n        self.nombre_entry.grid(row=1, column=1, padx=5, pady=5)\r\n\r\n        self.direccion_entry = ttk.Entry(self.ventana_formulario, width=30)\r\n        self.direccion_entry.grid(row=2, column=1, padx=5, pady=5)\r\n\r\n        self.mask_entry = ttk.Entry(self.ventana_formulario, width=30)\r\n        self.mask_entry.grid(row=3, column=1, padx=5, pady=5)\r\n\r\n        if edit != 0:\r\n            self.ventana_formulario.title(\"Editar VLAN\")\r\n            nombre, dir, mask = fn.mostrar_vlan_editable(edit)\r\n            self.id_entry.insert(0, f\"{edit}\")\r\n            self.id_entry.config(foreground=\"red\", state=\"disabled\")\r\n            self.nombre_entry.insert(0, f\"{nombre}\")\r\n            self.direccion_entry.insert(0, f\"{dir}\")\r\n            self.mask_entry.insert(0, f\"{mask}\")\r\n\r\n        else:\r\n            self.ventana_formulario.title(\"Crear VLAN\")\r\n        boton_guardar = ttk.Button(self.ventana_formulario, text=\"Guardar Cambios\", command=self.validar)\r\n        boton_guardar.grid(row=4, column=0, columnspan=2, padx=10, pady=5)\r\n        screen_width = self.ventana_formulario.winfo_screenwidth()\r\n        screen_height = self.ventana_formulario.winfo_screenheight()\r\n\r\n        width = 300\r\n        height = 200\r\n\r\n        x = (screen_width // 2) - (width // 2)\r\n        y = (screen_height // 2) - (height // 2)\r\n\r\n        self.ventana_formulario.geometry(f\"{width}x{height}+{x}+{y}\")\r\n\r\n        self.ventana_formulario.transient(self.notebook)\r\n        self.ventana_formulario.grab_set()\r\n        self.ventana_formulario.wait_window()\r\n\r\n    def validar(self):\r\n        control = False\r\n        if self.vlan2 == 0:\r\n            data = [int(self.id_entry.get()), self.nombre_entry.get(), self.direccion_entry.get(),\r\n                    self.mask_entry.get()]\r\n            control = fn.crear_vlan(data)\r\n            if control:\r\n                self.vlans_tab1_combobox.config(values=fn.listar_vlans())\r\n                self.vlans_tab2_combobox.config(values=fn.listar_vlans_nombre())\r\n                self.vlans_tab2_combobox.current(0)\r\n            else:\r\n                messagebox.showwarning(\"Alerta\", \"Los datos coinciden con una vlan existente\")\r\n        else:\r\n            data = [int(self.id_entry.get()), self.nombre_entry.get(), self.direccion_entry.get(),\r\n                    self.mask_entry.get()]\r\n            control = fn.editar_vlan(data)\r\n            if control:\r\n                self.vlans_tab1_combobox.config(values=fn.listar_vlans())\r\n                self.vlans_tab2_combobox.config(values=fn.listar_vlans_nombre())\r\n                self.vlans_tab2_combobox.current(0)\r\n                self.accion_f2_boton1()\r\n            else:\r\n                messagebox.showwarning(\"Alerta\", \"Los datos coinciden con una vlan existente\")\r\n        self.ventana_formulario.destroy()\r\n\r\n    def confirmar_eliminar(self):\r\n        self.ventana_eliminar = tk.Toplevel(self.notebook)\r\n        # Crear etiquetas y campos de entrada\r\n        txt_confirm = (f\"Estás seguro de que quieres eliminar la VLAN {self.vlan2}?\")\r\n        ttk.Label(self.ventana_eliminar, text=txt_confirm).grid(row=0, column=0, padx=10, pady=5, sticky=\"ew\")\r\n\r\n        btn_confirmar = ttk.Button(self.ventana_eliminar, text=\" Eliminar \", command=self.eliminar)\r\n        btn_confirmar.grid(row=1, column=0, padx=5, pady=5)\r\n\r\n        width = 420\r\n        height = 75\r\n        screen_width = self.ventana_eliminar.winfo_screenwidth()\r\n        screen_height = self.ventana_eliminar.winfo_screenheight()\r\n        x = (screen_width // 2) - (width // 2)\r\n        y = (screen_height // 2) - (height // 2)\r\n        self.ventana_eliminar.geometry(f\"{width}x{height}+{x}+{y}\")\r\n\r\n        self.ventana_eliminar.transient(self.notebook)\r\n        self.ventana_eliminar.grab_set()\r\n        self.ventana_eliminar.wait_window()\r\n\r\n    def eliminar(self):\r\n        fn.eliminar_vlan(self.vlan2)\r\n        self.ventana_eliminar.destroy()\r\n        messagebox.showinfo(\"Cambio realizado\", f\"Se eliminó la VLAN{self.vlan2}\")\r\n        self.vlans_tab1_combobox.config(values=fn.listar_vlans())\r\n        self.vlans_tab2_combobox.current(0)\r\n        self.vlans_tab2_combobox.config(values=fn.listar_vlans_nombre())\r\n\r\n    def actualizar_info_vlan(self):\r\n        nombre, dir, mask = fn.mostrar_vlan_editable(self.vlan2)\r\n        if self.vlan2 != 0 and nombre != \"\":\r\n            #print(\"HEY\",self.vlan2)\r\n            self.info_vlan_label.config(\r\n                text=f\"--------------------------------------------------\\n\"\r\n                     f\"Codigo VLAN:{self.vlan2}\\n\\nNombre: {nombre}\\n\\nDirección:{dir}\\n\\nMáscara: {mask}\\n\"\r\n                     f\"--------------------------------------------------\")\r\n        else:\r\n            self.info_vlan_label.config(\r\n                text=f\"--------------------------------------------------\\n\"\r\n                     f\"Codigo VLAN:\\n\\nNombre:\\n\\nDirección:\\n\\nMáscara:\\n\"\r\n                     f\"--------------------------------------------------\")\r\n\r\n    def mostrar_equipo(self):\r\n        self.ubicacion_equipo = tk.Label(self.frame_equipo, text=\"PISO CUARTO SWITCH PUERTO\", bg='#E4E7F3')\r\n        self.ubicacion_equipo.grid(fg='#000000', font=(\"Neuer Weltschmerz\", 12), row=0, column=0, pady=1, sticky=\"w\")\r\n\r\n\r\nif __name__ == \"__main__\":\r\n    app = App()\r\n    app.mainloop()\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.py b/main.py
+--- a/main.py	
++++ b/main.py	
+@@ -100,19 +100,18 @@
+         self.vlan = 0
+         self.vlan2 = 0
+         self.opt_vlan = 0
+-        self.logo = tk.PhotoImage(file="imagen.png")
+         self.logo2 = tk.PhotoImage(file="EMTELCOOO.png")
+         # Crear las pestañas
+         self.crearTab1()
+         self.create_tab2()
+         self.create_tab3()
+-
++        icon_path = 'recurso_logo.ico'
+         self.rowconfigure(0, weight=1)
+         self.rowconfigure(1, weight=1)
+         self.rowconfigure(2, weight=1)
+ 
+         # Establecer el ícono como la foto de la ventana principal
+-        self.iconphoto(True, self.logo)
++        self.iconbitmap(icon_path)
+ 
+     def crearTab1(self):
+         tab1 = ttk.Frame(self.notebook)
+@@ -301,8 +300,8 @@
+         self.running_conf_equipo.grid(row=1, column=0, sticky="ew", pady=3)
+ 
+     def accion_buscar_tab1_btn(self):
+-        texto = self.buscar_tab1_txt.get("1.0", tk.END).strip()
+-        if texto:
++        texto = self.buscar_tab1_txt.get("1.0", tk.END).strip().upper()
++        if texto:   
+             lineas_texto = texto.split('\n')
+             lineas_texto = list(set(lineas_texto))
+             self.var1, self.var2 = fn.validar_listado(lineas_texto)
+@@ -324,11 +323,12 @@
+ 
+     def accion_cambios_tab1_btn(self, opt):
+         self.codigo_cambio = opt
+-        if opt == 0 and self.vlans_tab1_combobox.get() == "":
+-            return
++        if self.vlans_tab1_combobox.get() == "":
++            if opt == 0 or opt == 3:
++             return
+         else:
+             self.vlan = int(self.vlans_tab1_combobox.get())
+-            self.generate_textboxes()
++        self.generate_textboxes()
+ 
+     def accion_cambios_tab2_btn(self, opt):
+         vlan = self.vlans_tab2_combobox.get().split(' ')[0]
+@@ -430,7 +430,7 @@
+ 
+     def eliminar_equipo(self):
+ 
+-        fn.eliminar_pc(self.texto_equipo.get())
++        fn.eliminar_pc(self.texto_equipo.get().upper)
+         messagebox.showinfo("Cambio realizado", f"Se eliminó el equipo {self.texto_equipo.get()}")
+         self.ventana_eliminar.destroy()
+         self.texto_equipo.delete(0, tk.END)
+@@ -550,10 +550,12 @@
+ 
+             button = ttk.Button(row_frame, text=" Copiar", command=lambda e=entry: self.copiar_contenido(e))
+             button.grid(row=1, column=2, padx=5, pady=(3, num_lineas), sticky="nsew")
+-
+-            button2 = ttk.Button(row_frame, text="guardar", command=lambda index=i: self.guardar_cambios(index))
+-            button2.grid(row=2, column=2, padx=5, pady=(num_lineas, 3), sticky="nsew")
+-
++            if self.codigo_cambio != 5 and self.codigo_cambio!=8 and self.codigo_cambio!=4:
++                button.grid(row=1, column=2, padx=5, pady=(3, num_lineas), sticky="nsew")
++                button2 = ttk.Button(row_frame, text="guardar", command=lambda index=i: self.guardar_cambios(index))
++                button2.grid(row=2, column=2, padx=5, pady=(num_lineas, 3), sticky="nsew")
++            else:
++                button.grid(row=1, column=2, rowspan=2, padx=5, pady=3, sticky="nsew")
+     def copiar_contenido(self, texto):
+         self.clipboard_clear()
+         self.clipboard_append(texto.get("1.0", tk.END))
+@@ -627,7 +629,6 @@
+         y = (screen_height // 2) - (height // 2)
+ 
+         self.ventana_formulario.geometry(f"{width}x{height}+{x}+{y}")
+-
+         self.ventana_formulario.transient(self.notebook)
+         self.ventana_formulario.grab_set()
+         self.ventana_formulario.wait_window()
+@@ -652,7 +653,6 @@
+                 self.vlans_tab1_combobox.config(values=fn.listar_vlans())
+                 self.vlans_tab2_combobox.config(values=fn.listar_vlans_nombre())
+                 self.vlans_tab2_combobox.current(0)
+-                self.accion_f2_boton1()
+             else:
+                 messagebox.showwarning("Alerta", "Los datos coinciden con una vlan existente")
+         self.ventana_formulario.destroy()
