@@ -57,9 +57,8 @@ def generar_rangos(listado, accion=1):
                     else:
                         if inicio == fin:
                             intervalos.append(str(inicio))
-                            intervalos.append(f"{inicio}-{fin}")
                         else:
-                            pass
+                            intervalos.append(f"{inicio}-{fin}")
                         inicio = editables_puertos[i]
                         fin = editables_puertos[i]
 
@@ -68,26 +67,21 @@ def generar_rangos(listado, accion=1):
                 else:
                     intervalos.append(f"{inicio}-{fin}")
 
-                if len(editables_puertos) == 1:
-                    interface_range = "int "
-                else:
-                    interface_range = "int range "
+
                 cont = 0
-                for i in range(0, len(intervalos)):
-                    if piso == 2:
-                        interface = switch
-                    else:
-                        interface = 1
-                    interface_range += f"g{interface}/0/{intervalos[i]}"
-                    if i + 1 < len(intervalos):
-                        interface_range += " , "
-                    cont += 1
-                    if cont == 30:
-                        interface_range = "int range "
-                        cont = 0
-                if cont != 0:
-                    if accion != 0:
-                        lista_rangos.append(interface_range)
+                intervalosg=[]
+                if piso == 2:
+                    interface = switch
+                else:
+                    interface = 1
+                for elemento in intervalos:
+                    intervalosg.append(f"g{interface}/0/{elemento}")
+                if len(intervalosg)==1:
+                    interface_range= f"int {intervalosg[0]}"
+                else:
+                    interface_range = f"int range {', '.join(intervalosg)}"
+                if len(intervalosg)!=0:
+                    lista_rangos.append(interface_range)
     return lista_switches, lista_rangos, lista_codigos, lista_interfaces
 
 def escribir_script(rango, cambios, vlan, puertos):
