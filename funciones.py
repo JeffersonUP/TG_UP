@@ -16,7 +16,8 @@ def validar_listado(listado):
     conexion.close()
     return validos, no_validos
 
-def generar_rangos(listado, accion=1):
+'''
+def generar_rangos(listado):
     lista_switches = []
     lista_interfaces = []
     lista_rangos = []
@@ -67,8 +68,6 @@ def generar_rangos(listado, accion=1):
                 else:
                     intervalos.append(f"{inicio}-{fin}")
 
-
-                cont = 0
                 intervalosg=[]
                 if piso == 2:
                     interface = switch
@@ -82,8 +81,78 @@ def generar_rangos(listado, accion=1):
                     interface_range = f"int range {', '.join(intervalosg)}"
                 if len(intervalosg)!=0:
                     lista_rangos.append(interface_range)
+        print(lista_switches,"\n", lista_rangos, "\n",lista_codigos,"\n",lista_interfaces)
     return lista_switches, lista_rangos, lista_codigos, lista_interfaces
-
+'''
+def generar_rangos(listado):
+    conexion = sqlite3.connect('database.db')
+    try:
+        cursor = conexion.cursor()
+        formato_ids = ','.join(['?'] * len(listado))
+        consulta = f"""
+        SELECT piso, cuarto, switch, rack, GROUP_CONCAT(puerto) AS 'puertos_agrupados', 
+        GROUP_CONCAT(id) AS 'ids_agrupados'
+        FROM (
+            SELECT piso, cuarto, switch, rack, puerto, id FROM equipos
+            WHERE id IN ({formato_ids})  -- Se usan placeholders para SQLite
+            ORDER BY piso, cuarto, switch, rack, puerto  -- Ordenar antes
+        )
+        GROUP BY piso, cuarto, switch, rack;
+        """
+        cursor.execute(consulta, listado)
+        resultados = cursor.fetchall()
+        encabezados = []
+        lista_rangos = []
+        lista_codigos = []
+        lista_interfaces = []
+        for fila in resultados:
+            piso = fila[0]
+            cuarto = fila[1]
+            switch = fila[2]
+            rack = fila[3]
+            puertos = list(map(int, fila[4].split(",")))
+            ids = list(fila[5].split(","))
+            lista_interfaces.append(puertos)
+            lista_codigos.append(ids)
+            if piso == 2:
+                encabezados.append(f"Piso {piso}, Cuarto {cuarto}, stack {rack}, switch {switch}")
+            else:
+                encabezados.append(f"Piso {piso}, Cuarto {cuarto}, rack {rack}, switch {switch}")
+            intervalos = []
+            inicio = puertos[0]
+            fin = puertos[0]
+            for i in range(1, len(puertos)):
+                if puertos[i] == fin + 1:
+                    fin = puertos[i]
+                else:
+                    if inicio == fin:
+                        intervalos.append(str(inicio))
+                    else:
+                        intervalos.append(f"{inicio}-{fin}")
+                    inicio = puertos[i]
+                    fin = puertos[i]
+            if inicio == fin:
+                intervalos.append(str(inicio))
+            else:
+                intervalos.append(f"{inicio}-{fin}")
+            intervalosg = []
+            if piso == 2:
+                interface = switch
+            else:
+                interface = 1
+            for elemento in intervalos:
+                intervalosg.append(f"g{interface}/0/{elemento}")
+            if len(intervalosg) == 1:
+                interface_range = f"int {intervalosg[0]}"
+            else:
+                interface_range = f"int range {', '.join(intervalosg)}"
+            if len(intervalosg) != 0:
+                lista_rangos.append(interface_range)
+            print(encabezados,"\n",lista_rangos,"\n", lista_codigos,"\n", lista_interfaces)
+    finally:
+        cursor.close()
+        conexion.close()
+    return encabezados, lista_rangos, lista_codigos, lista_interfaces
 def escribir_script(rango, cambios, vlan, puertos):
     if cambios == 8:
         swit = int(re.search(r'\d+', rango).group())
@@ -277,10 +346,11 @@ def desglosar_ubicacion(puerto):
 
     conexion = sqlite3.connect('database.db')
     cursor = conexion.cursor()
-    cursor.execute("SELECT 1 from equipos WHERE piso = ? AND cuarto = ? AND switch = ? AND puerto = ?",
-                   (codigos[0], codigos[1], codigos[-2], codigos[-1]))
+    cursor.execute("SELECT 1 from equipos WHERE piso = ? AND cuarto = ? AND switch = ? AND puerto = ? AND rack = ?",
+                   (codigos[0], codigos[1], codigos[-2], codigos[-1], codigos[2]))
     res = cursor.fetchone()
     conexion.close()
+    print(res)
     if res is None:
         return True, [codigos[0], codigos[1], codigos[-2], codigos[-1]]
     else:
@@ -290,7 +360,7 @@ def editar_Equipo(nombre, codigo, list):
     #print(nombre, codigo, list)
     conexion = sqlite3.connect("database.db")
     cursor = conexion.cursor()
-    cursor.execute("UPDATE eq   uipos SET codigo = ?, piso = ?, cuarto = ?, switch = ?, puerto = ? WHERE id = ?",
+    cursor.execute("UPDATE equipos SET codigo = ?, piso = ?, cuarto = ?, switch = ?, puerto = ? WHERE id = ?",
                    (codigo, list[0], list[1], list[2], list[3], nombre))
     conexion.commit()
     conexion.close()

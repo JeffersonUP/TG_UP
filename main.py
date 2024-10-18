@@ -385,7 +385,7 @@ class App(tk.Tk):
         elif control and info != 0:
             self.label_equipo.config(
                 text=f"--------------------------------------------------\nHostname:{info[0]}\n\n"
-                     f"Codigo puerto:{info[1]}\n\nVLAN:{info[-3]}\n\nPortsecurity:{info[-2]}\n\nISE:{info[-1]}\n--------------------------------------------------")
+                     f"Codigo puerto:{info[1]}\n\nVLAN:{info[-3]}\n\nPortsecurity:{info[-2]}\n\nISE:{info[-2]}\n--------------------------------------------------")
             self.ubicacion_equipo.config(text=f"PISO {info[2]} CUARTO {info[3]} SWITCH {info[4]} PUERTO {info[5]}")
             texto = fn.generar_texto_equipo([info[-3], info[-2], info[-1]])
             self.running_conf_equipo.configure(state='normal')
