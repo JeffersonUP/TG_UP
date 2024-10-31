@@ -30,7 +30,7 @@ class App(tk.Tk):
                 'map': {
                     'background': [('selected', '#001A7B'), ('active', '#D2D600')],
                     'foreground': [('selected', '#FFFFFF'), ('active', '#FFFFFF')],
-                    'expand': [('selected', [1, 1, 1, 0])]  # expansión de la pestaña seleccionada
+                    'expand': [('selected', [1, 1, 1, 0])]
                 }
             },
             'TFrame': {
@@ -100,8 +100,8 @@ class App(tk.Tk):
         self.vlan = 0
         self.vlan2 = 0
         self.opt_vlan = 0
-        self.logo = tk.PhotoImage(file="imagen.png")
-        self.logo2 = tk.PhotoImage(file="EMTELCOOO.png")
+        self.logo = tk.PhotoImage(file="recurso_logo.png")
+        self.logo2 = tk.PhotoImage(file="emtelco.png")
         # Crear las pestañas
         self.crearTab1()
         self.create_tab2()
@@ -506,7 +506,7 @@ class App(tk.Tk):
             elif info == 1:
                 messagebox.showwarning("Alerta", "Formato de codigo inválido")
         else:
-            fn.editar_Equipo(self.hostname_entry.get(), self.codigo_entry.get(), info)
+            fn.editar_equipo(self.hostname_entry.get(), self.codigo_entry.get(), info)
             self.accion_f3_boton1()
             messagebox.showinfo("Cambio realizado", f"Se modificó la ubicación del equipo")
         self.ventana_equipo.destroy()

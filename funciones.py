@@ -2,6 +2,8 @@ import sqlite3
 
 import pandas as pd
 import re
+
+
 def validar_listado(listado):
     validos = []
     no_validos = []
@@ -15,6 +17,7 @@ def validar_listado(listado):
             no_validos.append(puerto)
     conexion.close()
     return validos, no_validos
+
 
 '''
 def generar_rangos(listado):
@@ -84,6 +87,8 @@ def generar_rangos(listado):
         print(lista_switches,"\n", lista_rangos, "\n",lista_codigos,"\n",lista_interfaces)
     return lista_switches, lista_rangos, lista_codigos, lista_interfaces
 '''
+
+
 def generar_rangos(listado):
     conexion = sqlite3.connect('database.db')
     try:
@@ -148,11 +153,13 @@ def generar_rangos(listado):
                 interface_range = f"int range {', '.join(intervalosg)}"
             if len(intervalosg) != 0:
                 lista_rangos.append(interface_range)
-            print(encabezados,"\n",lista_rangos,"\n", lista_codigos,"\n", lista_interfaces)
+            print(encabezados, "\n", lista_rangos, "\n", lista_codigos, "\n", lista_interfaces)
     finally:
         cursor.close()
         conexion.close()
     return encabezados, lista_rangos, lista_codigos, lista_interfaces
+
+
 def escribir_script(rango, cambios, vlan, puertos):
     if cambios == 8:
         swit = int(re.search(r'\d+', rango).group())
@@ -170,17 +177,17 @@ def escribir_script(rango, cambios, vlan, puertos):
             script += f"no switchport port-security mac-address sticky\nshutdown\nswitchport port-security mac-address sticky\nno shutdown\n"
         elif cambios == 2:
             script += ("switchport mode access\nno authentication open\nauthentication event fail action next-method\n"
-                        f"authentication event server dead action authorize\nauthentication event server alive action reinitialize\n"
-                        f"authentication host-mode multi-domain\nauthentication order dot1x mab\nauthentication priority dot1x mab\n"
-                        f"authentication port-control auto\nauthentication violation restrict\nmab\ndot1x pae authenticator\n"
-                        f"dot1x timeout tx-period 10\ndot1x timeout supp-timeout 5\nspanning-tree portfast\nspanning-tree bpduguard enable\n")
+                       f"authentication event server dead action authorize\nauthentication event server alive action reinitialize\n"
+                       f"authentication host-mode multi-domain\nauthentication order dot1x mab\nauthentication priority dot1x mab\n"
+                       f"authentication port-control auto\nauthentication violation restrict\nmab\ndot1x pae authenticator\n"
+                       f"dot1x timeout tx-period 10\ndot1x timeout supp-timeout 5\nspanning-tree portfast\nspanning-tree bpduguard enable\n")
         elif cambios == 3:
             script += (f"switchport mode access\n"
-                         f"switchport port-security violation restrict\n"
-                         f"switchport port-security mac-address sticky\n"
-                         f"switchport port-security\n"
-                         f"spanning-tree portfast\n"
-                         f"spanning-tree bpduguard enable\n")
+                       f"switchport port-security violation restrict\n"
+                       f"switchport port-security mac-address sticky\n"
+                       f"switchport port-security\n"
+                       f"spanning-tree portfast\n"
+                       f"spanning-tree bpduguard enable\n")
         elif cambios == 4:
             script += "shutdown\n"
 
@@ -194,6 +201,7 @@ def escribir_script(rango, cambios, vlan, puertos):
         script += "end\n"
     return script
 
+
 def listar_vlans():
     conexion = sqlite3.connect('database.db')
     cursor = conexion.cursor()
@@ -202,6 +210,7 @@ def listar_vlans():
     vlans_id = [id[0] for id in lista]
     conexion.close()
     return vlans_id
+
 
 def listar_vlans_nombre():
     conexion = sqlite3.connect('database.db')
@@ -212,9 +221,10 @@ def listar_vlans_nombre():
     vlans_nombre = [id[1] for id in lista]
     vlans_full = [""]
     for i in range(len(vlans_id)):
-        vlans_full.append(vlans_id[i] +" "+ vlans_nombre[i])
+        vlans_full.append(vlans_id[i] + " " + vlans_nombre[i])
     conexion.close()
     return vlans_full
+
 
 def crear_tabla_vlans(index):
     conexion = sqlite3.connect('database.db')
@@ -231,6 +241,7 @@ def crear_tabla_vlans(index):
     df = pd.read_sql_query(query, conexion)
     conexion.close()
     return df, width
+
 
 def mostrar_vlan_editable(id):
     conexion = sqlite3.connect('database.db')
@@ -261,6 +272,7 @@ def crear_vlan(data):
     conexion.close()
     return res
 
+
 def editar_vlan(data):
     #[id, nombre, dir, mask]
     conexion = sqlite3.connect('database.db')
@@ -277,6 +289,7 @@ def editar_vlan(data):
     conexion.commit()
     conexion.close()
     return res
+
 
 def eliminar_vlan(id):
     conexion = sqlite3.connect('database.db')
@@ -302,26 +315,27 @@ def buscar_equipo(equipo):
 
 def generar_texto_equipo(data):
     #[VLAN, PORT, ISE]
-    texto=f"switchport access vlan {data[0]}\nswitchport mode access\n"
+    texto = f"switchport access vlan {data[0]}\nswitchport mode access\n"
     if data[2] == "Activo":
-        texto+=(f"authentication event fail action next-method\n"
-                f"authentication event server dead action authorize\n"
-                f"authentication event server alive action reinitialize\n"
-                f"authentication host-mode multi-domain\n"
-                f"authentication order dot1x mab\n"
-                f"authentication priority dot1x mab\n"
-                f"authentication port-control auto\n"
-                f"authentication violation restrict\n"
-                f"mab\n"
-                f"dot1x pae authenticator\n"
-                f"dot1x timeout tx-period 10\n"
-                f"dot1x timeout supp-timeout 5\n")
+        texto += (f"authentication event fail action next-method\n"
+                  f"authentication event server dead action authorize\n"
+                  f"authentication event server alive action reinitialize\n"
+                  f"authentication host-mode multi-domain\n"
+                  f"authentication order dot1x mab\n"
+                  f"authentication priority dot1x mab\n"
+                  f"authentication port-control auto\n"
+                  f"authentication violation restrict\n"
+                  f"mab\n"
+                  f"dot1x pae authenticator\n"
+                  f"dot1x timeout tx-period 10\n"
+                  f"dot1x timeout supp-timeout 5\n")
     if data[1] == "Activo":
-        texto+=(f"switchport port-security violation restrict\n"
-                f"switchport port-security mac-address sticky\n"
-                f"switchport port-security\n")
-    texto+=("spanning-tree portfast\nspanning-tree bpduguard enable")
+        texto += (f"switchport port-security violation restrict\n"
+                  f"switchport port-security mac-address sticky\n"
+                  f"switchport port-security\n")
+    texto += ("spanning-tree portfast\nspanning-tree bpduguard enable")
     return texto
+
 
 def desglosar_ubicacion(puerto):
     #P4C1R1S3P20
@@ -352,11 +366,12 @@ def desglosar_ubicacion(puerto):
     conexion.close()
     print(res)
     if res is None:
-        return True, [codigos[0], codigos[1], codigos[-2], codigos[-1]]
+        return True, [codigos[0], codigos[1], codigos[2], codigos[-2], codigos[-1]]
     else:
         return False, 0
-        
-def editar_Equipo(nombre, codigo, list):
+
+
+def editar_equipo(nombre, codigo, list):
     #print(nombre, codigo, list)
     conexion = sqlite3.connect("database.db")
     cursor = conexion.cursor()
@@ -364,26 +379,29 @@ def editar_Equipo(nombre, codigo, list):
                    (codigo, list[0], list[1], list[2], list[3], nombre))
     conexion.commit()
     conexion.close()
+
+
 def agregar_equipo(nombre, codigo, list):
-    #print(nombre, codigo, list)
+    print(nombre, codigo, list)
     conexion = sqlite3.connect("database.db")
     cursor = conexion.cursor()
-    cursor.execute("INSERT into equipos(id, codigo, piso, cuarto, switch, puerto) VALUES (?, ?, ?, ?, ?, ?)",
-                   (nombre, codigo, list[0], list[1], list[2], list[3]))
+    cursor.execute("INSERT into equipos(id, codigo, piso, cuarto, switch, puerto, rack) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                   (nombre, codigo, list[0], list[1], list[3], list[4], list[2]))
     conexion.commit()
     conexion.close()
+
 
 def eliminar_pc(equipo):
     conexion = sqlite3.connect("database.db")
     cursor = conexion.cursor()
-    cursor.execute("DELETE from equipos WHERE id = ?", (equipo, ))
+    cursor.execute("DELETE from equipos WHERE id = ?", (equipo,))
     conexion.commit()
     conexion.close()
 
 
 def guardar_cambios(lista, cambio, vlan):
     print(lista, cambio, vlan)
-    cambio = cambio+1
+    cambio = cambio + 1
     conexion = sqlite3.connect("database.db")
     cursor = conexion.cursor()
     for equipo in lista:
