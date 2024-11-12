@@ -2,8 +2,6 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 import funciones as fn
-
-
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -103,9 +101,9 @@ class App(tk.Tk):
         self.logo = tk.PhotoImage(file="recurso_logo.png")
         self.logo2 = tk.PhotoImage(file="emtelco.png")
         # Crear las pestañas
-        self.crearTab1()
-        self.create_tab2()
-        self.create_tab3()
+        self.crear_tab1()
+        self.crear_tab2()
+        self.crear_tab3()
 
         self.rowconfigure(0, weight=1)
         self.rowconfigure(1, weight=1)
@@ -114,7 +112,7 @@ class App(tk.Tk):
         # Establecer el ícono como la foto de la ventana principal
         self.iconphoto(True, self.logo)
 
-    def crearTab1(self):
+    def crear_tab1(self):
         tab1 = ttk.Frame(self.notebook)
         self.notebook.add(tab1, text='Configurar')
 
@@ -205,7 +203,7 @@ class App(tk.Tk):
         tab1_col3.grid_rowconfigure(0, weight=1)
         tab1_col3.grid_columnconfigure(0, weight=1)
 
-    def create_tab2(self):
+    def crear_tab2(self):
         tab2 = ttk.Frame(self.notebook)
         self.notebook.add(tab2, text='VLANs')
 
@@ -249,7 +247,7 @@ class App(tk.Tk):
         self.tab2_col2.grid(row=0, column=1, sticky="nsew", padx=3, pady=6)
         self.generar_tabla_vlans()
 
-    def create_tab3(self):
+    def crear_tab3(self):
         tab3 = ttk.Frame(self.notebook)
         self.notebook.add(tab3, text='Equipos')
         tab3_col1 = ttk.Frame(tab3)
@@ -313,7 +311,6 @@ class App(tk.Tk):
             messagebox.showwarning("Entrada vacía", "Por favor, ingrese algún texto antes de registrar.")
 
     def actualizar_buscar_tab1_txt(self):
-        #Actualiza la caja de texto con los equipos no encontrados y divide por switches a los encontrados
         self.codigo_cambio = 8
         no_encontrados = ""
         for elemento in self.var2:
@@ -338,7 +335,6 @@ class App(tk.Tk):
             self.vlan2 = int(vlan)
         if opt == 0:
             self.generar_tabla_vlans(self.vlan2)
-            print("buscar")
         elif opt == 1:
             if self.vlan2 == 0:
                 messagebox.showwarning("Alerta", "No has seleccionado una VLAN a editar")
@@ -350,28 +346,14 @@ class App(tk.Tk):
             else:
                 self.confirmar_eliminar()
         elif opt == 3:
-            print("añadir")
+            self.vlan2 = 0
             self.abrir_formulario(0)
         self.actualizar_info_vlan()
         self.generar_tabla_vlans(self.vlan2)
 
-    #editar vlan
-    def accion_f2_boton2(self):
-        vlan = self.vlans_tab2_combobox.get().split(' ')[0]
-        if vlan == "":
-            self.vlan2 = 0
-            messagebox.showwarning("Alerta", "No has seleccionado una VLAN a editar")
-        else:
-            self.vlan2 = int(vlan)
-            self.abrir_formulario(self.vlan2)
-
-    def accion_f2_boton4(self):
-        self.vlan2 = 0
-        self.abrir_formulario(self.vlan2)
 
     def accion_f3_boton1(self):
         control, info = fn.buscar_equipo(self.texto_equipo.get())
-        #print(control, info)
         if (control and info == 0) or not control:
             if self.texto_equipo.get() != '':
                 messagebox.showwarning("Alerta", "No existe ese equipo")
@@ -412,7 +394,6 @@ class App(tk.Tk):
 
     def confirmar_eliminar_equipo(self):
         self.ventana_eliminar = tk.Toplevel(self.notebook)
-        # Crear etiquetas y campos de entrada
         ttk.Label(self.ventana_eliminar, text=f"Estás seguro de eliminar el equipo"
                                               f" {self.texto_equipo.get()}?").grid(row=0, column=0, padx=10, pady=5,
                                                                                    sticky="ew")
@@ -570,8 +551,7 @@ class App(tk.Tk):
         self.tabla_vlans.grid(row=0, column=0, pady=10, sticky="nsew")
 
         dataframe, width = fn.crear_tabla_vlans(index)
-        #print(dataframe)
-        # Configurar las columnas y encabezados si no están configuradas previamente
+
         if not self.tabla_vlans["columns"]:
             self.tabla_vlans["columns"] = list(dataframe.columns)
             for col in dataframe.columns:
@@ -652,7 +632,6 @@ class App(tk.Tk):
                 self.vlans_tab1_combobox.config(values=fn.listar_vlans())
                 self.vlans_tab2_combobox.config(values=fn.listar_vlans_nombre())
                 self.vlans_tab2_combobox.current(0)
-                self.accion_f2_boton1()
             else:
                 messagebox.showwarning("Alerta", "Los datos coinciden con una vlan existente")
         self.ventana_formulario.destroy()
@@ -699,11 +678,6 @@ class App(tk.Tk):
                 text=f"--------------------------------------------------\n"
                      f"Codigo VLAN:\n\nNombre:\n\nDirección:\n\nMáscara:\n"
                      f"--------------------------------------------------")
-
-    def mostrar_equipo(self):
-        self.ubicacion_equipo = tk.Label(self.frame_equipo, text="PISO CUARTO SWITCH PUERTO", bg='#E4E7F3')
-        self.ubicacion_equipo.grid(fg='#000000', font=("Neuer Weltschmerz", 12), row=0, column=0, pady=1, sticky="w")
-
 
 if __name__ == "__main__":
     app = App()

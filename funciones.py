@@ -176,13 +176,14 @@ def escribir_script(rango, cambios, vlan, puertos):
         elif cambios == 1:
             script += f"no switchport port-security mac-address sticky\nshutdown\nswitchport port-security mac-address sticky\nno shutdown\n"
         elif cambios == 2:
-            script += ("switchport mode access\nno authentication open\nauthentication event fail action next-method\n"
+            script += (f"switchport mode access\nswitchport access vlan 998\nno authentication open\nauthentication event fail action next-method\n"
                        f"authentication event server dead action authorize\nauthentication event server alive action reinitialize\n"
                        f"authentication host-mode multi-domain\nauthentication order dot1x mab\nauthentication priority dot1x mab\n"
                        f"authentication port-control auto\nauthentication violation restrict\nmab\ndot1x pae authenticator\n"
                        f"dot1x timeout tx-period 10\ndot1x timeout supp-timeout 5\nspanning-tree portfast\nspanning-tree bpduguard enable\n")
         elif cambios == 3:
             script += (f"switchport mode access\n"
+                       f"switchport access vlan {vlan}\n"
                        f"switchport port-security violation restrict\n"
                        f"switchport port-security mac-address sticky\n"
                        f"switchport port-security\n"
@@ -274,15 +275,16 @@ def crear_vlan(data):
 
 
 def editar_vlan(data):
+    print("fuga")
     #[id, nombre, dir, mask]
     conexion = sqlite3.connect('database.db')
     cursor = conexion.cursor()
     cursor.execute("SELECT 1 from vlans WHERE id = ? OR nombre = ? OR direccion = ?",
                    (data[0], data[1], data[2]))
     res = cursor.fetchone()
-    if res is None:
-        cursor.execute("UPDATE vlans SET nombre = ?, direccion = ?, mascara = ?",
-                       (data[1], data[2], data[3]))
+    if res is not None:
+        cursor.execute("UPDATE vlans SET nombre = ?, direccion = ?, mascara = ? where id = ?",
+                       (data[1], data[2], data[3], data[0]))
         res = True
     else:
         res = False
@@ -406,9 +408,9 @@ def guardar_cambios(lista, cambio, vlan):
     cursor = conexion.cursor()
     for equipo in lista:
         if cambio == 1:
-            cursor.execute("UPDATE equipos SET vlan_id = 'vlan' WHERE id = 'equipo'")
+            cursor.execute("UPDATE equipos SET vlan_id = ? WHERE id = ?", (vlan, equipo,))
+            print(cambio)
         elif cambio == 2 or cambio == 8:
-            print("hey")
             cursor.execute("UPDATE equipos SET portsecurity = 'True' WHERE id = ?", (equipo,))
         elif cambio == 3:
             cursor.execute("UPDATE equipos SET portsecurity = True WHERE id = 'equipo'")
@@ -418,6 +420,6 @@ def guardar_cambios(lista, cambio, vlan):
             cursor.execute("UPDATE equipos SET portsecurity = True WHERE id = 'equipo'")
         elif cambio == 7:
             cursor.execute("UPDATE equipos SET portsecurity = True WHERE id = 'equipo'")
-        #print(df.loc[df['Equipo'] == equipo])
+
     conexion.commit()
     conexion.close()
