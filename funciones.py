@@ -90,6 +90,7 @@ def generar_rangos(listado):
 
 
 def generar_rangos(listado):
+
     conexion = sqlite3.connect('database.db')
     try:
         cursor = conexion.cursor()
@@ -275,14 +276,14 @@ def crear_vlan(data):
 
 
 def editar_vlan(data):
-    print("fuga")
+
     #[id, nombre, dir, mask]
     conexion = sqlite3.connect('database.db')
     cursor = conexion.cursor()
-    cursor.execute("SELECT 1 from vlans WHERE id = ? OR nombre = ? OR direccion = ?",
-                   (data[0], data[1], data[2]))
+    cursor.execute("SELECT 1 from vlans WHERE (id = ? OR nombre = ? OR direccion = ?) and id!=?",
+                   (data[0], data[1], data[2], data[0]))
     res = cursor.fetchone()
-    if res is not None:
+    if res is None:
         cursor.execute("UPDATE vlans SET nombre = ?, direccion = ?, mascara = ? where id = ?",
                        (data[1], data[2], data[3], data[0]))
         res = True
@@ -317,8 +318,9 @@ def buscar_equipo(equipo):
 
 def generar_texto_equipo(data):
     #[VLAN, PORT, ISE]
+    print(data)
     texto = f"switchport access vlan {data[0]}\nswitchport mode access\n"
-    if data[2] == "Activo":
+    if data[2] == "True":
         texto += (f"authentication event fail action next-method\n"
                   f"authentication event server dead action authorize\n"
                   f"authentication event server alive action reinitialize\n"
@@ -331,7 +333,7 @@ def generar_texto_equipo(data):
                   f"dot1x pae authenticator\n"
                   f"dot1x timeout tx-period 10\n"
                   f"dot1x timeout supp-timeout 5\n")
-    if data[1] == "Activo":
+    if data[1] == "True":
         texto += (f"switchport port-security violation restrict\n"
                   f"switchport port-security mac-address sticky\n"
                   f"switchport port-security\n")
@@ -413,13 +415,11 @@ def guardar_cambios(lista, cambio, vlan):
         elif cambio == 2 or cambio == 8:
             cursor.execute("UPDATE equipos SET portsecurity = 'True' WHERE id = ?", (equipo,))
         elif cambio == 3:
-            cursor.execute("UPDATE equipos SET portsecurity = True WHERE id = 'equipo'")
+            cursor.execute("UPDATE equipos SET ise = 'True', vlan_id = 998, portsecurity = 'False' WHERE id = ?", (equipo,))
         elif cambio == 4:
-            cursor.execute("UPDATE equipos SET portsecurity = True WHERE id = 'equipo'")
-        elif cambio == 5:
-            cursor.execute("UPDATE equipos SET portsecurity = True WHERE id = 'equipo'")
+            cursor.execute("UPDATE equipos SET ise = 'False', portsecurity = 'True', vlan_id = ? WHERE id = ?", (vlan, equipo,))
         elif cambio == 7:
-            cursor.execute("UPDATE equipos SET portsecurity = True WHERE id = 'equipo'")
+            cursor.execute("UPDATE equipos SET portsecurity = 'False' WHERE id = ?", (equipo,))
 
     conexion.commit()
     conexion.close()

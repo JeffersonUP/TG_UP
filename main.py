@@ -321,11 +321,13 @@ class App(tk.Tk):
 
     def accion_cambios_tab1_btn(self, opt):
         self.codigo_cambio = opt
-        if opt == 0 and self.vlans_tab1_combobox.get() == "":
+        if (opt == 0 or opt == 3) and self.vlans_tab1_combobox.get() == "":
             return
+        elif self.vlans_tab1_combobox.get() == "":
+            self.vlan = 0
         else:
             self.vlan = int(self.vlans_tab1_combobox.get())
-            self.generate_textboxes()
+        self.generate_textboxes()
 
     def accion_cambios_tab2_btn(self, opt):
         vlan = self.vlans_tab2_combobox.get().split(' ')[0]
@@ -367,9 +369,9 @@ class App(tk.Tk):
         elif control and info != 0:
             self.label_equipo.config(
                 text=f"--------------------------------------------------\nHostname:{info[0]}\n\n"
-                     f"Codigo puerto:{info[1]}\n\nVLAN:{info[-3]}\n\nPortsecurity:{info[-2]}\n\nISE:{info[-2]}\n--------------------------------------------------")
+                     f"Codigo puerto:{info[1]}\n\nVLAN:{info[-4]}\n\nPortsecurity:{info[-3]}\n\nISE:{info[-2]}\n--------------------------------------------------")
             self.ubicacion_equipo.config(text=f"PISO {info[2]} CUARTO {info[3]} SWITCH {info[4]} PUERTO {info[5]}")
-            texto = fn.generar_texto_equipo([info[-3], info[-2], info[-1]])
+            texto = fn.generar_texto_equipo([info[-4], info[-3], info[-2]])
             self.running_conf_equipo.configure(state='normal')
             self.running_conf_equipo.delete("1.0", tk.END)
             self.running_conf_equipo.insert("1.0", texto)
@@ -531,9 +533,9 @@ class App(tk.Tk):
 
             button = ttk.Button(row_frame, text=" Copiar", command=lambda e=entry: self.copiar_contenido(e))
             button.grid(row=1, column=2, padx=5, pady=(3, num_lineas), sticky="nsew")
-
-            button2 = ttk.Button(row_frame, text="guardar", command=lambda index=i: self.guardar_cambios(index))
-            button2.grid(row=2, column=2, padx=5, pady=(num_lineas, 3), sticky="nsew")
+            if self.codigo_cambio != 8 and self.codigo_cambio != 5 and self.codigo_cambio != 4:
+                button2 = ttk.Button(row_frame, text="guardar", command=lambda index=i: self.guardar_cambios(index))
+                button2.grid(row=2, column=2, padx=5, pady=(num_lineas, 3), sticky="nsew")
 
     def copiar_contenido(self, texto):
         self.clipboard_clear()
