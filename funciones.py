@@ -1,13 +1,14 @@
 import sqlite3
-
+import os
 import pandas as pd
 import re
-
-
+app_data_dir = os.path.join(os.getenv('LOCALAPPDATA'), 'ControladorRedes')
+db_path = os.path.join(app_data_dir, 'database.db')
 def validar_listado(listado):
     validos = []
     no_validos = []
-    conexion = sqlite3.connect("database.db")
+
+    conexion = sqlite3.connect(db_path)
     cursor = conexion.cursor()
     for puerto in listado:
         cursor.execute("select COUNT(*) FROM equipos WHERE id = ?", (puerto,))
@@ -26,7 +27,7 @@ def generar_rangos(listado):
     lista_rangos = []
     lista_codigos = []
 
-    conexion = sqlite3.connect("database.db")
+    conexion = sqlite3.connect(db_path)
     cursor = conexion.cursor()
     query = "SELECT * FROM equipos WHERE id IN ({})".format(','.join('?' for _ in listado))
     cursor.execute(query, listado)
@@ -91,7 +92,7 @@ def generar_rangos(listado):
 
 def generar_rangos(listado):
 
-    conexion = sqlite3.connect('database.db')
+    conexion = sqlite3.connect(db_path)
     try:
         cursor = conexion.cursor()
         formato_ids = ','.join(['?'] * len(listado))
@@ -205,7 +206,7 @@ def escribir_script(rango, cambios, vlan, puertos):
 
 
 def listar_vlans():
-    conexion = sqlite3.connect('database.db')
+    conexion = sqlite3.connect(db_path)
     cursor = conexion.cursor()
     cursor.execute("SELECT id FROM vlans")
     lista = cursor.fetchall()
@@ -215,7 +216,7 @@ def listar_vlans():
 
 
 def listar_vlans_nombre():
-    conexion = sqlite3.connect('database.db')
+    conexion = sqlite3.connect(db_path)
     cursor = conexion.cursor()
     cursor.execute("SELECT id, nombre FROM vlans ORDER BY id")
     lista = cursor.fetchall()
@@ -229,7 +230,7 @@ def listar_vlans_nombre():
 
 
 def crear_tabla_vlans(index):
-    conexion = sqlite3.connect('database.db')
+    conexion = sqlite3.connect(db_path)
     if index == 0:
         query = '''
         SELECT vlans.id AS 'Id', vlans.nombre AS 'Codigo VLAN', COUNT(equipos.id) AS 'Num. Equipos' FROM vlans
@@ -246,7 +247,7 @@ def crear_tabla_vlans(index):
 
 
 def mostrar_vlan_editable(id):
-    conexion = sqlite3.connect('database.db')
+    conexion = sqlite3.connect(db_path)
     cursor = conexion.cursor()
     cursor.execute(f"SELECT nombre, direccion, mascara from vlans WHERE id = {id}")
     data = cursor.fetchone()
@@ -260,7 +261,7 @@ def mostrar_vlan_editable(id):
 
 def crear_vlan(data):
     #[id, nombre, dir, mask]
-    conexion = sqlite3.connect('database.db')
+    conexion = sqlite3.connect(db_path)
     cursor = conexion.cursor()
     cursor.execute("SELECT 1 from vlans WHERE id = ? OR nombre = ? OR direccion = ?",
                    (data[0], data[1], data[2]))
@@ -278,7 +279,7 @@ def crear_vlan(data):
 def editar_vlan(data):
 
     #[id, nombre, dir, mask]
-    conexion = sqlite3.connect('database.db')
+    conexion = sqlite3.connect(db_path)
     cursor = conexion.cursor()
     cursor.execute("SELECT 1 from vlans WHERE (id = ? OR nombre = ? OR direccion = ?) and id!=?",
                    (data[0], data[1], data[2], data[0]))
@@ -295,7 +296,7 @@ def editar_vlan(data):
 
 
 def eliminar_vlan(id):
-    conexion = sqlite3.connect('database.db')
+    conexion = sqlite3.connect(db_path)
     cursor = conexion.cursor()
     cursor.execute("DELETE from vlans WHERE id = ?", (id,))
     conexion.commit()
@@ -303,7 +304,7 @@ def eliminar_vlan(id):
 
 
 def buscar_equipo(equipo):
-    conexion = sqlite3.connect('database.db')
+    conexion = sqlite3.connect(db_path)
     cursor = conexion.cursor()
     cursor.execute("SELECT * from equipos WHERE id = ?", (equipo,))
     res = cursor.fetchone()
@@ -362,7 +363,7 @@ def desglosar_ubicacion(puerto):
     except:
         return False, 1
 
-    conexion = sqlite3.connect('database.db')
+    conexion = sqlite3.connect(db_path)
     cursor = conexion.cursor()
     cursor.execute("SELECT 1 from equipos WHERE piso = ? AND cuarto = ? AND switch = ? AND puerto = ? AND rack = ?",
                    (codigos[0], codigos[1], codigos[-2], codigos[-1], codigos[2]))
@@ -377,7 +378,7 @@ def desglosar_ubicacion(puerto):
 
 def editar_equipo(nombre, codigo, list):
     #print(nombre, codigo, list)
-    conexion = sqlite3.connect("database.db")
+    conexion = sqlite3.connect(db_path)
     cursor = conexion.cursor()
     cursor.execute("UPDATE equipos SET codigo = ?, piso = ?, cuarto = ?, switch = ?, puerto = ? WHERE id = ?",
                    (codigo, list[0], list[1], list[2], list[3], nombre))
@@ -387,7 +388,7 @@ def editar_equipo(nombre, codigo, list):
 
 def agregar_equipo(nombre, codigo, list):
     print(nombre, codigo, list)
-    conexion = sqlite3.connect("database.db")
+    conexion = sqlite3.connect(db_path)
     cursor = conexion.cursor()
     cursor.execute("INSERT into equipos(id, codigo, piso, cuarto, switch, puerto, rack) VALUES (?, ?, ?, ?, ?, ?, ?)",
                    (nombre, codigo, list[0], list[1], list[3], list[4], list[2]))
@@ -396,7 +397,7 @@ def agregar_equipo(nombre, codigo, list):
 
 
 def eliminar_pc(equipo):
-    conexion = sqlite3.connect("database.db")
+    conexion = sqlite3.connect(db_path)
     cursor = conexion.cursor()
     cursor.execute("DELETE from equipos WHERE id = ?", (equipo,))
     conexion.commit()
@@ -406,7 +407,7 @@ def eliminar_pc(equipo):
 def guardar_cambios(lista, cambio, vlan):
     print(lista, cambio, vlan)
     cambio = cambio + 1
-    conexion = sqlite3.connect("database.db")
+    conexion = sqlite3.connect(db_path)
     cursor = conexion.cursor()
     for equipo in lista:
         if cambio == 1:
